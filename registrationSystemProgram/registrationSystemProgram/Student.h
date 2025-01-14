@@ -10,20 +10,27 @@ class Student {
 	public:
 		Student();
 		~Student();
+		Student(std::string name, std::string id, std::string degree, std::string level);
 		std::string getName();
-		void setName(std::string name);
 		std::string getId();
-		void setId(std::string id);
 		std::string getDegree();
-		void setDegree(std::string degree);
 		std::string getLevel();
-		void setLevel(std::string level);
+		void setName(std::string name);
+		void setId(std::string id);
+		void setDegree(std::string degree);
+		void setLevel(std::string level);				
 
 };
 
 Student::Student(){}
-
 Student::~Student(){}
+
+Student::Student(std::string name,std::string id, std::string degree, std::string level){
+	this->name = name;
+	this->id = id;
+	this->degree=degree;
+	this->level=level;
+}
 
 std::string Student::getName() {
 	return this->name;
@@ -50,8 +57,4 @@ void Student::setDegree(std::string degree) {
 void Student::setLevel(std::string level) {
 	this->name = level;
 }
-
-
-
-
 

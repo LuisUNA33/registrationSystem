@@ -10,7 +10,9 @@ private:
 
 public:
 	Course();
+	Course(std::string name, std::string code, std::string credits, std::string teacher, Schedule schedule);
 	~Course();
+	
 
 	std::string getName();
 	std::string getCode();
@@ -25,8 +27,18 @@ public:
 
 };
 
+
 Course::Course() {}
 Course::~Course() {}
+
+Course::Course(std::string name, std::string code, std::string credits, std::string teacher, Schedule schedule){
+	this->name=name;
+	this->code =code ;
+	this->credits=credits;
+	this->teacher=teacher;
+	this->schedule=schedule;
+
+}
 
 std::string Course::getName() {
 	return this->name;

@@ -11,6 +11,8 @@ public:
 	Schedule();
 	~Schedule();
 
+	Schedule(std::string day, std::string startTime, std::string endTime, std::string classRoom);
+
 	std::string getDay();
 	std::string getStartTime();
 	std::string getEndTime();
@@ -25,6 +27,13 @@ public:
 Schedule::Schedule() {}
 
 Schedule::~Schedule() {}
+
+Schedule::Schedule(std::string day, std::string startTime, std::string endTime, std::string classRoom){
+	this->day = day;
+	this->startTime = startTime;
+	this->endTime = endTime;
+	this->classRoom = classRoom;
+}
 
 std::string Schedule::getDay() {
 	return this->day;
