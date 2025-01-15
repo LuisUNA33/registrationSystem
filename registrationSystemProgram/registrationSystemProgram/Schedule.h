@@ -22,6 +22,8 @@ public:
 	void setEndTime(std::string endTime);
 	void setClassRoom(std::string classRoom);
 
+	void showSchedule();
+
 };
 
 Schedule::Schedule() {}
@@ -59,4 +61,16 @@ void Schedule::setEndTime(std::string endTime) {
 }
 void Schedule::setClassRoom(std::string classRoom) {
 	this->classRoom = classRoom;
+}
+
+void Schedule::showSchedule() {
+	std::cout << "\nHorario: " << std::endl;
+	std::cout << "Dia: ";
+	std::cout << this->day << std::endl;
+	std::cout << "Hora de inicio: ";
+	std::cout << this->startTime<< std::endl;
+	std::cout << "Hora de salida: ";
+	std::cout << this->endTime<< std::endl;
+	std::cout << "Salon de clase: ";
+	std::cout << this->classRoom<< std::endl;
 }

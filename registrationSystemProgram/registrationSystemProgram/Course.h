@@ -25,6 +25,8 @@ public:
 	void setTeacher(std::string teacher);
 	void setSchedule(Schedule schedule);
 
+	void showCourse();
+
 };
 
 
@@ -70,4 +72,17 @@ void Course::setTeacher(std::string teacher) {
 }
 void Course::setSchedule(Schedule schedule) {
 	this->schedule = schedule;
+}
+
+void Course::showCourse() {
+	std::cout << "\nCurso "<< std::endl;
+	std::cout << "Nombre del curso: ";
+	std::cout << this->name<< std::endl;
+	std::cout << "Codigo: ";
+	std::cout << this->code << std::endl;
+	std::cout << "Creditos: ";
+	std::cout << this->credits << std::endl;
+	std::cout << "Preofesor: ";
+	std::cout << this->teacher << std::endl;
+	this->schedule.showSchedule();
 }

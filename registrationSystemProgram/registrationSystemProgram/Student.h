@@ -18,7 +18,9 @@ class Student {
 		void setName(std::string name);
 		void setId(std::string id);
 		void setDegree(std::string degree);
-		void setLevel(std::string level);				
+		void setLevel(std::string level);
+
+		void showStudent();
 
 };
 
@@ -58,3 +60,14 @@ void Student::setLevel(std::string level) {
 	this->name = level;
 }
 
+void Student::showStudent() {
+	std::cout << "\nEstudiante:" << std::endl;
+	std::cout << "Nombre: ";
+	std::cout << this->name<< std::endl;
+	std::cout << "Cedula: ";
+	std::cout << this->id<< std::endl;
+	std::cout << "Carrera: ";
+	std::cout << this->degree<< std::endl;
+	std::cout << "Nivel: ";
+	std::cout << this->level<< std::endl;
+}
