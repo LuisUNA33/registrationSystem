@@ -44,7 +44,7 @@ void subMenuB(Course* courseList, int& numCourse,
 	}
 }
 
-void subMenuC(Registration** registrationList, int rows, int columns, int recordedAmount,
+void subMenuC(Registration** registrationList, int rows, int columns, int& recordedAmount,
 	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
 	std::cout << "Matricula:" << std::endl;
 	std::cout << "  (a)Registro de matricula" << std::endl;
