@@ -4,24 +4,24 @@ class Course {
 private:
 	std::string name;
 	std::string code;
-	std::string credits;
+	int credits;
 	std::string teacher;
 	Schedule schedule;
 
 public:
 	Course();
-	Course(std::string name, std::string code, std::string credits, std::string teacher, Schedule schedule);
+	Course(std::string name, std::string code,int credits, std::string teacher, Schedule schedule);
 	~Course();
 	
 
 	std::string getName();
 	std::string getCode();
-	std::string getCredits();
+	int getCredits();
 	std::string getTeacher();
 	Schedule getSchedule();
 	void setName(std::string name);
 	void setCode(std::string code);
-	void setCredits(std::string credits);
+	void setCredits(int credits);
 	void setTeacher(std::string teacher);
 	void setSchedule(Schedule schedule);
 
@@ -31,7 +31,7 @@ public:
 Course::Course() {}
 Course::~Course() {}
 
-Course::Course(std::string name, std::string code, std::string credits, std::string teacher, Schedule schedule){
+Course::Course(std::string name, std::string code, int credits, std::string teacher, Schedule schedule){
 	this->name=name;
 	this->code =code ;
 	this->credits=credits;
@@ -46,7 +46,7 @@ std::string Course::getName() {
 std::string Course::getCode() {
 	return this->code;
 }
-std::string Course::getCredits() {
+int Course::getCredits() {
 	return this->credits;
 }
 std::string Course::getTeacher() {
@@ -62,7 +62,7 @@ void Course::setName(std::string name) {
 void Course::setCode(std::string code) {
 	this->code = code;
 }
-void Course::setCredits(std::string credits) {
+void Course::setCredits(int credits) {
 	this->credits = credits;
 }
 void Course::setTeacher(std::string teacher) {
