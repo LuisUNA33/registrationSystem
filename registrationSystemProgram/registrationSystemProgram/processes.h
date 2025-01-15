@@ -40,9 +40,8 @@ std::string enterText() {
 	return text;
 }
 
-void registerStudent(){
+void registerStudent(Student* studentList,int& numStudents){
 	std::cout << "Ingrese los datos solicitados" << std::endl;
-
 	std::cout << "Ingrese el nombre:" << std::endl;
 	std::string name = enterText();
 	std::cout << "Ingrese el numero de cedula:" << std::endl;
@@ -51,4 +50,7 @@ void registerStudent(){
 	std::string degree = enterText();
 	std::cout << "Ingrese el nivel:" << std::endl;
 	std::string level = enterText();
+
+	studentList[numStudents] = Student(name,id,degree,level);
+	numStudents++;
 }
