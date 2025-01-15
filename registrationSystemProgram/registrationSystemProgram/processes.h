@@ -34,10 +34,21 @@ void showCourseList(Course* courseList, int numCourses) {
 	}
 }
 
+void showScheduleList(Schedule* scheduleList, int numSchedule) {
+	for (int x = 0; x < numSchedule; x++) {
+		scheduleList[x].showSchedule();
+	}
+}
+
 std::string enterText() {
 	std::string text;
 	std::cin >> text;
 	return text;
+}
+int enterNum() {
+	int num;
+	std::cin >> num;
+	return num;
 }
 
 void registerStudent(Student* studentList,int& numStudents){
@@ -53,4 +64,37 @@ void registerStudent(Student* studentList,int& numStudents){
 
 	studentList[numStudents] = Student(name,id,degree,level);
 	numStudents++;
+}
+
+Schedule registerSchedule(Schedule* scheduleList,int &numSchedules) {
+	std::cout << "Ingrese los datos del Horario" << std::endl;
+	std::cout << "Dia:" << std::endl;
+	std::string day = enterText();
+	std::cout << "Hora de inicio:" << std::endl;
+	std::string startTime = enterText();
+	std::cout << "Hora de fin:" << std::endl;
+	std::string endTime = enterText();
+	std::cout << "Salon de clase:" << std::endl;
+	std::string classRoom = enterText();
+
+	scheduleList[numSchedules] = Schedule(day, startTime, endTime, classRoom);
+	numSchedules++;
+	return scheduleList[numSchedules];
+}
+
+void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules){
+	std::cout << "Ingrese los datos solicitados" << std::endl;
+	std::cout << "Ingrese el nombre del curso:" << std::endl;
+	std::string name = enterText();
+	std::cout << "Ingrese el codigo:" << std::endl;
+	std::string code = enterText();
+	std::cout << "Ingrese la cantidad de creditos:" << std::endl;
+	int credits = enterNum();
+	std::cout << "Nombre del Profesor:" << std::endl;
+	std::string teacher = enterText();
+
+	Schedule schedule = registerSchedule(scheduleList,numSchedules);
+
+	courseList[numCourse]=Course(name,code,credits,teacher,schedule);
+	numCourse++;
 }
