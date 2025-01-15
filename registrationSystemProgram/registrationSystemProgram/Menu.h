@@ -44,7 +44,8 @@ void subMenuB(Course* courseList, int& numCourse,
 	}
 }
 
-void subMenuC(Registration** registrationList, int rows, int columns, int recordedAmount) {
+void subMenuC(Registration** registrationList, int rows, int columns, int recordedAmount,
+	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
 	std::cout << "Matricula:" << std::endl;
 	std::cout << "  (a)Registro de matricula" << std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
@@ -52,7 +53,8 @@ void subMenuC(Registration** registrationList, int rows, int columns, int record
 	std::cin >> opcion;
 	switch (opcion) {
 	case 'a':
-		std::cout << "bopcion1" << std::endl;
+		registerRegistration(registrationList,rows,columns,recordedAmount,
+			studentList,numStudents,courseList,numCourse,scheduleList,numSchedules);
 		break;
 	default:
 		break;
@@ -112,7 +114,8 @@ void menu(Registration** registrationList, int rows, int columns, int& recordedA
 			subMenuB(courseList, numCourse, studentList, numStudents,scheduleList,numSchedules);
 			break;
 		case 'c':
-			subMenuC(registrationList, rows, columns, recordedAmount);
+			subMenuC(registrationList, rows, columns, recordedAmount,
+				studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
 			break;
 		case 'd':
 			subMenuD(registrationList,rows,columns,recordedAmount,

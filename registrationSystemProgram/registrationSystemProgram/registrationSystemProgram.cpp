@@ -34,7 +34,7 @@ int main(){
     std::cout << "Cantidad de Cursos creados: " << numCourses << std::endl;
     std::cout << "Cantidad de Estudiantes: " << numStudents << std::endl;
 
-    scheduleList[0].showSchedule();
+    //scheduleList[0].showSchedule();
     
     menu(registrationList,rows,columns, 
         recordedAmount, courseList, numCourses, 
