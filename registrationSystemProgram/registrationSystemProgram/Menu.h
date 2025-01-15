@@ -19,7 +19,9 @@ bool subMenuA() {
 	}
 }
 
-void subMenuB(Registration** registrationList, int rows, int columns, int recordedAmount) {
+void subMenuB(Course* courseList, int& numCourse, 
+	Student* studentList, int& numStudents,
+	Schedule* scheduleList, int& numSchedules){
 	std::cout << "Mantenimiento:" << std::endl;
 	std::cout << "  (a)Estudiantes\n" <<
 		"  (b)Cursos \n" <<
@@ -29,13 +31,13 @@ void subMenuB(Registration** registrationList, int rows, int columns, int record
 	std::cin >> opcion;
 	switch (opcion) {
 	case 'a':
-		std::cout << "bopcion1" << std::endl;
+		registerStudent(studentList,numStudents);
 		break;
 	case 'b':
-		std::cout << "bopcion2" << std::endl;
+		registerCourse(courseList,numCourse,scheduleList,numSchedules);
 		break;
 	case 'c':
-		std::cout << "bopcion3" << std::endl;
+		registerSchedule(scheduleList, numSchedules);
 		break;
 	default:
 		break;
@@ -57,11 +59,15 @@ void subMenuC(Registration** registrationList, int rows, int columns, int record
 	}
 }
 
-void subMenuD(Registration** registrationList, int rows, int columns, int recordedAmount, Course* courseList, int numCourse, Student* studentList, int numStudents) {
+void subMenuD(Registration** registrationList, int rows, int columns, int recordedAmount, 
+	Course* courseList, int numCourse, 
+	Student* studentList, int numStudents,
+	Schedule* scheduleList, int numSchedules) {
 	std::cout << "Consulta:" << std::endl;
 	std::cout << "  (a)Estudiantes(Lista de estudiantes)\n" <<
 		"  (b)Cursos(Lista de los cursos)\n" <<
-		"  (c)Estudiantes Matriculados(Todos los matriculados) \n" << std::endl;
+		"  (c)Horarios(Lista de Horarios)\n" <<
+		"  (d)Estudiantes Matriculados(Todos los matriculados) \n" << std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
 	char opcion = ' ';
 	std::cin >> opcion;
@@ -70,9 +76,12 @@ void subMenuD(Registration** registrationList, int rows, int columns, int record
 		showStudentsList(studentList,numStudents);
 		break;
 	case 'b':
-		std::cout << "bopcion2" << std::endl;
+		showCourseList(courseList, numCourse);
 		break;
 	case 'c':
+		showScheduleList(scheduleList,numSchedules);
+		break;
+	case 'd':
 		showEnrolledStudents(registrationList, rows, columns, recordedAmount);
 		break;
 	default:
@@ -81,7 +90,10 @@ void subMenuD(Registration** registrationList, int rows, int columns, int record
 }
 
 
-void menu(Registration** registrationList, int rows, int columns, int recordedAmount,Course* courseList,int numCourse,Student* studentList,int numStudents) {
+void menu(Registration** registrationList, int rows, int columns, int& recordedAmount,
+	Course* courseList,int& numCourse,
+	Student* studentList,int& numStudents,
+	Schedule* scheduleList, int& numSchedules) {
 	bool exit = false;
 	while (exit==false) {
 		std::cout << "\nBienvenido al sistema de registro o matricula" << std::endl;
@@ -97,13 +109,16 @@ void menu(Registration** registrationList, int rows, int columns, int recordedAm
 			exit=subMenuA();
 			break;
 		case 'b':
-			subMenuB(registrationList, rows, columns, recordedAmount);
+			subMenuB(courseList, numCourse, studentList, numStudents,scheduleList,numSchedules);
 			break;
 		case 'c':
 			subMenuC(registrationList, rows, columns, recordedAmount);
 			break;
 		case 'd':
-			subMenuD(registrationList,rows,columns,recordedAmount,courseList,numCourse,studentList,numStudents);
+			subMenuD(registrationList,rows,columns,recordedAmount,
+				courseList,numCourse,
+				studentList,numStudents,
+				scheduleList,numSchedules);
 			break;
 		default:
 			break;
