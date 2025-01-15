@@ -22,6 +22,18 @@ void showEnrolledStudents(Registration** registrationList,int rows,int columns,i
 
 }
 
+void showStudentsList(Student* studentList, int numStudent) {
+	for (int x = 0; x < numStudent; x++) {
+		studentList[x].showStudent();
+	}
+}
+
+void showCourseList(Course* courseList, int numCourses) {
+	for (int x = 0; x < numCourses; x++) {
+		courseList[x].showCourse();
+	}
+}
+
 std::string enterText() {
 	std::string text;
 	std::cin >> text;
