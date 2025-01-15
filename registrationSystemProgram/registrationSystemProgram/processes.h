@@ -139,8 +139,10 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 			index++;
 		}
 		else {
+			std::cout << "else" << std::endl;
 			return list;
 		}
+		std::cout << "nasa" << std::endl;
 	}
 }
 
@@ -152,12 +154,12 @@ void registerRegistration(Registration** registrationList, int rows, int columns
 	int totalCredits = 0;
 	Course* list = addCoursesList(courseList, numCourse, courseIndex, totalCredits);
 	int registrationIndex=0;
+	Registration(list, courseIndex, student).showRegistration();
 	for (int x = 0; x < rows; x++) {
 		for (int y = 0; y < columns; y++) {
 			if (recordedAmount == registrationIndex) {
 				registrationList[x][y]= Registration(list, courseIndex,student);
 				recordedAmount++;
-				return;
 			}
 			registrationIndex++;
 		}
