@@ -1,7 +1,12 @@
 #pragma once
 
 void about() {
-	std::cout <<"Luis Gerado Sanchez Alvarez"<< std::endl;
+	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
+		"Author: Luis Gerardo Sanchez ALvarez\n" <<
+		"Vercion del Programa: v1.0\n" <<
+		"Incio de desarrollo: 18/12/2024\n" <<
+		"Fecha de Ultima actualizacion: 14/01/2025\n" <<
+		"Lenguaje de programacion: c++\n" << std::endl;
 }
 
 void showEnrolledStudents(Registration** registrationList,int rows,int columns,int recordedAmount){
