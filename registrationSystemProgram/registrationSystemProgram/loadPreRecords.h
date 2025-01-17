@@ -1,14 +1,6 @@
 #pragma once
 
-Registration** initializeArray(int rows,int columns) {
-	Registration** registrationList = new Registration*[rows];
-	for (int x = 0; x < rows; x++) {
-		registrationList[x] = new Registration[columns];
-	}
-	return registrationList;
-}
-
-void loadPreRecords(Registration** registrationList,int& recordedAmount,
+void loadPreRecords(Registration* registrationList,int& numRegistration,
 	Course* courseList,int& numCourse,
 	Student* studentList,int& numStudents,
 	Schedule* scheduleList,int& numSchedule){
@@ -30,24 +22,23 @@ void loadPreRecords(Registration** registrationList,int& recordedAmount,
 	Course* list1 = new Course[10];
 	list1[0] = Course("Fundamentos", "F01", 3, "Marcos M.", scheduleList[0]);
 	list1[1] = Course("Programacion 1", "P01", 4, "Paco", scheduleList[1]);
-	registrationList[0][0] = Registration(list1,2,studentList[0]);
+	registrationList[0]= Registration(list1,2,studentList[0]);
 
 	Course* list2 = new Course[10];
 	list2[0] = Course("Fundamentos", "F01", 3, "Marcos M.", scheduleList[0]);
 	list2[1] = Course("Programacion 2", "P02", 4, "Santiago", scheduleList[2]);
-	registrationList[0][1] = Registration(list2, 2, studentList[1]);
+	registrationList[1]= Registration(list2, 2, studentList[1]);
 
 	Course* list3 = new Course[10];
 	list3[0] = Course("Fundamentos", "F01", 3, "Marcos M.", scheduleList[0]);
 	list3[1] = Course("Contabilidad", "C01", 2, "Beathan", scheduleList[3]);
-	registrationList[0][2] = Registration(list3, 2, studentList[2]);
+	registrationList[2]= Registration(list3, 2, studentList[2]);
 
 	Course* list4 = new Course[10];
 	list4[0] = Course("Fundamentos", "F01", 3, "Marcos M.", scheduleList[0]);
-	list4[1] = Course("Contabilidad", "C01", 2, "Beathan", scheduleList[3]);
-	registrationList[0][3] = Registration(list4, 2, studentList[3]);
+	registrationList[3]= Registration(list4, 1, studentList[3]);
 
-	recordedAmount += 4;
+	numRegistration += 4;
 	numCourse += 4;
 	numStudents += 4;
 	numSchedule += 4;

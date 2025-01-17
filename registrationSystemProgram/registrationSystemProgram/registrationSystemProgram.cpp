@@ -12,12 +12,11 @@
 
 
 int main(){
-    int columns = 10;
-    int rows = 10;
-    Registration **registrationList=initializeArray(rows,columns);
-    int recordedAmount=0;
+    
+    Registration *registrationList= new Registration[100];
+    int numRegistration=0;
 
-    Student *studentList = new Student[rows+columns];
+    Student *studentList = new Student[10];
     int numStudents = 0;
 
     Schedule* scheduleList = new Schedule[10];
@@ -26,18 +25,17 @@ int main(){
     Course* courseList = new Course[10];
     int numCourses = 0;
 
-    loadPreRecords(registrationList,recordedAmount,
+    loadPreRecords(registrationList,numRegistration,
         courseList,numCourses,
         studentList,numStudents,
         scheduleList, numSchedule);
-    std::cout <<"Cantidad de matriculados previamente: " << recordedAmount << std::endl;
+    std::cout <<"Cantidad de matriculados previamente: " << numRegistration << std::endl;
     std::cout << "Cantidad de Cursos creados: " << numCourses << std::endl;
     std::cout << "Cantidad de Estudiantes: " << numStudents << std::endl;
 
     //scheduleList[0].showSchedule();
     
-    menu(registrationList,rows,columns, 
-        recordedAmount, courseList, numCourses, 
+    menu(registrationList, numRegistration,courseList, numCourses, 
         studentList, numStudents, scheduleList, numSchedule);
     std::cout << "Fin del Programa" << std::endl;
     

@@ -44,7 +44,7 @@ void subMenuB(Course* courseList, int& numCourse,
 	}
 }
 
-void subMenuC(Registration** registrationList, int rows, int columns, int& recordedAmount,
+void subMenuC(Registration* registrationList,int& numRegistration,
 	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
 	std::cout << "Matricula:" << std::endl;
 	std::cout << "  (a)Registro de matricula" << std::endl;
@@ -53,7 +53,7 @@ void subMenuC(Registration** registrationList, int rows, int columns, int& recor
 	std::cin >> opcion;
 	switch (opcion) {
 	case 'a':
-		registerRegistration(registrationList,rows,columns,recordedAmount,
+		registerRegistration(registrationList,numRegistration,
 			studentList,numStudents,courseList,numCourse,scheduleList,numSchedules);
 		break;
 	default:
@@ -61,7 +61,7 @@ void subMenuC(Registration** registrationList, int rows, int columns, int& recor
 	}
 }
 
-void subMenuD(Registration** registrationList, int rows, int columns, int recordedAmount, 
+void subMenuD(Registration* registrationList,int numRegistration,
 	Course* courseList, int numCourse, 
 	Student* studentList, int numStudents,
 	Schedule* scheduleList, int numSchedules) {
@@ -84,7 +84,7 @@ void subMenuD(Registration** registrationList, int rows, int columns, int record
 		showScheduleList(scheduleList,numSchedules);
 		break;
 	case 'd':
-		showEnrolledStudents(registrationList, rows, columns, recordedAmount);
+		showEnrolledStudents(registrationList,numRegistration);
 		break;
 	default:
 		break;
@@ -92,7 +92,7 @@ void subMenuD(Registration** registrationList, int rows, int columns, int record
 }
 
 
-void menu(Registration** registrationList, int rows, int columns, int& recordedAmount,
+void menu(Registration* registrationList,int& numRegistration,
 	Course* courseList,int& numCourse,
 	Student* studentList,int& numStudents,
 	Schedule* scheduleList, int& numSchedules) {
@@ -114,11 +114,11 @@ void menu(Registration** registrationList, int rows, int columns, int& recordedA
 			subMenuB(courseList, numCourse, studentList, numStudents,scheduleList,numSchedules);
 			break;
 		case 'c':
-			subMenuC(registrationList, rows, columns, recordedAmount,
+			subMenuC(registrationList, numRegistration,
 				studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
 			break;
 		case 'd':
-			subMenuD(registrationList,rows,columns,recordedAmount,
+			subMenuD(registrationList,numRegistration,
 				courseList,numCourse,
 				studentList,numStudents,
 				scheduleList,numSchedules);

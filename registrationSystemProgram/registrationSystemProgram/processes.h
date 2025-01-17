@@ -9,17 +9,10 @@ void about() {
 		"Lenguaje de programacion: c++\n" << std::endl;
 }
 
-void showEnrolledStudents(Registration** registrationList, int rows, int columns, int recordedAmount) {
-	for (int x = 0; x < rows; x++) {
-		for (int y = 0; y < columns; y++) {
-			if (recordedAmount == 0) {
-				return;
-			}
-			registrationList[x][y].showRegistration();
-			recordedAmount--;
-		}
+void showEnrolledStudents(Registration* registrationList, int numRegistration) {
+	for (int x = 0; x < numRegistration; x++) {
+		registrationList[x].showRegistration();
 	}
-
 }
 
 void showStudentsList(Student* studentList, int numStudent) {
@@ -144,26 +137,16 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 	}
 }
 
-void registerRegistration(Registration** registrationList, int rows, int columns, int &recordedAmount,
+void registerRegistration(Registration* registrationList,int & numRegistration,
 	Student* studentList, int numStudents,Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules){
-	std::cout << recordedAmount<< std::endl;
+	std::cout << numRegistration << std::endl;
 	Student student=searchStudent(studentList,numStudents);
 	int courseIndex = 0;
 	int totalCredits = 0;
 	Course* list = addCoursesList(courseList, numCourse, courseIndex, totalCredits);
-	int registrationIndex=0;
 	Registration(list, courseIndex, student).showRegistration();
-	for (int x = 0; x < rows; x++) {
-		for (int y = 0; y < columns; y++) {
-			if (recordedAmount== registrationIndex) {
-				registrationList[x][y]= Registration(list, courseIndex,student);
-				break;
-			}
-			registrationIndex++;
-		}
-	}
-	recordedAmount += 1;
-	std::cout << recordedAmount<<" and"<<registrationIndex << std::endl;
+	registrationList[numRegistration]= Registration(list, courseIndex,student);
+	numRegistration += 1;
 	std::cout << "El total de creditos matriculados:" <<totalCredits<< std::endl;
 	std::cout << "A 12700 por credito: " << totalCredits*12700 << "colones"<<std::endl;
 
