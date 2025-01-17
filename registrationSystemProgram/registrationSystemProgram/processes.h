@@ -86,6 +86,20 @@ void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Horario agregado a la lista. " << std::endl;
 }
 
+Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
+	while (true) {
+		std::cout << "Ingrese el codigo del horario:" << std::endl;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		int code=enterNum();
+		for (int x = 0; x < numSchedules; x++) {
+			if (scheduleList[x].getCode() == code) {
+				return scheduleList[x];
+			}
+		}
+		std::cout << "Horario no encontrado en la lista." << std::endl;
+	}
+}
+
 void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::cout << "Ingrese el nombre del curso:" << std::endl;
@@ -97,12 +111,26 @@ void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, 
 	std::cout << "Nombre del Profesor:" << std::endl;
 	std::string teacher = enterText();
 
-	registerSchedule(scheduleList, numSchedules);
-
-	courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules-1]);
+	std::string option = "";
+	while (true) {
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "(a)Crear horario y agregarlo a la lista \n(b)Usar Horario existente" << std::endl;
+		std::cin >> option;
+		if (option == "a") {
+			registerSchedule(scheduleList, numSchedules);
+			courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules - 1]);
+			break;
+		}
+		if (option == "b") {
+			showScheduleList(scheduleList,numSchedules);
+			courseList[numCourse] = Course(name, code, credits, teacher, searchSchedule(scheduleList,numSchedules));
+			break;
+		}
+	}
 	numCourse++;
 	std::cout << "Curso agregado a la lista." << std::endl;
 }
+
 Student searchStudent(Student* studentList, int numStudents) {
 	showStudentsList(studentList, numStudents);
 	while (true) {
@@ -144,7 +172,7 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 		if(option=="b") {
 			return list;
 		}
-		std::cout << "\n(a) Agregar Curso \n(b) Terminar: " << std::endl;
+		std::cout << "\n(a) Agregar otro curso\n(b) Terminar: " << std::endl;
 		std::cin >> option;
 	}
 }
