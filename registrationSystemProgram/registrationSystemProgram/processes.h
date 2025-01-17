@@ -45,7 +45,7 @@ int enterNum() {
 			return num;
 		}
 		else {
-			std::cout << "no es un numero" << std::endl;
+			std::cout << "Deve ingresar un numero:" << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
@@ -70,6 +70,8 @@ void registerStudent(Student* studentList, int& numStudents) {
 
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
+	std::cout << "Ingrese codigo de horario: " << std::endl;
+	int code = enterNum();
 	std::cout << "Dia:" << std::endl;
 	std::string day = enterText();
 	std::cout << "Hora de inicio:" << std::endl;
@@ -79,7 +81,7 @@ void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Salon de clase:" << std::endl;
 	std::string classRoom = enterText();
 
-	scheduleList[numSchedules] = Schedule(day, startTime, endTime, classRoom);
+	scheduleList[numSchedules] = Schedule(code,day, startTime, endTime, classRoom);
 	numSchedules++;
 	std::cout << "Horario agregado a la lista. " << std::endl;
 }

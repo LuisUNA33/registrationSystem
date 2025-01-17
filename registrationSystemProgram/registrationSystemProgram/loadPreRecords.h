@@ -9,10 +9,10 @@ void loadPreRecords(Registration* registrationList,int& numRegistration,
 	studentList[2]=Student ("Filiberto Castro", "204570467", "Administracion", "3");
 	studentList[3]=Student("Kevin Perez", "704530417", "Administracion", "3");
 
-	scheduleList[0] = Schedule("Lunes","8","10","Aula 2");
-	scheduleList[1] = Schedule("Miercoles", "8", "10", "Aula 3");
-	scheduleList[2] = Schedule("Jueves", "13", "15", "Aula 9");
-	scheduleList[3] = Schedule("Martes", "7", "10", "Aula 12");
+	scheduleList[0] = Schedule(1,"Lunes","8","10","Aula 2");
+	scheduleList[1] = Schedule(2,"Miercoles", "8", "10", "Aula 3");
+	scheduleList[2] = Schedule(3,"Jueves", "13", "15", "Aula 9");
+	scheduleList[3] = Schedule(4,"Martes", "7", "10", "Aula 12");
 
 	courseList[0] = Course("Fundamentos","F01",3,"Marcos M.", scheduleList[0]);
 	courseList[1] = Course("Programacion 1", "P01", 4, "Paco", scheduleList[1]);

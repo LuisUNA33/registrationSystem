@@ -10,9 +10,7 @@
 
 #include "loadPreRecords.h"
 
-
 int main(){
-    
     Registration *registrationList= new Registration[100];
     int numRegistration=0;
 
