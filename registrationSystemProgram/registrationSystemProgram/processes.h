@@ -39,9 +39,17 @@ std::string enterText() {
 	return text;
 }
 int enterNum() {
-	int num;
-	std::cin >> num;
-	return num;
+	while (true) {
+		int num;
+		if (std::cin >> num) {
+			return num;
+		}
+		else {
+			std::cout << "no es un numero" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
 }
 
 void registerStudent(Student* studentList, int& numStudents) {
@@ -57,6 +65,7 @@ void registerStudent(Student* studentList, int& numStudents) {
 
 	studentList[numStudents] = Student(name, id, degree, level);
 	numStudents++;
+	std::cout << "Estudiante agregado a la lista" << std::endl;
 }
 
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
@@ -72,6 +81,7 @@ void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 
 	scheduleList[numSchedules] = Schedule(day, startTime, endTime, classRoom);
 	numSchedules++;
+	std::cout << "Horario agregado a la lista. " << std::endl;
 }
 
 void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules) {
@@ -89,6 +99,7 @@ void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, 
 
 	courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules-1]);
 	numCourse++;
+	std::cout << "Curso agregado a la lista." << std::endl;
 }
 Student searchStudent(Student* studentList, int numStudents) {
 	showStudentsList(studentList, numStudents);
@@ -143,11 +154,10 @@ void registerRegistration(Registration* registrationList,int & numRegistration,
 	int courseIndex = 0;
 	int totalCredits = 0;
 	Course* list = addCoursesList(courseList, numCourse, courseIndex, totalCredits);
-	//Registration(list, courseIndex, student).showRegistration();
 	registrationList[numRegistration]= Registration(list, courseIndex,student);
 	numRegistration += 1;
 	std::cout << "El total de creditos matriculados:" <<totalCredits<< std::endl;
 	std::cout << "A 12700 por credito: " << totalCredits*12700 << "colones"<<std::endl;
-	std::cout << "Matricula completada"<< std::endl;
+	std::cout << "Matricula completada. "<< std::endl;
 
 }
