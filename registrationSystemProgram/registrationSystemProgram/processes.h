@@ -59,7 +59,7 @@ void registerStudent(Student* studentList, int& numStudents) {
 	numStudents++;
 }
 
-Schedule registerSchedule(Schedule* scheduleList, int& numSchedules) {
+void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::cout << "Dia:" << std::endl;
 	std::string day = enterText();
@@ -72,7 +72,6 @@ Schedule registerSchedule(Schedule* scheduleList, int& numSchedules) {
 
 	scheduleList[numSchedules] = Schedule(day, startTime, endTime, classRoom);
 	numSchedules++;
-	return scheduleList[numSchedules];
 }
 
 void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules) {
@@ -86,9 +85,9 @@ void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, 
 	std::cout << "Nombre del Profesor:" << std::endl;
 	std::string teacher = enterText();
 
-	Schedule schedule = registerSchedule(scheduleList, numSchedules);
+	registerSchedule(scheduleList, numSchedules);
 
-	courseList[numCourse] = Course(name, code, credits, teacher, schedule);
+	courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules-1]);
 	numCourse++;
 }
 Student searchStudent(Student* studentList, int numStudents) {
@@ -120,20 +119,20 @@ Course searchCourse(Course* courseList, int numCourse) {
 Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCredits){
 	Course* list = new Course[10];
 	showCourseList(courseList, numCourse);
+	std::string option = "a";
 	while (true){
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Agregar Curso?( (a) para si o cualquien otro para terminar de agregar: " << std::endl;
-		std::string option;
-		std::cin >> option;
 		if (option == "a") {
 			Course course = searchCourse(courseList, numCourse);
 			list[index] = course;
 			totalCredits += course.getCredits();
 			index++;
 		}
-		else {
+		if(option=="b") {
 			return list;
 		}
+		std::cout << "\n(a) Agregar Curso \n(b) Terminar: " << std::endl;
+		std::cin >> option;
 	}
 }
 
@@ -144,10 +143,11 @@ void registerRegistration(Registration* registrationList,int & numRegistration,
 	int courseIndex = 0;
 	int totalCredits = 0;
 	Course* list = addCoursesList(courseList, numCourse, courseIndex, totalCredits);
-	Registration(list, courseIndex, student).showRegistration();
+	//Registration(list, courseIndex, student).showRegistration();
 	registrationList[numRegistration]= Registration(list, courseIndex,student);
 	numRegistration += 1;
 	std::cout << "El total de creditos matriculados:" <<totalCredits<< std::endl;
 	std::cout << "A 12700 por credito: " << totalCredits*12700 << "colones"<<std::endl;
+	std::cout << "Matricula completada"<< std::endl;
 
 }
