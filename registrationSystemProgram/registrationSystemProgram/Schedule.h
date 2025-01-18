@@ -4,25 +4,25 @@ class Schedule {
 private:
 	int code=0;
 	std::string day;
-	std::string startTime;
-	std::string endTime;
+	int startTime;
+	int endTime;
 	std::string classRoom;
 
 public:
 	Schedule();
 	~Schedule();
 
-	Schedule(int code,std::string day, std::string startTime, std::string endTime, std::string classRoom);
+	Schedule(int code,std::string day, int startTime, int endTime, std::string classRoom);
 	int getCode();
 	std::string getDay();
-	std::string getStartTime();
-	std::string getEndTime();
+	int getStartTime();
+	int getEndTime();
 	std::string getClassRoom();
 	
 	void setCode(int code);
 	void setDay(std::string day);
-	void setStartTime(std::string startTime);
-	void setEndTime(std::string endTime);
+	void setStartTime(int startTime);
+	void setEndTime(int endTime);
 	void setClassRoom(std::string classRoom);
 
 	void showSchedule();
@@ -33,7 +33,7 @@ Schedule::Schedule() {}
 
 Schedule::~Schedule() {}
 
-Schedule::Schedule(int code,std::string day, std::string startTime, std::string endTime, std::string classRoom){
+Schedule::Schedule(int code,std::string day,int startTime, int endTime, std::string classRoom){
 	this->code = code;
 	this->day = day;
 	this->startTime = startTime;
@@ -46,10 +46,10 @@ int Schedule::getCode() {
 std::string Schedule::getDay() {
 	return this->day;
 }
-std::string Schedule::getStartTime() {
+int Schedule::getStartTime() {
 	return this->startTime;
 }
-std::string Schedule::getEndTime() {
+int Schedule::getEndTime() {
 	return this->endTime;
 }
 std::string Schedule::getClassRoom() {
@@ -62,10 +62,10 @@ void Schedule::setCode(int Code) {
 void Schedule::setDay(std::string day) {
 	this->day = day;
 }
-void Schedule::setStartTime(std::string startTime) {
+void Schedule::setStartTime(int startTime) {
 	this->startTime = startTime;
 }
-void Schedule::setEndTime(std::string endTime) {
+void Schedule::setEndTime(int endTime) {
 	this->endTime = endTime;
 }
 void Schedule::setClassRoom(std::string classRoom) {

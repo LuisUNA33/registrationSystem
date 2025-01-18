@@ -68,16 +68,30 @@ void registerStudent(Student* studentList, int& numStudents) {
 	std::cout << "Estudiante agregado a la lista" << std::endl;
 }
 
+void enterStartEndTime(int &startTime,int &endTime) {
+	while (true) {
+		std::cout << "Hora de inicio:" << std::endl;
+		startTime = enterNum();
+		std::cout << "Hora de fin:" << std::endl;
+		endTime = enterNum();
+		if (startTime>=0 or startTime <=24 and endTime >= 0 or endTime <= 24) {
+			if (startTime<endTime) {
+				return;
+			}
+		}
+		std::cout << "No ingreso horas coherentes\nrecuerde solo formato de 24 horas\n solo horas en punto." << std::endl;
+	}
+}
+
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::cout << "Ingrese codigo de horario: " << std::endl;
 	int code = enterNum();
 	std::cout << "Dia:" << std::endl;
 	std::string day = enterText();
-	std::cout << "Hora de inicio:" << std::endl;
-	std::string startTime = enterText();
-	std::cout << "Hora de fin:" << std::endl;
-	std::string endTime = enterText();
+	int startTime;
+	int endTime;
+	enterStartEndTime(startTime,endTime);
 	std::cout << "Salon de clase:" << std::endl;
 	std::string classRoom = enterText();
 
@@ -157,6 +171,25 @@ Course searchCourse(Course* courseList, int numCourse) {
 		}
 	}
 }
+
+bool checkConflict(Course* list,int index,Course course){
+	if (index == 0) {
+		return true;
+	}
+	for (int x = 0; x < index; x++) {
+		if (list[x].getSchedule().getCode() == course.getSchedule().getCode()) { return false; }
+		if (list[x].getSchedule().getDay() == course.getSchedule().getDay()) {
+			if (course.getEndTime()>=list[x].getStartTime()){
+				return false;
+			}
+			if (course.getStartTime()<=list[x].getEndTime()){
+				return false;
+			}
+		}	
+	}
+	return true;
+}
+
 Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCredits){
 	Course* list = new Course[10];
 	showCourseList(courseList, numCourse);
@@ -165,9 +198,15 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (option == "a") {
 			Course course = searchCourse(courseList, numCourse);
-			list[index] = course;
-			totalCredits += course.getCredits();
-			index++;
+			if (checkConflict(list, index, course)){
+				list[index] = course;
+				totalCredits += course.getCredits();
+				index++;
+			}
+			else {
+				std::cout << "Conflicto de horarios\n No se agrego el curso" << std::endl;
+			}
+			
 		}
 		if(option=="b") {
 			return list;

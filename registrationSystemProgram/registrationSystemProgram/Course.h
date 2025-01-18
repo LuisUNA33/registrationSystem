@@ -19,6 +19,8 @@ public:
 	int getCredits();
 	std::string getTeacher();
 	Schedule getSchedule();
+	int getStartTime();
+	int getEndTime();
 	void setName(std::string name);
 	void setCode(std::string code);
 	void setCredits(int credits);
@@ -56,6 +58,13 @@ std::string Course::getTeacher() {
 }
 Schedule Course::getSchedule() {
 	return this->schedule;
+}
+
+int Course::getStartTime() {
+	return this->schedule.getStartTime();
+}
+int Course::getEndTime(){
+	return this->schedule.getEndTime();
 }
 
 void Course::setName(std::string name) {
