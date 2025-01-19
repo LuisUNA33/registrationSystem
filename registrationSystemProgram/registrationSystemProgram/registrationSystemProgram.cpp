@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "Student.h"
 #include "Schedule.h"
@@ -27,9 +28,11 @@ int main(){
         courseList,numCourses,
         studentList,numStudents,
         scheduleList, numSchedule);
-    std::cout <<"Cantidad de matriculados previamente: " << numRegistration << std::endl;
-    std::cout << "Cantidad de Cursos creados: " << numCourses << std::endl;
-    std::cout << "Cantidad de Estudiantes: " << numStudents << std::endl;
+    std::cout << "Informacion de datos precargados " << numRegistration << std::endl;
+    std::cout <<"Cantidad de matriculados: " << numRegistration << std::endl;
+    std::cout << "Cantidad en la lista Estudiantes: " << numStudents << std::endl;
+    std::cout << "Cantidad en la lista Cursos: " << numCourses << std::endl;
+    std::cout << "Cantidad en la lista Horarios: " << numSchedule << std::endl;
 
     menu(registrationList, numRegistration,courseList, numCourses, 
         studentList, numStudents, scheduleList, numSchedule);
