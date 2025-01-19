@@ -5,9 +5,8 @@ bool subMenuA() {
 	std::cout << "  (a)Acerca de\n"<<
 		"  (b)Salir " << std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
-	char opcion = ' ';
-	std::cin >> opcion;
-	switch (opcion) {
+	char option=enterChar();
+	switch (option) {
 	case 'a':
 		about();
 		return false;
@@ -23,13 +22,12 @@ void subMenuB(Course* courseList, int& numCourse,
 	Student* studentList, int& numStudents,
 	Schedule* scheduleList, int& numSchedules){
 	std::cout << "Mantenimiento:" << std::endl;
-	std::cout << "  (a)Estudiantes\n" <<
-		"  (b)Cursos \n" <<
-		"  (c)Horarios"<<std::endl;
+	std::cout << "  (a)Estudiantes(Agrega estudiante a lista))\n" <<
+		"  (b)Cursos(Agrega curso a lista) \n" <<
+		"  (c)Horarios(Agrega horario a lista)"<<std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
-	char opcion = ' ';
-	std::cin >> opcion;
-	switch (opcion) {
+	char option = enterChar();
+	switch (option) {
 	case 'a':
 		registerStudent(studentList,numStudents);
 		break;
@@ -49,11 +47,10 @@ void subMenuC(Registration* registrationList,int& numRegistration,
 	std::cout << "Matricula:" << std::endl;
 	std::cout << "  (a)Registro de matricula" << std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
-	char opcion = ' ';
-	std::cin >> opcion;
-	switch (opcion) {
+	char option = enterChar();
+	switch (option) {
 	case 'a':
-		registerRegistration(registrationList,numRegistration,
+		addRegistration(registrationList,numRegistration,
 			studentList,numStudents,courseList,numCourse,scheduleList,numSchedules);
 		break;
 	default:
@@ -71,9 +68,8 @@ void subMenuD(Registration* registrationList,int numRegistration,
 		"  (c)Horarios(Lista de Horarios)\n" <<
 		"  (d)Estudiantes Matriculados(Todos los matriculados) \n" << std::endl;
 	std::cout << "Selecione una opcion:" << std::endl;
-	char opcion = ' ';
-	std::cin >> opcion;
-	switch (opcion) {
+	char option = enterChar();
+	switch (option) {
 	case 'a':
 		showStudentsList(studentList,numStudents);
 		break;
@@ -104,9 +100,11 @@ void menu(Registration* registrationList,int& numRegistration,
 			"  (c)Matricula\n" <<
 			"  (d)Consulta\n" << std::endl;
 		std::cout << "Ingrese la opcion que desea realizar: " << std::endl;
-		char opcion = ' ';
-		std::cin >> opcion;
-		switch (opcion) {
+		char option = enterChar();
+		//char option =' ';
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		//std::cin >> option;
+		switch (option) {
 		case 'a':
 			exit=subMenuA();
 			break;
