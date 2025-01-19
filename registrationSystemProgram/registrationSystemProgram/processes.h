@@ -92,13 +92,28 @@ void enterStartEndTime(int &startTime,int &endTime) {
 		std::cout << "No ingreso horas coherentes\nrecuerde solo formato de 24 horas\n solo horas en punto." << std::endl;
 	}
 }
+std::string enterDay() {
+	std::string days[7]={ "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
+	for (int x = 0; x < 7; x++) {
+		std::cout <<"(" << x + 1 <<") " << days[x] << std::endl;
+	}
+	while(true){
+		std::cout << "Ingrese el numero correpondinete al dia: " << std::endl;
+		int num = enterNum();
+		if (num > 0 and num < 8) {
+			return days[num - 1];
+		}
+
+	}
+	
+}
 
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::cout << "Ingrese codigo de horario: " << std::endl;
 	int code = enterNum();
 	std::cout << "Dia:" << std::endl;
-	std::string day = enterText();
+	std::string day = enterDay();
 	int startTime;
 	int endTime;
 	enterStartEndTime(startTime,endTime);
