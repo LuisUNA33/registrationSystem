@@ -3,9 +3,9 @@
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
 		"Author: Luis Gerardo Sanchez ALvarez\n" <<
-		"Vercion del Programa: v1.0\n" <<
+		"Vercion del Programa: v2.0\n" <<
 		"Incio de desarrollo: 18/12/2024\n" <<
-		"Fecha de Ultima actualizacion: 14/01/2025\n" <<
+		"Fecha de Ultima actualizacion: 18/01/2025\n" <<
 		"Lenguaje de programacion: c++\n" << std::endl;
 }
 
@@ -36,8 +36,18 @@ void showScheduleList(Schedule* scheduleList, int numSchedule) {
 std::string enterText() {
 	std::string text;
 	std::cin >> text;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	return text;
 }
+char enterChar() {
+	char text=' ';
+	std::cin >> text;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	return text;
+}
+
 int enterNum() {
 	while (true) {
 		int num;
@@ -103,7 +113,6 @@ void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
 	while (true) {
 		std::cout << "Ingrese el codigo del horario:" << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		int code=enterNum();
 		for (int x = 0; x < numSchedules; x++) {
 			if (scheduleList[x].getCode() == code) {
@@ -127,9 +136,8 @@ void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, 
 
 	std::string option = "";
 	while (true) {
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "(a)Crear horario y agregarlo a la lista \n(b)Usar Horario existente" << std::endl;
-		std::cin >> option;
+		option=enterText();
 		if (option == "a") {
 			registerSchedule(scheduleList, numSchedules);
 			courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules - 1]);
@@ -149,9 +157,8 @@ Student searchStudent(Student* studentList, int numStudents) {
 	showStudentsList(studentList, numStudents);
 	while (true) {
 		std::cout << "Ingrese el numero de cedula del estudiante a matricular:" << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::string id;
-		std::cin >> id;
+		id=enterText();
 		for (int x = 0; x < numStudents; x++) {
 			if (studentList[x].getId() == id) {
 				return studentList[x];
@@ -164,7 +171,7 @@ Student searchStudent(Student* studentList, int numStudents) {
 Course searchCourse(Course* courseList, int numCourse) {
 	std::cout << "Ingrese el codigo del curso: " << std::endl;
 	std::string code;
-	std::cin >> code;
+	code=enterText();
 	for (int x = 0; x < numCourse; x++) {
 		if (courseList[x].getCode() == code) {
 			return courseList[x];
@@ -195,7 +202,6 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 	showCourseList(courseList, numCourse);
 	std::string option = "a";
 	while (true){
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (option == "a") {
 			Course course = searchCourse(courseList, numCourse);
 			if (checkConflict(list, index, course)){
@@ -212,14 +218,27 @@ Course* addCoursesList(Course* courseList, int numCourse,int &index,int &totalCr
 			return list;
 		}
 		std::cout << "\n(a) Agregar otro curso\n(b) Terminar: " << std::endl;
-		std::cin >> option;
+		option=enterText();
 	}
 }
 
-void registerRegistration(Registration* registrationList,int & numRegistration,
+bool isRegistered(Registration* registrationList, int& numRegistration, std::string id) {
+	for (int x = 0; x < numRegistration; x++) {
+		if (registrationList[x].getStudent().getId() == id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void addRegistration(Registration* registrationList,int & numRegistration,
 	Student* studentList, int numStudents,Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules){
-	std::cout << numRegistration << std::endl;
+	
 	Student student=searchStudent(studentList,numStudents);
+	if (isRegistered(registrationList, numRegistration, student.getId()) == true) {
+		std::cout << "Este estudiante ya esta matriculado" << std::endl;
+		return;
+	}
 	int courseIndex = 0;
 	int totalCredits = 0;
 	Course* list = addCoursesList(courseList, numCourse, courseIndex, totalCredits);
