@@ -40,6 +40,15 @@ std::string* cargarTextoLista(int size,std::string nombreArchivo){
 }
 
 int main(){
+    string* lista= cargarTextoLista(7,"Courses.txt");
+    for (int x = 0; x < 7; x++) {
+        std::cout << lista[x] << std::endl;
+    }
+    //crearArhivotxt("pruebav2");
+    //agregarLineaArchivotxt("pruebav2","fin");
+    
+    //std::cout<< leerArchivo("pruebav2")<<std::endl;
+    /***
     Registration *registrationList= new Registration[100];
     int numRegistration=0;
 
@@ -66,6 +75,6 @@ int main(){
         studentList, numStudents, scheduleList, numSchedule);
     std::cout << "Fin del Programa" << std::endl;
     
-
+    ***/
     return 0;
 }
