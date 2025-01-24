@@ -1,15 +1,43 @@
 #include <iostream>
+#include <fstream>
 #include <limits>
+using namespace std;
 
 #include "Student.h"
 #include "Schedule.h"
 #include "Course.h"
 #include "Registration.h"
-
 #include "processes.h"
 #include "Menu.h"
-
 #include "loadPreRecords.h"
+
+
+#include "MethodStatement.h"
+
+
+std::string* cargarTextoLista(int size,std::string nombreArchivo){
+    std::string name;
+    std::string code;
+    int credits;
+    std::string teacher;
+    Schedule schedule;
+
+    std::string* fragmentos=new std::string[size];
+
+    std::string cadena = leerArchivo(nombreArchivo);
+    int index=0;
+    int inicio = 0;
+    for (size_t i = 0; i < cadena.size(); ++i) {
+        if (cadena[i] == ';') {
+            fragmentos[index] = cadena.substr(inicio, i-inicio);
+            inicio =i+1;
+            index++;
+        }
+    }
+    
+    return fragmentos;
+    
+}
 
 int main(){
     Registration *registrationList= new Registration[100];
