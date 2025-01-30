@@ -26,7 +26,7 @@ public:
 	void setCredits(int credits);
 	void setTeacher(std::string teacher);
 	void setSchedule(Schedule schedule);
-
+	void pepeElGallo();
 	void showCourse();
 
 };
