@@ -1,0 +1,7 @@
+﻿  registrationSystemProgram.cpp
+C:\Users\luisg\Documents\UNA\Programacion 1\proyectos\registrationSystem\registrationSystemProgram\registrationSystemProgram\registrationSystemProgram.cpp(33,22): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\luisg\Documents\UNA\Programacion 1\proyectos\registrationSystem\registrationSystemProgram\registrationSystemProgram\registrationSystemProgram.cpp(21,9): warning C4101: 'credits': variable local sin referencia
+  Source.cpp
+  Generando código...
+C:\Users\luisg\Documents\UNA\Programacion 1\proyectos\registrationSystem\registrationSystemProgram\registrationSystemProgram\processes.h(195,1): warning C4715: 'searchCourse': no todas las rutas de acceso de control devuelven un valor
+  registrationSystemProgram.vcxproj -> C:\Users\luisg\Documents\UNA\Programacion 1\proyectos\registrationSystem\registrationSystemProgram\x64\Debug\registrationSystemProgram.exe
