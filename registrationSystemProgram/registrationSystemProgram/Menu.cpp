@@ -71,6 +71,7 @@ void subMenuB(Course* courseList, int& numCourse,Student* studentList, int& numS
 
 void subMenuC(Registration* registrationList, int& numRegistration,
 	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
+    system("CLS");
     char option;
     do {
         std::cout << "Matricula:" << std::endl;
@@ -122,6 +123,8 @@ void subMenuD(Registration* registrationList, int numRegistration,
 	case 'd':
 		showEnrolledStudents(registrationList, numRegistration);
 		break;
+    case 'e':
+        return;
 	default:
 		break;
 	}
@@ -133,8 +136,10 @@ void menu(Registration* registrationList, int& numRegistration,
 	Course* courseList, int& numCourse,
 	Student* studentList, int& numStudents,
 	Schedule* scheduleList, int& numSchedules) {
+  
 	bool exit = false;
 	while (exit == false) {
+        system("CLS");
 		std::cout << "\nBienvenido al sistema de registro o matricula" << std::endl;
 		std::cout << "  (a)Archivo\n" <<
 			"  (b)Mantenimiento \n" <<

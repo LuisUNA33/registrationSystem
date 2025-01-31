@@ -6,9 +6,9 @@ void loadPreRecords(Registration* registrationList, int& numRegistration,
 	Schedule* scheduleList, int& numSchedule) {
 
 
-	studentList[0] = Student("Marco Anthonio", "603170469", "Ingenieria en Sistemas", "1");
-	studentList[1] = Student("Michell Obiedo", "408370485", "Redes", "2");
-	studentList[2] = Student("Filiberto Castro", "204570467", "Administracion", "3");
+	studentList[0] = Student("Marco Anthonio", "603170469", "Ingenieria en Sistemas", "1");  
+	studentList[1] = Student("Michell Obiedo", "408370485", "Redes", "2"); 
+	studentList[2] = Student("Filiberto Castro", "204570467", "Administracion", "3"); 
 	studentList[3] = Student("Kevin Perez", "704530417", "Administracion", "3");
 
 	scheduleList[0] = Schedule(1, "Lunes", 8, 10, "Aula 2");
