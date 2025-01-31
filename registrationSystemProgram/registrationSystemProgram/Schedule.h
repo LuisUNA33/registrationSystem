@@ -4,8 +4,8 @@ class Schedule {
 private:
 	int code=0;
 	std::string day;
-	int startTime;
-	int endTime;
+	int startTime=0;
+	int endTime=0;
 	std::string classRoom;
 
 public:

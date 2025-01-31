@@ -1,4 +1,5 @@
 #include "Menu.h"
+
 bool subMenuA() {
     char option;
     while (true) {
@@ -20,7 +21,7 @@ bool subMenuA() {
             std::cout << "Saliendo....." << std::endl;
             return true;
         case 'c':
-            return;
+            return false;
         default:
             return false;
         }
@@ -88,7 +89,7 @@ void subMenuC(Registration* registrationList, int& numRegistration,
         default:
             break;
         }
-    } while (option != 'a' || option != 'b' || option != 'c');
+    } while (option != 'a' && option != 'b' && option != 'c');
 
 }
 

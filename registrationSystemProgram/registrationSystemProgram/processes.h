@@ -1,5 +1,9 @@
 #pragma once
-
+#include "Student.h"
+#include "Course.h"
+#include "Schedule.h"
+#include "Registration.h"
+#include <string>
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
 		"Author: Luis Gerardo Sanchez ALvarez\n" <<
@@ -35,11 +39,12 @@ void showScheduleList(Schedule* scheduleList, int numSchedule) {
 
 std::string enterText() {
 	std::string text;
-	std::cin >> text;
 	std::cin.clear();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::getline(std::cin, text);
 	return text;
 }
+
 char enterChar() {
 	char text=' ';
 	std::cin >> text;
@@ -84,7 +89,8 @@ void enterStartEndTime(int &startTime,int &endTime) {
 		startTime = enterNum();
 		std::cout << "Hora de fin:" << std::endl;
 		endTime = enterNum();
-		if (startTime>=0 or startTime <=24 and endTime >= 0 or endTime <= 24) {
+		if ((startTime >= 0 && startTime <= 24) && (endTime >= 0 && endTime <= 24))
+		{
 			if (startTime<endTime) {
 				return;
 			}
@@ -105,7 +111,7 @@ std::string enterDay() {
 		}
 
 	}
-	
+
 }
 
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
@@ -184,15 +190,19 @@ Student searchStudent(Student* studentList, int numStudents) {
 }
 
 Course searchCourse(Course* courseList, int numCourse) {
-	std::cout << "Ingrese el codigo del curso: " << std::endl;
-	std::string code;
-	code=enterText();
-	for (int x = 0; x < numCourse; x++) {
-		if (courseList[x].getCode() == code) {
-			return courseList[x];
+		while (true) {
+			std::cout << "Ingrese el codigo del curso: " << std::endl;
+			std::string code = enterText();
+			for (int x = 0; x < numCourse; x++) {
+				if (courseList[x].getCode() == code) {
+					return courseList[x];
+				}
+			}
+			std::cout << "Curso no encontrado. Intente nuevamente." << std::endl;
 		}
-	}
 }
+
+
 
 bool checkConflict(Course* list,int index,Course course){
 	if (index == 0) {

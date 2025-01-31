@@ -5,7 +5,7 @@ class Course {
 private:
 	std::string name;
 	std::string code;
-	int credits;
+	int credits =0;
 	std::string teacher;
 	Schedule schedule;
 
