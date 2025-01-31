@@ -1,14 +1,15 @@
 #include "processes.h"
 #include <iostream>
 #include <limits>
-
+#include <fstream>
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
-		"Author: Luis Gerardo Sanchez ALvarez\n" <<
-		"Vercion del Programa: v2.0\n" <<
+		"Author: Luis Sanchez, Mathew Ramirez, John Perez \n" <<
+		"Version del Programa: v2.0\n" <<
 		"Incio de desarrollo: 18/12/2024\n" <<
 		"Fecha de Ultima actualizacion: 18/01/2025\n" <<
 		"Lenguaje de programacion: c++\n" << std::endl;
+	system("Pause");
 }
 
 void showEnrolledStudents(Registration* registrationList, int numRegistration) {
@@ -67,18 +68,67 @@ int enterNum() {
 
 void registerStudent(Student* studentList, int& numStudents) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
-	std::cout << "Ingrese el nombre:" << std::endl;
-	std::string name = enterText();
-	std::cout << "Ingrese el numero de cedula:" << std::endl;
-	std::string id = enterText();
-	std::cout << "Ingrese la carrera:" << std::endl;
-	std::string degree = enterText();
-	std::cout << "Ingrese el nivel:" << std::endl;
-	std::string level = enterText();
+	std::string fileName = "archivo.txt";
 
+	// Comprobar si el archivo ya existe
+	std::ifstream checkFile(fileName);
+	if (checkFile.is_open()) {
+		std::cout << "El archivo ya existe. No se creará uno nuevo." << std::endl;
+		checkFile.close();
+	}
+	else {
+		// Si no existe, crearlo
+		std::ofstream file(fileName);
+		if (!file) {
+			std::cerr << "Error al crear el archivo." << std::endl;
+			return;
+		}
+		file << "Nombre;ID;Carrera;Nivel\n"; // Cabecera del archivo
+		file.close();
+		std::cout << "Archivo creado correctamente." << std::endl;
+	}
+
+	std::ofstream file("archivo.txt", std::ios::app); // Modo agregar
+	if (!file.is_open()) {
+		std::cerr << "Error: No se pudo abrir el archivo 'studentsSaveInfo.txt'." << std::endl;
+		system("PAUSE");
+		return;
+	}
+
+	std::string name, id, degree, level;
+	char option;
+
+	do {
+		std::cout << "Ingrese el nombre del estudiante: ";
+		std::getline(std::cin, name);
+
+		std::cout << "Ingrese el ID del estudiante: ";
+		std::getline(std::cin, id);
+
+		std::cout << "Ingrese la carrera del estudiante: ";
+		std::getline(std::cin, degree);
+
+		std::cout << "Ingrese el nivel del estudiante: ";
+		std::getline(std::cin, level);
+
+		// Guardar en el archivo
+		file << name << ";" << id << ";" << degree << ";" << level << "\n";
+		file.flush(); // Forzar escritura en el archivo
+
+		std::cout << "¿Desea agregar otro estudiante? (s/n): ";
+		std::cin >> option;
+
+	} while (option == 's' || option == 'S');
+
+	file.close();
+	std::cout << "Datos guardados correctamente en 'studentsSaveInfo.txt'.\n";
+
+	// Guardar en la lista
 	studentList[numStudents] = Student(name, id, degree, level);
 	numStudents++;
 	std::cout << "Estudiante agregado a la lista" << std::endl;
+
+	system("PAUSE");
 }
 
 void enterStartEndTime(int& startTime, int& endTime) {

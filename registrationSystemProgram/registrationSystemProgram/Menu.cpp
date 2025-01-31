@@ -28,26 +28,20 @@ bool subMenuA() {
     }
 }
 
-void subMenuB(Course* courseList, int& numCourse,Student* studentList, int& numStudents,Schedule* scheduleList, int& numSchedules) {
+void subMenuB(Course* courseList, int& numCourse, Student* studentList, int& numStudents, Schedule* scheduleList, int& numSchedules) {
     system("CLS");
     char option;
     while (true) {
-            system("CLS");
-            std::cout << "=== Mantenimiento ===" << std::endl;
-            std::cout << "a) Estudiantes" << std::endl;
-            std::cout << "b) Cursos" << std::endl;
-            std::cout << "c) Horarios" << std::endl;
-            std::cout << "d) regresar " << std::endl;
-            std::cout << "Ingrese alguna opcion disponible: " << std::endl;
-            std::cin >> option;
-            if (std::cin.fail() || std::cin.peek() != '\n') {
-                std::cout << "Error: entrada no valida." << std::endl;
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                continue;
-            }
+        system("CLS");
+        std::cout << "=== Mantenimiento ===" << std::endl;
+        std::cout << "a) Estudiantes" << std::endl;
+        std::cout << "b) Cursos" << std::endl;
+        std::cout << "c) Horarios" << std::endl;
+        std::cout << "d) regresar " << std::endl;
+        std::cout << "Ingrese alguna opcion disponible: " << std::endl;
 
-        char option = enterChar();
+        option = enterChar(); // Solo se usa esta lectura
+
         switch (option) {
         case 'a':
             system("CLS");
@@ -64,6 +58,7 @@ void subMenuB(Course* courseList, int& numCourse,Student* studentList, int& numS
         case 'd':
             return;
         default:
+            std::cout << "Opcion no valida, intente nuevamente." << std::endl;
             break;
         }
     }
