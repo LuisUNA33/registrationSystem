@@ -127,21 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Course.cpp" />
-    <ClCompile Include="loadPreRecords.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Registration.cpp" />
     <ClCompile Include="registrationSystemProgram.cpp" />
-    <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Course.h" />
     <ClInclude Include="loadPreRecords.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MethodStatement.h" />
-    <ClInclude Include="processes.cpp" />
     <ClInclude Include="processes.h" />
     <ClInclude Include="Registration.h" />
     <ClInclude Include="Schedule.h" />
