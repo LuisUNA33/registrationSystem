@@ -221,33 +221,64 @@ Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
 
 void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
+	std::string fileName = "Course.txt";
+
+	std::ifstream checkFile(fileName);
+	bool fileExists = checkFile.good(); 
+	checkFile.close();
+
+	std::ofstream file(fileName, std::ios::app);
+	if (!file) {
+		std::cerr << "Error al abrir el archivo." << std::endl;
+		return;
+	}
+
+	if (!fileExists) {
+		file << "nombreDelCurso;codigo;creditos;nombreDelProfesor;codigoHorario\n";
+	}
+
 	std::cout << "Ingrese el nombre del curso:" << std::endl;
 	std::string name = enterText();
-	std::cout << "Ingrese el codigo:" << std::endl;
+
+	std::cout << "Ingrese el código:" << std::endl;
 	std::string code = enterText();
-	std::cout << "Ingrese la cantidad de creditos:" << std::endl;
+
+	std::cout << "Ingrese la cantidad de créditos:" << std::endl;
 	int credits = enterNum();
+
 	std::cout << "Nombre del Profesor:" << std::endl;
 	std::string teacher = enterText();
 
-	std::string option = "";
+	std::string option;
+	Schedule selectedSchedule;
+
 	while (true) {
-		std::cout << "(a)Crear horario y agregarlo a la lista \n(b)Usar Horario existente" << std::endl;
+		std::cout << "(a) Crear horario y agregarlo a la lista \n(b) Usar Horario existente" << std::endl;
 		option = enterText();
 		if (option == "a") {
 			registerSchedule(scheduleList, numSchedules);
-			courseList[numCourse] = Course(name, code, credits, teacher, scheduleList[numSchedules - 1]);
+			selectedSchedule = scheduleList[numSchedules - 1]; 
 			break;
 		}
 		if (option == "b") {
 			showScheduleList(scheduleList, numSchedules);
-			courseList[numCourse] = Course(name, code, credits, teacher, searchSchedule(scheduleList, numSchedules));
+			selectedSchedule = searchSchedule(scheduleList, numSchedules);
 			break;
 		}
 	}
+
+
+	courseList[numCourse] = Course(name, code, credits, teacher, selectedSchedule);
 	numCourse++;
-	std::cout << "Curso agregado a la lista." << std::endl;
+
+	file << name << ";" << code << ";" << credits << ";" << teacher << ";" << selectedSchedule.getCode() << "\n";
+
+	file.close();
+
+	std::cout << "Curso agregado correctamente al archivo y a la lista." << std::endl;
+	system("PAUSE");
 }
+
 
 Student searchStudent(Student* studentList, int numStudents) {
 	showStudentsList(studentList, numStudents);
