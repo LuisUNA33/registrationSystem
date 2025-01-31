@@ -70,25 +70,25 @@ void registerStudent(Student* studentList, int& numStudents) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::string fileName = "archivo.txt";
 
-	// Comprobar si el archivo ya existe
+
 	std::ifstream checkFile(fileName);
 	if (checkFile.is_open()) {
 		std::cout << "El archivo ya existe. No se creará uno nuevo." << std::endl;
 		checkFile.close();
 	}
 	else {
-		// Si no existe, crearlo
+	
 		std::ofstream file(fileName);
 		if (!file) {
 			std::cerr << "Error al crear el archivo." << std::endl;
 			return;
 		}
-		file << "Nombre;ID;Carrera;Nivel\n"; // Cabecera del archivo
+		file << "Nombre;ID;Carrera;Nivel\n"; 
 		file.close();
 		std::cout << "Archivo creado correctamente." << std::endl;
 	}
 
-	std::ofstream file("archivo.txt", std::ios::app); // Modo agregar
+	std::ofstream file("archivo.txt", std::ios::app); 
 	if (!file.is_open()) {
 		std::cerr << "Error: No se pudo abrir el archivo 'studentsSaveInfo.txt'." << std::endl;
 		system("PAUSE");
@@ -111,9 +111,8 @@ void registerStudent(Student* studentList, int& numStudents) {
 		std::cout << "Ingrese el nivel del estudiante: ";
 		std::getline(std::cin, level);
 
-		// Guardar en el archivo
 		file << name << ";" << id << ";" << degree << ";" << level << "\n";
-		file.flush(); // Forzar escritura en el archivo
+		file.flush(); 
 
 		std::cout << "¿Desea agregar otro estudiante? (s/n): ";
 		std::cin >> option;
@@ -123,7 +122,6 @@ void registerStudent(Student* studentList, int& numStudents) {
 	file.close();
 	std::cout << "Datos guardados correctamente en 'studentsSaveInfo.txt'.\n";
 
-	// Guardar en la lista
 	studentList[numStudents] = Student(name, id, degree, level);
 	numStudents++;
 	std::cout << "Estudiante agregado a la lista" << std::endl;
@@ -164,20 +162,49 @@ std::string enterDay() {
 
 void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
-	std::cout << "Ingrese codigo de horario: " << std::endl;
+	std::string fileName = "Schedule.txt";
+
+	std::ifstream checkFile(fileName);
+	bool fileExists = checkFile.good(); 
+	checkFile.close();
+
+	std::ofstream file(fileName, std::ios::app);
+	if (!file) {
+		std::cerr << "Error al abrir el archivo." << std::endl;
+		return;
+	}
+
+	if (!fileExists) {
+		file << "codigo;dia;horaInicial;horaFinal;salon\n";
+	}
+
+
+	std::cout << "Ingrese codigo de horario: ";
 	int code = enterNum();
-	std::cout << "Dia:" << std::endl;
+
+	std::cout << "Dia: ";
 	std::string day = enterDay();
-	int startTime;
-	int endTime;
+
+	int startTime, endTime;
 	enterStartEndTime(startTime, endTime);
-	std::cout << "Salon de clase:" << std::endl;
+
+	std::cout << "Salon de clase: ";
 	std::string classRoom = enterText();
+
+
+	file << code << ";" << day << ";" << startTime << ";" << endTime << ";" << classRoom << "\n";
+
+
+	file.close();
+
 
 	scheduleList[numSchedules] = Schedule(code, day, startTime, endTime, classRoom);
 	numSchedules++;
-	std::cout << "Horario agregado a la lista. " << std::endl;
+
+	std::cout << "Horario agregado correctamente al archivo y a la lista." << std::endl;
+	system("PAUSE");
 }
+
 
 Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
 	while (true) {

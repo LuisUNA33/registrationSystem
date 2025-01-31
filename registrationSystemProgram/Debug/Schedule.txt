@@ -1,0 +1,2 @@
+codigo;dia;horaInicial;horaFinal;salon
+4444;Martes;6;10;3
