@@ -1,7 +1,9 @@
 #include "processes.h"
 #include <iostream>
 #include <limits>
+#include "loadPreRecords.h"
 #include <fstream>
+#include "Student.h"
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
 		"Author: Luis Sanchez, Mathew Ramirez, John Perez \n" <<
@@ -18,11 +20,22 @@ void showEnrolledStudents(Registration* registrationList, int numRegistration) {
 	}
 }
 
-void showStudentsList(Student* studentList, int numStudent) {
-	for (int x = 0; x < numStudent; x++) {
-		studentList[x].showStudent();
+void showStudentsList(StudentNode* head) {
+	std::cout << "Lista de Estudiantes:\n";
+	std::cout << "------------------------------------------------------\n";
+	std::cout << "Nombre\t\t\tID\t\tCarrera\t\tAño\n";
+	std::cout << "------------------------------------------------------\n";
+	while (head) {
+		std::cout << head->student.name << "\t"
+			<< head->student.id << "\t"
+			<< head->student.degree << "\t"
+			<< head->student.level << std::endl;
+		head = head->next;
 	}
+	std::cout << "------------------------------------------------------\n";
 }
+
+
 
 void showCourseList(Course* courseList, int numCourses) {
 	for (int x = 0; x < numCourses; x++) {
@@ -66,32 +79,29 @@ int enterNum() {
 	}
 }
 
-void registerStudent(Student* studentList, int& numStudents) {
+void registerStudent(StudentNode*& head) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::string fileName = "archivo.txt";
 
-
+	// Verificar si el archivo existe
 	std::ifstream checkFile(fileName);
-	if (checkFile.is_open()) {
-		std::cout << "El archivo ya existe. No se creará uno nuevo." << std::endl;
-		checkFile.close();
-	}
-	else {
-	
+	if (!checkFile) {
+		// Si no existe, crear el archivo con encabezado
 		std::ofstream file(fileName);
 		if (!file) {
 			std::cerr << "Error al crear el archivo." << std::endl;
 			return;
 		}
-		file << "Nombre;ID;Carrera;Nivel\n"; 
+		file << "Nombre;ID;Carrera;Nivel\n";
 		file.close();
 		std::cout << "Archivo creado correctamente." << std::endl;
 	}
+	checkFile.close();
 
-	std::ofstream file("archivo.txt", std::ios::app); 
+	// Abrir el archivo en modo append
+	std::ofstream file(fileName, std::ios::app);
 	if (!file.is_open()) {
-		std::cerr << "Error: No se pudo abrir el archivo 'studentsSaveInfo.txt'." << std::endl;
-		system("PAUSE");
+		std::cerr << "Error: No se pudo abrir el archivo '" << fileName << "'." << std::endl;
 		return;
 	}
 
@@ -99,6 +109,8 @@ void registerStudent(Student* studentList, int& numStudents) {
 	char option;
 
 	do {
+		std::cin.ignore();  // Limpiar el buffer antes de usar getline
+
 		std::cout << "Ingrese el nombre del estudiante: ";
 		std::getline(std::cin, name);
 
@@ -111,23 +123,34 @@ void registerStudent(Student* studentList, int& numStudents) {
 		std::cout << "Ingrese el nivel del estudiante: ";
 		std::getline(std::cin, level);
 
+		// Guardar en el archivo
 		file << name << ";" << id << ";" << degree << ";" << level << "\n";
-		file.flush(); 
+		file.flush();
+
+		// Insertar en la lista enlazada
+		Student newStudent(name, id, degree, level);
+		StudentNode* newNode = new StudentNode{ newStudent, nullptr };
+
+		if (!head) {
+			head = newNode;
+		}
+		else {
+			StudentNode* temp = head;
+			while (temp->next) temp = temp->next;
+			temp->next = newNode;
+		}
 
 		std::cout << "¿Desea agregar otro estudiante? (s/n): ";
 		std::cin >> option;
+		std::cin.ignore();  // Evitar problemas con getline en la siguiente iteración
 
 	} while (option == 's' || option == 'S');
 
 	file.close();
-	std::cout << "Datos guardados correctamente en 'studentsSaveInfo.txt'.\n";
-
-	studentList[numStudents] = Student(name, id, degree, level);
-	numStudents++;
-	std::cout << "Estudiante agregado a la lista" << std::endl;
-
+	std::cout << "Datos guardados correctamente en '" << fileName << "'.\n";
 	system("PAUSE");
 }
+
 
 void enterStartEndTime(int& startTime, int& endTime) {
 	while (true) {
@@ -160,7 +183,7 @@ std::string enterDay() {
 
 }
 
-void registerSchedule(Schedule* scheduleList, int& numSchedules) {
+void registerSchedule(ScheduleNode*& head, const Schedule& schedule) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::string fileName = "Schedule.txt";
 
@@ -193,14 +216,18 @@ void registerSchedule(Schedule* scheduleList, int& numSchedules) {
 
 
 	file << code << ";" << day << ";" << startTime << ";" << endTime << ";" << classRoom << "\n";
-
-
+	
+		ScheduleNode* newNode = new ScheduleNode{ schedule, nullptr };
+		if (!head) {
+			head = newNode;
+		}
+		else {
+			ScheduleNode* temp = head;
+			while (temp->next) temp = temp->next;
+			temp->next = newNode;
+		}
+	
 	file.close();
-
-
-	scheduleList[numSchedules] = Schedule(code, day, startTime, endTime, classRoom);
-	numSchedules++;
-
 	std::cout << "Horario agregado correctamente al archivo y a la lista." << std::endl;
 	system("PAUSE");
 }
@@ -219,64 +246,81 @@ Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
 	}
 }
 
-void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules) {
+void registerCourse(CourseNode*& head, ScheduleNode*& scheduleHead) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::string fileName = "Course.txt";
 
+	// Verificar si el archivo existe
 	std::ifstream checkFile(fileName);
-	bool fileExists = checkFile.good(); 
+	bool fileExists = checkFile.good();
 	checkFile.close();
 
+	// Abrir el archivo en modo append
 	std::ofstream file(fileName, std::ios::app);
 	if (!file) {
 		std::cerr << "Error al abrir el archivo." << std::endl;
 		return;
 	}
 
+	// Si el archivo no existe, escribir la cabecera
 	if (!fileExists) {
 		file << "nombreDelCurso;codigo;creditos;nombreDelProfesor;codigoHorario\n";
 	}
 
-	std::cout << "Ingrese el nombre del curso:" << std::endl;
-	std::string name = enterText();
-
-	std::cout << "Ingrese el código:" << std::endl;
-	std::string code = enterText();
-
-	std::cout << "Ingrese la cantidad de créditos:" << std::endl;
-	int credits = enterNum();
-
-	std::cout << "Nombre del Profesor:" << std::endl;
-	std::string teacher = enterText();
-
-	std::string option;
+	std::string name, code, teacher;
+	int credits;
 	Schedule selectedSchedule;
 
+	// Solicitar datos del curso
+	std::cout << "Ingrese el nombre del curso: ";
+	std::getline(std::cin, name);
+
+	std::cout << "Ingrese el código del curso: ";
+	std::getline(std::cin, code);
+
+	std::cout << "Ingrese la cantidad de créditos: ";
+	std::cin >> credits;
+	std::cin.ignore();  // Evitar problemas con std::getline()
+
+	std::cout << "Ingrese el nombre del profesor: ";
+	std::getline(std::cin, teacher);
+
+	std::string option;
 	while (true) {
-		std::cout << "(a) Crear horario y agregarlo a la lista \n(b) Usar Horario existente" << std::endl;
-		option = enterText();
+		std::cout << "(a) Crear horario y agregarlo a la lista \n(b) Usar horario existente\n";
+		std::getline(std::cin, option);
+
 		if (option == "a") {
-			registerSchedule(scheduleList, numSchedules);
-			selectedSchedule = scheduleList[numSchedules - 1]; 
+			 ScheduleNode* (scheduleHead);  // Registrar nuevo horario
+			selectedSchedule = scheduleHead->schedule;  // Tomar el último agregado
 			break;
 		}
 		if (option == "b") {
-			showScheduleList(scheduleList, numSchedules);
-			selectedSchedule = searchSchedule(scheduleList, numSchedules);
+			showScheduleList(scheduleHead);
+			selectedSchedule = searchSchedule(scheduleHead);
 			break;
 		}
+		std::cout << "Opción inválida. Intente de nuevo." << std::endl;
 	}
 
+	// Crear el curso y agregarlo a la lista enlazada
+	Course newCourse(name, code, credits, teacher, selectedSchedule);
+	CourseNode* newNode = new CourseNode{ newCourse, nullptr };
 
-	courseList[numCourse] = Course(name, code, credits, teacher, selectedSchedule);
-	numCourse++;
+	if (!head) {
+		head = newNode;
+	}
+	else {
+		CourseNode* temp = head;
+		while (temp->next) temp = temp->next;
+		temp->next = newNode;
+	}
 
+	// Guardar en el archivo
 	file << name << ";" << code << ";" << credits << ";" << teacher << ";" << selectedSchedule.getCode() << "\n";
-
 	file.close();
 
 	std::cout << "Curso agregado correctamente al archivo y a la lista." << std::endl;
-	system("PAUSE");
 }
 
 

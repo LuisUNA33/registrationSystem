@@ -5,6 +5,7 @@ using namespace std;
 #include "Schedule.h"
 #include "Menu.h"
 #include "Nodo.h"
+#include "Student.h"
 
 //
 //std::string* cargarTextoLista(int size,std::string nombreArchivo){
@@ -49,31 +50,7 @@ using namespace std;
         // Mostrar los nodos creados
         mostrarLista(lista);
 
-        // Inicializar estructuras de datos
-        Registration* registrationList = new Registration[100];
-        int numRegistration = 0;
-
-        Student* studentList = new Student[10];
-        int numStudents = 0;
-
-        Schedule* scheduleList = new Schedule[10];
-        int numSchedule = 0;
-
-        Course* courseList = new Course[10];
-        int numCourses = 0;
-
-        // Registrar estudiante
-        registerStudent(studentList, numStudents);
-
-        // Mostrar información del estudiante registrado
-        std::cout << "\nInformación del Estudiante:\n";
-        for (int i = 0; i < numStudents; i++) {
-            studentList[i].showStudent();
-        }
-
-        // Cargar datos precargados
-        loadPreRecords(registrationList, numRegistration, courseList, numCourses, studentList, numStudents, scheduleList, numSchedule);
-
+      
         std::cout << "Informacion de datos precargados " << numRegistration << std::endl;
         std::cout << "Cantidad de matriculados: " << numRegistration << std::endl;
         std::cout << "Cantidad en la lista Estudiantes: " << numStudents << std::endl;

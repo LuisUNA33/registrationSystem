@@ -1,2 +1,2 @@
-Hola, este es un ejemplo de escritura en un archivo .txt.
-Podemos agregar múltiples líneas como esta.
+Nombre;ID;Carrera;Nivel
+juan ;604840500;ing;1

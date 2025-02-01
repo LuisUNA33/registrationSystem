@@ -5,7 +5,7 @@
 #include "Schedule.h"
 #include "Registration.h"
 #include <string>
-
+#include "Nodo.h"
 void about();
 void showEnrolledStudents(Registration* registrationList, int numRegistration);
 void showStudentsList(Student* studentList, int numStudent);
