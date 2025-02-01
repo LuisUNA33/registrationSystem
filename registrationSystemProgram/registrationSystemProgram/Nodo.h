@@ -3,7 +3,9 @@
 #include <fstream>
 #include <string>
 #include "Student.h"
-
+#include "Schedule.h"
+#include "Course.h"
+#include "Registration.h"
 // Definición del nodo
 // Definición del nodo genérico (si realmente lo necesitas)
 struct Nodo {
@@ -18,7 +20,7 @@ struct StudentNode {
     StudentNode* next;
 
 
-    StudentNode(const Student& s) : student(s), next(nullptr) {}
+    StudentNode(const Student& s, StudentNode* n = nullptr) {};
 };
 
 struct ScheduleNode {
@@ -38,12 +40,6 @@ struct RegistrationNode {
     RegistrationNode* next;
     RegistrationNode(const Registration& r) : registration(r), next(nullptr) {}
 };
-
-// Funciones para manipular la lista
-std::string leerArchivo(const std::string& nombreArchivo);
-void insertarNodo(Nodo*& cabeza, const std::string& contenido);
-void mostrarLista(Nodo* cabeza);
-void liberarLista(Nodo*& cabeza);
 
 // Funciones para manipular la lista
 std::string leerArchivo(const std::string& nombreArchivo);

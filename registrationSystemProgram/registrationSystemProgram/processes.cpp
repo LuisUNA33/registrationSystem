@@ -14,38 +14,54 @@ void about() {
 	system("Pause");
 }
 
-void showEnrolledStudents(Registration* registrationList, int numRegistration) {
-	for (int x = 0; x < numRegistration; x++) {
-		registrationList[x].showRegistration();
+void showEnrolledStudents(RegistrationNode*& registrationList) {
+	RegistrationNode* current = registrationList; // Apunta al primer nodo
+	while (current != nullptr) {
+		current->registration.showRegistration(); // Llamamos a la función para mostrar el registro
+		current = current->next; // Avanzamos al siguiente nodo
 	}
 }
 
 void showStudentsList(StudentNode* head) {
+	if (!head) {
+		std::cout << "No hay estudiantes registrados.\n";
+		return;
+	}
+
 	std::cout << "Lista de Estudiantes:\n";
 	std::cout << "------------------------------------------------------\n";
-	std::cout << "Nombre\t\t\tID\t\tCarrera\t\tAño\n";
+	std::cout << "Nombre\t\tID\t\tCarrera\t\tAño\n";
 	std::cout << "------------------------------------------------------\n";
+
 	while (head) {
-		std::cout << head->student.name << "\t"
-			<< head->student.id << "\t"
-			<< head->student.degree << "\t"
+		std::cout << head->student.name;
+		if (head->student.name.length() < 8) std::cout << "\t\t";
+		else std::cout << "\t";
+
+		std::cout << head->student.id << "\t\t"
+			<< head->student.degree << "\t\t"
 			<< head->student.level << std::endl;
+
 		head = head->next;
 	}
+
 	std::cout << "------------------------------------------------------\n";
 }
 
-
-
-void showCourseList(Course* courseList, int numCourses) {
-	for (int x = 0; x < numCourses; x++) {
-		courseList[x].showCourse();
+void showCourseList(const CourseNode* courseList) {
+	while (courseList != nullptr) {
+		std::cout << "Curso: " << courseList->courseName << std::endl;
+		courseList = courseList->next;  // Mover al siguiente nodo
 	}
 }
 
-void showScheduleList(Schedule* scheduleList, int numSchedule) {
-	for (int x = 0; x < numSchedule; x++) {
-		scheduleList[x].showSchedule();
+void showScheduleList(const ScheduleNode* scheduleList) {
+	while (scheduleList != nullptr) {
+		std::cout << "Día: " << scheduleList->day
+			<< " | Hora: " << scheduleList->time
+			<< " | Curso: " << scheduleList->course
+			<< std::endl;
+		scheduleList = scheduleList->next;  // Mover al siguiente nodo
 	}
 }
 
@@ -79,14 +95,13 @@ int enterNum() {
 	}
 }
 
-void registerStudent(StudentNode*& head) {
+void registerStudent(StudentNode*& studentList) {
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::string fileName = "archivo.txt";
 
 	// Verificar si el archivo existe
 	std::ifstream checkFile(fileName);
 	if (!checkFile) {
-		// Si no existe, crear el archivo con encabezado
 		std::ofstream file(fileName);
 		if (!file) {
 			std::cerr << "Error al crear el archivo." << std::endl;
@@ -131,26 +146,27 @@ void registerStudent(StudentNode*& head) {
 		Student newStudent(name, id, degree, level);
 		StudentNode* newNode = new StudentNode{ newStudent, nullptr };
 
-		if (!head) {
-			head = newNode;
+		if (!studentList) {
+			studentList = newNode;
 		}
 		else {
-			StudentNode* temp = head;
+			StudentNode* temp = studentList;
 			while (temp->next) temp = temp->next;
 			temp->next = newNode;
 		}
 
 		std::cout << "¿Desea agregar otro estudiante? (s/n): ";
 		std::cin >> option;
-		std::cin.ignore();  // Evitar problemas con getline en la siguiente iteración
 
 	} while (option == 's' || option == 'S');
 
 	file.close();
 	std::cout << "Datos guardados correctamente en '" << fileName << "'.\n";
-	system("PAUSE");
-}
 
+	std::cout << "Presione ENTER para continuar...";
+	std::cin.ignore();  // Evitar problemas con la espera de entrada en consola
+	std::cin.get();
+}
 
 void enterStartEndTime(int& startTime, int& endTime) {
 	while (true) {
@@ -183,7 +199,7 @@ std::string enterDay() {
 
 }
 
-void registerSchedule(ScheduleNode*& head, const Schedule& schedule) {
+void registerSchedule(ScheduleNode*& scheduleList) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::string fileName = "Schedule.txt";
 
@@ -233,7 +249,7 @@ void registerSchedule(ScheduleNode*& head, const Schedule& schedule) {
 }
 
 
-Schedule searchSchedule(Schedule* scheduleList, int numSchedules) {
+Schedule searchSchedule(const ScheduleNode* scheduleList) {
 	while (true) {
 		std::cout << "Ingrese el codigo del horario:" << std::endl;
 		int code = enterNum();
@@ -324,7 +340,7 @@ void registerCourse(CourseNode*& head, ScheduleNode*& scheduleHead) {
 }
 
 
-Student searchStudent(Student* studentList, int numStudents) {
+Student searchStudent(const StudentNode* studentList) {
 	showStudentsList(studentList, numStudents);
 	while (true) {
 		std::cout << "Ingrese el numero de cedula del estudiante a matricular:" << std::endl;
@@ -339,7 +355,7 @@ Student searchStudent(Student* studentList, int numStudents) {
 	}
 }
 
-Course searchCourse(Course* courseList, int numCourse) {
+Course searchCourse(const CourseNode* courseList) {
 	while (true) {
 		std::cout << "Ingrese el codigo del curso: " << std::endl;
 		std::string code = enterText();
@@ -352,7 +368,7 @@ Course searchCourse(Course* courseList, int numCourse) {
 	}
 }
 
-bool checkConflict(Course* list, int index, Course course) {
+bool checkConflict(const CourseNode* list, int index, Course course) {
 	if (index == 0) {
 		return true;
 	}
@@ -370,7 +386,7 @@ bool checkConflict(Course* list, int index, Course course) {
 	return true;
 }
 
-Course* addCoursesList(Course* courseList, int numCourse, int& index, int& totalCredits) {
+Course* addCoursesList(const CourseNode* courseList, int numCourse, int& index, int& totalCredits) {
 	Course* list = new Course[10];
 	showCourseList(courseList, numCourse);
 	std::string option = "a";
@@ -395,7 +411,7 @@ Course* addCoursesList(Course* courseList, int numCourse, int& index, int& total
 	}
 }
 
-bool isRegistered(Registration* registrationList, int& numRegistration, std::string id) {
+bool isRegistered(const RegistrationNode* registrationList, int& numRegistration, std::string id) {
 	for (int x = 0; x < numRegistration; x++) {
 		if (registrationList[x].getStudent().getId() == id) {
 			return true;
@@ -404,8 +420,7 @@ bool isRegistered(Registration* registrationList, int& numRegistration, std::str
 	return false;
 }
 
-void addRegistration(Registration* registrationList, int& numRegistration,
-	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
+void addRegistration(RegistrationNode*& registrationList,StudentNode*& studentList, CourseNode*& courseList, ScheduleNode*& scheduleList) {
 
 	Student student = searchStudent(studentList, numStudents);
 	if (isRegistered(registrationList, numRegistration, student.getId()) == true) {

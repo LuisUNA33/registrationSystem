@@ -7,24 +7,23 @@
 #include <string>
 #include "Nodo.h"
 void about();
-void showEnrolledStudents(Registration* registrationList, int numRegistration);
-void showStudentsList(Student* studentList, int numStudent);
-void showCourseList(Course* courseList, int numCourses);
-void showScheduleList(Schedule* scheduleList, int numSchedule);
+
+void showEnrolledStudents(RegistrationNode*& registrationList);
+void showStudentsList(const StudentNode* studentList);
+void showCourseList(const CourseNode* courseList);
+void showScheduleList(const ScheduleNode* scheduleList);
 std::string enterText();
 char enterChar();
 int enterNum();
-void registerStudent(Student* studentList, int& numStudents);
+void registerStudent(StudentNode*& studentList);
 void enterStartEndTime(int& startTime, int& endTime);
 std::string enterDay();
-void registerSchedule(Schedule* scheduleList, int& numSchedules);
-Schedule searchSchedule(Schedule* scheduleList, int numSchedules);
-void registerCourse(Course* courseList, int& numCourse, Schedule* scheduleList, int& numSchedules);
-Student searchStudent(Student* studentList, int numStudents);
-Course searchCourse(Course* courseList, int numCourse);
-bool checkConflict(Course* list, int index, Course course);
-Course* addCoursesList(Course* courseList, int numCourse, int& index, int& totalCredits);
-bool isRegistered(Registration* registrationList, int& numRegistration, std::string id);
-void addRegistration(Registration* registrationList, int& numRegistration,
-	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules);
-
+void registerSchedule(ScheduleNode*& scheduleList);
+Schedule searchSchedule(const ScheduleNode* scheduleList);
+void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
+Student searchStudent(const StudentNode* studentList);
+Course searchCourse(const CourseNode* courseList);
+bool checkConflict(const CourseNode* list, int index, Course course);
+Course* addCoursesList(const CourseNode* courseList, int numCourse, int& index, int& totalCredits);
+bool isRegistered(const RegistrationNode* registrationList, int& numRegistration, std::string id);
+void addRegistration(RegistrationNode*& registrationList, StudentNode*& studentList, CourseNode*& courseList, ScheduleNode*& scheduleList);

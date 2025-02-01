@@ -7,30 +7,6 @@ using namespace std;
 #include "Nodo.h"
 #include "Student.h"
 
-//
-//std::string* cargarTextoLista(int size,std::string nombreArchivo){
-//    std::string name;
-//    std::string code;
-//    int credits;
-//    std::string teacher;
-//    Schedule schedule;
-//
-//    std::string* fragmentos=new std::string[size];
-//
-//    std::string cadena = leerArchivo(nombreArchivo);
-//    int index=0;
-//    int inicio = 0;
-//    for (size_t i = 0; i < cadena.size(); ++i) {
-//        if (cadena[i] == ';') {
-//            fragmentos[index] = cadena.substr(inicio, i-inicio);
-//            inicio =i+1;
-//            index++;
-//        }
-//    }
-//    
-//    return fragmentos;
-//    
-//}
 
     int main() {
         Nodo* lista = nullptr; // Lista enlazada vacía
@@ -50,15 +26,7 @@ using namespace std;
         // Mostrar los nodos creados
         mostrarLista(lista);
 
-      
-        std::cout << "Informacion de datos precargados " << numRegistration << std::endl;
-        std::cout << "Cantidad de matriculados: " << numRegistration << std::endl;
-        std::cout << "Cantidad en la lista Estudiantes: " << numStudents << std::endl;
-        std::cout << "Cantidad en la lista Cursos: " << numCourses << std::endl;
-        std::cout << "Cantidad en la lista Horarios: " << numSchedule << std::endl;
-
-        // Menú principal
-        menu(registrationList, numRegistration, courseList, numCourses, studentList, numStudents, scheduleList, numSchedule);
+        menu(registrationList,courseList,studentList,scheduleList);
 
         std::cout << "Fin del Programa" << std::endl;
 
