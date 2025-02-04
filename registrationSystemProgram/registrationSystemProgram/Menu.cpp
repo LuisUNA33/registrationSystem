@@ -28,7 +28,7 @@ bool subMenuA() {
     }
 }
 
-void subMenuB(Course* courseList, int& numCourse, Student* studentList, int& numStudents, Schedule* scheduleList, int& numSchedules) {
+void subMenuB() {
     system("CLS");
     char option;
     while (true) {
@@ -45,15 +45,15 @@ void subMenuB(Course* courseList, int& numCourse, Student* studentList, int& num
         switch (option) {
         case 'a':
             system("CLS");
-            registerStudent(studentList, numStudents);
+            //registerStudent(studentList, numStudents);
             break;
         case 'b':
             system("CLS");
-            registerCourse(courseList, numCourse, scheduleList, numSchedules);
+            //registerCourse(courseList, numCourse, scheduleList, numSchedules);
             break;
         case 'c':
             system("CLS");
-            registerSchedule(scheduleList, numSchedules);
+            //registerSchedule(scheduleList, numSchedules);
             break;
         case 'd':
             return;
@@ -64,8 +64,7 @@ void subMenuB(Course* courseList, int& numCourse, Student* studentList, int& num
     }
 }
 
-void subMenuC(Registration* registrationList, int& numRegistration,
-	Student* studentList, int numStudents, Course* courseList, int numCourse, Schedule* scheduleList, int numSchedules) {
+void subMenuC() {
     system("CLS");
     char option;
     do {
@@ -77,8 +76,8 @@ void subMenuC(Registration* registrationList, int& numRegistration,
         option = enterChar();
         switch (option) {
         case 'a':
-            addRegistration(registrationList, numRegistration,
-                studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
+            //addRegistration(registrationList, numRegistration,
+            //    studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
         case 'b':
             return;
 
@@ -90,10 +89,7 @@ void subMenuC(Registration* registrationList, int& numRegistration,
 }
 
 
-void subMenuD(Registration* registrationList, int numRegistration,
-	Course* courseList, int numCourse,
-	Student* studentList, int numStudents,
-	Schedule* scheduleList, int numSchedules) {
+void subMenuD() {
 	std::cout << "Consulta:" << std::endl;
     system("CLS");
     char option;
@@ -107,16 +103,16 @@ void subMenuD(Registration* registrationList, int numRegistration,
 	option = enterChar();
 	switch (option) {
 	case 'a':
-		showStudentsList(studentList, numStudents);
+		//showStudentsList(studentList, numStudents);
 		break;
 	case 'b':
-		showCourseList(courseList, numCourse);
+		//showCourseList(courseList, numCourse);
 		break;
 	case 'c':
-		showScheduleList(scheduleList, numSchedules);
+		//showScheduleList(scheduleList, numSchedules);
 		break;
 	case 'd':
-		showEnrolledStudents(registrationList, numRegistration);
+		//showEnrolledStudents(registrationList, numRegistration);
 		break;
     case 'e':
         return;
@@ -127,10 +123,7 @@ void subMenuD(Registration* registrationList, int numRegistration,
 }
 
 
-void menu(Registration* registrationList, int& numRegistration,
-	Course* courseList, int& numCourse,
-	Student* studentList, int& numStudents,
-	Schedule* scheduleList, int& numSchedules) {
+void menu() {
   
 	bool exit = false;
 	while (exit == false) {
@@ -150,17 +143,13 @@ void menu(Registration* registrationList, int& numRegistration,
 			exit = subMenuA();
 			break;
 		case 'b':
-			subMenuB(courseList, numCourse, studentList, numStudents, scheduleList, numSchedules);
+			subMenuB();
 			break;
 		case 'c':
-			subMenuC(registrationList, numRegistration,
-				studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
+			subMenuC();
 			break;
 		case 'd':
-			subMenuD(registrationList, numRegistration,
-				courseList, numCourse,
-				studentList, numStudents,
-				scheduleList, numSchedules);
+			subMenuD();
 			break;
 		default:
 			break;

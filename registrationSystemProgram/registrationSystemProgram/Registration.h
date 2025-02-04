@@ -1,24 +1,33 @@
-#pragma once
-#include "Course.h"
-#include "Student.h"
+#ifndef REGISTRATION_H   
+#define REGISTRATION_H 
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Registration {
 private:
-	Course* courseList=new Course[10];
-	int courseIndex = 0;
-	Student student; 
+	string code;
+	string codStudent;
+	string anio;
+	string ciclo;
 
 public:
 	Registration();
 	~Registration();
 
-	Registration(Course* courseList,int courseIndex ,Student student);
+	Registration(string code,string codStudent,string anio,string ciclo);
 
-	Course* getCourseList();
-	int getCourseIndex();
-	Student getStudent();
-	void setCourseList(Course* course);
-	void setCourseIndex(int courseIndex);
-	void setStudent(Student student);
+	string getCode();
+	string getCodeStudent();
+	string getAnio();
+	string getCiclo();
+
+	void setCode(string code);
+	void setCodeStudent(string codStudent);
+	void setAnio(string anio);
+	void setCiclo(string ciclo);
 
 	void showRegistration();
 };
+
+#endif

@@ -1,5 +1,8 @@
-#pragma once
+#ifndef SCHEDULE_H   
+#define SCHEDULE_H
 #include <iostream>
+#include <string>
+
 class Schedule {
 private:
 	int code=0;
@@ -29,3 +32,4 @@ public:
 
 };
 
+#endif

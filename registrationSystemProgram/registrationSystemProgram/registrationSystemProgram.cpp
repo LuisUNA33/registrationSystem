@@ -1,42 +1,40 @@
 #include <iostream>
-#include <fstream>
-#include <limits>
+#include <string>
 using namespace std;
-#include "Schedule.h"
-#include "Menu.h"
-#include "Nodo.h"
 #include "Student.h"
+#include "NodeStudent.h"
+#include "Schedule.h"
+#include "NodeSchedule.h"
+#include "Course.h"
+#include "NodeCourse.h"
+
+#include "Files.h"
+#include "Processes.h"
+
+int main() {
+
+    //Agrega Estudiante
+    Student studiante1 = Student("1", "2", "3", "4");
+    StudentList studiantes;
+    studiantes.insertAtBeginning(studiante1);
+    studiantes.printList();
+    //Agregar horario
+    Schedule horario1 = Schedule(1, "Martes", 1, 4, "Aula 2");
+    ScheduleList horarios;
+    horarios.insertAtBeginning(horario1);
+    horarios.printList();
+    //Agregar Curso
+    Course curso1 = Course("Fundamentos", "F01", 2, "Michell", "horario1");
+    CourseList cursos;
+    cursos.insertAtBeginning(curso1);
+    cursos.printList();
+    //Escribir Archivo
+    writeFile("Students.txt", "4");
+    //Leer Archivo
+    string texto = readFile("Students.txt");
+    cout << texto << endl;
 
 
-    int main() {
-        Nodo* lista = nullptr; // Lista enlazada vacía
-
-        // Lista de archivos a leer
-        std::string archivos[] = { "archivo.txt" };
-        int numArchivos = sizeof(archivos) / sizeof(archivos[0]);
-
-        // Leer archivos y agregar a la lista
-        for (int i = 0; i < numArchivos; i++) {
-            std::string contenido = leerArchivo(archivos[i]);
-            if (!contenido.empty()) {
-                insertarNodo(lista, contenido);
-            }
-        }
-
-        // Mostrar los nodos creados
-        mostrarLista(lista);
-
-        menu(registrationList,courseList,studentList,scheduleList);
-
-        std::cout << "Fin del Programa" << std::endl;
-
-        // Liberar memoria
-        liberarLista(lista);
-        delete[] registrationList;
-        delete[] studentList;
-        delete[] scheduleList;
-        delete[] courseList;
-
-        return 0;
-    }
-
+    std::cout << "Hello World!\n";
+    return 0;
+}
