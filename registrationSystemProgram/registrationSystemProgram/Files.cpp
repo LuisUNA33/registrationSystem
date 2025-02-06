@@ -28,3 +28,14 @@ void writeFile(const std::string& fileName,std::string text) {
 	file.close();
 	std::cout << "linea Agregada a " <<fileName<< std::endl;
 }
+
+void clearFile(const std::string& fileName) {
+	std::ofstream file(fileName);
+	if (!file) {
+		std::cerr << "Error al abrir el archivo." << std::endl;
+		return;
+	}
+	file <<"";
+	file.close();
+	std::cout << "Archivo de texto "<<fileName<<" limpiado." << std::endl;
+}
