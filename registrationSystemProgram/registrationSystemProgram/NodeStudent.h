@@ -1,5 +1,7 @@
 #pragma once
 #include "Student.h"
+#include "Files.h"
+
 class NodeStudent {
 private:
     Student data;
@@ -22,4 +24,5 @@ public:
     void insertAtBeginning(Student data);
     void insertAtEnd(NodeStudent* newNode);
     void printList();
+    void writeStudentList();
 };

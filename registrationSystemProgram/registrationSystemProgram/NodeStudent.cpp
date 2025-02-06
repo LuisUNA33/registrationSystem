@@ -58,3 +58,18 @@ void StudentList::printList() {
         current = current->getNext();
     }
 }
+
+//Files .txt
+
+void StudentList::writeStudentList() {
+    NodeStudent* current = head;
+    while (current != nullptr) {
+        std::string text = "";
+        text += current->getData().getName()+";";
+        text += current->getData().getId() + ";";
+        text += current->getData().getDegree() + ";";
+        text += current->getData().getLevel() + ";";
+        writeFile("Students.txt", text);
+        current = current->getNext();
+    }
+}
