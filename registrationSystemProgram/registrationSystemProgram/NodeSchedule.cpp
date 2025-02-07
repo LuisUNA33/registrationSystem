@@ -58,3 +58,17 @@ void ScheduleList::printList() {
         current = current->getNext();
     }
 }
+
+void ScheduleList::writeScheduleList() {
+	NodeSchedule* current = head;
+	while (current != nullptr) {
+        string text = "";
+		text += to_string(current->getData().getCode()) + ";";
+		text += current->getData().getDay() + ";";
+		text += to_string(current->getData().getStartTime()) + ";";
+		text += to_string(current->getData().getEndTime()) + ";";
+		text += current->getData().getClassRoom() + ";";
+		writeFile("Schedule.txt", text);
+		current = current->getNext();
+	}
+}
