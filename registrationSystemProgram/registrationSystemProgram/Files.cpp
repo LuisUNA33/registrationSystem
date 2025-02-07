@@ -40,3 +40,4 @@ void clearFile(const std::string& fileName) {
 	std::cout << "Archivo de texto "<<fileName<<" limpiado." << std::endl;
 }
 
+

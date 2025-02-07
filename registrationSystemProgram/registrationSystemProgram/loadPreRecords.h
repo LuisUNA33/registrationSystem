@@ -9,3 +9,4 @@ void loadPreRecords(Registration* registrationList, int& numRegistration,
 	Course* courseList, int& numCourse,
 	Student* studentList, int& numStudents,
 	Schedule* scheduleList, int& numSchedule);
+

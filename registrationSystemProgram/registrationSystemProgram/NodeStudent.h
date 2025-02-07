@@ -27,3 +27,4 @@ public:
     void writeStudentList();
     void loadStudentList(StudentList list);
 };
+
