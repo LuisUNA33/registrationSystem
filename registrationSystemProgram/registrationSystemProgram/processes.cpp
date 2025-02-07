@@ -10,12 +10,11 @@ void about() {
 	system("Pause");
 }
 
-
 std::string enterText() {
 	std::string text;
+	std::cin >> text;
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::getline(std::cin, text);
 	return text;
 }
 
@@ -56,6 +55,7 @@ void enterStartEndTime(int& startTime, int& endTime) {
 		std::cout << "No ingreso horas coherentes\nrecuerde solo formato de 24 horas\n solo horas en punto." << std::endl;
 	}
 }
+
 std::string enterDay() {
 	std::string days[7] = { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
 	for (int x = 0; x < 7; x++) {
@@ -72,6 +72,19 @@ std::string enterDay() {
 
 }
 
-
+//Registar---------------------------
+void registerStudent(StudentList& studentList){
+	std::cout << "Ingrese los datos solicitados" << std::endl;
+	std::cout << "Ingrese el nombre:" << std::endl;
+	std::string name = enterText();
+	std::cout << "Ingrese el numero de cedula:" << std::endl;
+	std::string id = enterText();
+	std::cout << "Ingrese la carrera:" << std::endl;
+	std::string degree = enterText();
+	std::cout << "Ingrese el nivel:" << std::endl;
+	std::string level = enterText();
+	studentList.insertAtBeginning(Student(name, id, degree, level));
+	std::cout << "Estudiante agregado a la lista" << std::endl;
+}
 
 

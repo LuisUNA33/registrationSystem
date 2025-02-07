@@ -4,6 +4,8 @@
 #include <string>
 #include <limits>
 
+#include "NodeStudent.h"
+
 void about();
 //void showEnrolledStudents(RegistrationNode*& registrationList);
 //void showStudentsList(const StudentNode* studentList);
@@ -12,7 +14,7 @@ void about();
 std::string enterText();
 char enterChar();
 int enterNum();
-//void registerStudent(StudentNode*& studentList);
+void registerStudent(StudentList& studentList);
 void enterStartEndTime(int& startTime, int& endTime);
 std::string enterDay();
 //void registerSchedule(ScheduleNode*& scheduleList);

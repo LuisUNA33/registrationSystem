@@ -14,31 +14,33 @@ int main() {
     //clearFile("Students.txt");
     
     //Agrega Estudiante
-    Student studiante1 = Student("Juan","687875", "12", "100");
+    StudentList students;
+    /*Student studiante1 = Student("Juan","687875", "12", "100");
     Student studiante2 = Student("Fili", "687875", "12", "100");
-    StudentList studiantes;
     studiantes.insertAtBeginning(studiante1);
     studiantes.insertAtBeginning(studiante2);
-    //studiantes.printList();
+    studiantes.printList();*/
     
     //Agregar horario
-    Schedule horario1 = Schedule(1, "Martes", 1, 4, "Aula 2");
+    /*Schedule horario1 = Schedule(1, "Martes", 1, 4, "Aula 2");
     ScheduleList horarios;
     horarios.insertAtBeginning(horario1);
-    horarios.printList();
+    horarios.printList();*/
 
     //Agregar Curso
-    Course curso1 = Course("Fundamentos", "F01", 2, "Michell", "horario1");
+   /* Course curso1 = Course("Fundamentos", "F01", 2, "Michell", "horario1");
     CourseList cursos;
     cursos.insertAtBeginning(curso1);
-    cursos.printList();
-
-    //list->txt
-    studiantes.writeStudentList();
+    cursos.printList();*/
 
     //txt->lista
-    studiantes.loadStudentList(studiantes);
-    studiantes.printList();
+    students.loadStudentList(students);
+    students.printList();
+
+    registerStudent(students);
+
+    //list->txt
+    clearFile("Students.txt");
 
     //Limpiar .txt
     //clearFile("Students.txt");
