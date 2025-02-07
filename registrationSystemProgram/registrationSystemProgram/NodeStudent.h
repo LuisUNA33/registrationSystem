@@ -25,6 +25,6 @@ public:
     void insertAtEnd(NodeStudent* newNode);
     void printList();
     void writeStudentList();
-    void loadStudentList(StudentList list);
+    void loadStudentList(StudentList &list);
 };
 

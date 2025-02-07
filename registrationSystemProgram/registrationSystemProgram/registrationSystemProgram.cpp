@@ -10,15 +10,13 @@ using namespace std;
 #include "Files.h"
 #include "Processes.h"
 
-using namespace std;
-
 int main() {
     //clearFile("Students.txt");
     //Agrega Estudiante
     Student studiante1 = Student("Juan","687875", "12", "100");
     StudentList studiantes;
     studiantes.insertAtBeginning(studiante1);
-    studiantes.printList();
+    //studiantes.printList();
     //Agregar horario
     Schedule horario1 = Schedule(1, "Martes", 1, 4, "Aula 2");
     ScheduleList horarios;

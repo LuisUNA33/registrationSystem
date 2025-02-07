@@ -74,14 +74,14 @@ void StudentList::writeStudentList() {
     }
 }
 
-void StudentList::loadStudentList(StudentList list) {
+void StudentList::loadStudentList(StudentList& list) {
     std::string text = readFile("Students.txt");
     std::cout << text << std::endl;
     int cont = 0;
     int cont2 = 0;
     int index = 0;
     std::string textList[4];
-    for (int x = 0; x < text.size(); x++) {
+    for (int x = 1; x < text.size(); x++) {
         cont2++;
         if (text[x] == ';') {
             textList[index] = text.substr(cont, cont2 - 1);
