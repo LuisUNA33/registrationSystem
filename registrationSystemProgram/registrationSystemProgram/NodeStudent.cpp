@@ -76,23 +76,23 @@ void StudentList::writeStudentList() {
 
 void StudentList::loadStudentList(StudentList& list) {
     std::string text = readFile("Students.txt");
-    std::cout << text << std::endl;
     int cont = 0;
     int cont2 = 0;
     int index = 0;
     std::string textList[4];
-    for (int x = 1; x < text.size(); x++) {
+    for (int x= 0; x < text.size(); x++) {
         cont2++;
         if (text[x] == ';') {
             textList[index] = text.substr(cont, cont2 - 1);
-            cont = x + 1;
+            cont = x+1;
             index++;
             cont2 = 0;
         }
-        if (text[x] == '\n') {
+        if (index == 4) {
             Student student = Student(textList[0], textList[1], textList[2], textList[3]);
             list.insertAtBeginning(student);
             index = 0;
+            
         }
     }
     

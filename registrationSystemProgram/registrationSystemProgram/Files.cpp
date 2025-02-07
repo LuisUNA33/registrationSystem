@@ -10,9 +10,10 @@ std::string readFile(const std::string& fileName) {
     }
 
     while (getline(file, line)) {
-        text += line + "\n";
+		if (line.size() > 8) {
+			text += line;
+		}
     }
-
     file.close();
     return text;
 }
@@ -23,7 +24,8 @@ void writeFile(const std::string& fileName,std::string text) {
 		std::cerr << "Error al abrir el archivo." << std::endl;
 		return ;
 	}
-	file << text <<"\n";
+	//file <<text;
+	file << text << endl;
 
 	file.close();
 	std::cout << "linea Agregada a " <<fileName<< std::endl;
@@ -39,5 +41,3 @@ void clearFile(const std::string& fileName) {
 	file.close();
 	std::cout << "Archivo de texto "<<fileName<<" limpiado." << std::endl;
 }
-
-
