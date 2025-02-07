@@ -12,9 +12,9 @@ using namespace std;
 #include "Processes.h"
 
 int main() {
-
+    //clearFile("Students.txt");
     //Agrega Estudiante
-    Student studiante1 = Student("1", "2", "3", "4");
+    Student studiante1 = Student("Juan","687875", "12", "100");
     StudentList studiantes;
     studiantes.insertAtBeginning(studiante1);
     studiantes.printList();
@@ -29,11 +29,20 @@ int main() {
     cursos.insertAtBeginning(curso1);
     cursos.printList();
     //Escribir Archivo
-    writeFile("Students.txt", "4");
-    //Leer Archivo
-    string texto = readFile("Students.txt");
-    cout << texto << endl;
+    //writeFile("Students.txt", "4");
+    
+    
+    //Guardar list en txt
+    studiantes.writeStudentList();
 
+    //Leer Archivo
+    //string texto = readFile("Students.txt");
+    //cout << texto << endl;
+
+    studiantes.loadStudentList(studiantes);
+    studiantes.printList();
+    //Limpiar .txt
+    //clearFile("Students.txt");
 
     std::cout << "Hello World!\n";
     return 0;
