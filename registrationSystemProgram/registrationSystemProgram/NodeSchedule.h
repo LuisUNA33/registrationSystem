@@ -24,5 +24,6 @@ public:
     void insertAtEnd(NodeSchedule* newNode);
     void printList();
 	void writeScheduleList();
+	void loadScheduleList(ScheduleList& list);
 };
 

@@ -72,3 +72,25 @@ void CourseList::writeCourseList() {
 		current = current->getNext();
 	}
 }
+
+void CourseList::loadCourseList(CourseList& list) {
+    std::string text = readFile("Courses.txt");
+    int cont = 0;
+    int cont2 = 0;
+    int index = 0;
+    std::string textList[5];
+    for (int x = 0; x < text.size(); x++) {
+        cont2++;
+        if (text[x] == ';') {
+            textList[index] = text.substr(cont, cont2 - 1);
+            cont = x + 1;
+            index++;
+            cont2 = 0;
+        }
+        if (index == 5) {
+            Course course = Course(textList[0], textList[1], std::stoi(textList[2]), textList[3], textList[4]);
+            list.insertAtBeginning(course);
+            index = 0;
+        }
+    }
+}

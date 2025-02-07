@@ -24,5 +24,6 @@ public:
     void insertAtEnd(NodeCourse* newNode);
     void printList();
 	void writeCourseList();
+	void loadCourseList(CourseList& list);
 };
 

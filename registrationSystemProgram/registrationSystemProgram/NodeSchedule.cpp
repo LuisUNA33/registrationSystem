@@ -72,3 +72,25 @@ void ScheduleList::writeScheduleList() {
 		current = current->getNext();
 	}
 }
+
+void ScheduleList::loadScheduleList(ScheduleList& list) {
+    std::string text = readFile("Schedule.txt");
+    int cont = 0;
+    int cont2 = 0;
+    int index = 0;
+    std::string textList[5];
+    for (int x = 0; x < text.size(); x++) {
+        cont2++;
+        if (text[x] == ';') {
+            textList[index] = text.substr(cont, cont2 - 1);
+            cont = x + 1;
+            index++;
+            cont2 = 0;
+        }
+        if (index == 5) {
+            Schedule schedule = Schedule(std::stoi(textList[0]), textList[1], std::stoi(textList[2]), std::stoi(textList[3]), textList[4]);
+            list.insertAtBeginning(schedule);
+            index = 0;
+        }
+    }
+}
