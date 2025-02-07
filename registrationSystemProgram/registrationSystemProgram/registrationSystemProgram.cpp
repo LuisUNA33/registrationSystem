@@ -7,9 +7,10 @@ using namespace std;
 #include "NodeSchedule.h"
 #include "Course.h"
 #include "NodeCourse.h"
-
 #include "Files.h"
 #include "Processes.h"
+
+using namespace std;
 
 int main() {
     //clearFile("Students.txt");
@@ -30,8 +31,8 @@ int main() {
     cursos.printList();
     //Escribir Archivo
     //writeFile("Students.txt", "4");
-    
-    
+
+
     //Guardar list en txt
     studiantes.writeStudentList();
 

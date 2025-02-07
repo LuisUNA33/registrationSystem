@@ -1,5 +1,6 @@
 #pragma once
 #include "Schedule.h"
+#include "Files.h"
 class NodeSchedule {
 private:
     Schedule data;
@@ -22,4 +23,5 @@ public:
     void insertAtBeginning(Schedule data);
     void insertAtEnd(NodeSchedule* newNode);
     void printList();
+	void writeScheduleList();
 };

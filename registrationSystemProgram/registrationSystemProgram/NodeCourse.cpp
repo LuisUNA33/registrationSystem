@@ -58,3 +58,17 @@ void CourseList::printList() {
         current = current->getNext();
     }
 }
+
+void CourseList::writeCourseList() {
+	NodeCourse* current = head;
+	while (current != nullptr) {
+		string text = "";
+        text += current->getData().getName() + ";";
+		text += current->getData().getCode() + ";";
+		text += to_string(current->getData().getCredits()) + ";";
+		text += current->getData().getTeacher() + ";";
+		text += current->getData().getSchedule() + ";";
+		writeFile("Courses.txt", text);
+		current = current->getNext();
+	}
+}
