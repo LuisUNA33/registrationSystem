@@ -68,13 +68,13 @@ void ScheduleList::writeScheduleList() {
 		text += to_string(current->getData().getStartTime()) + ";";
 		text += to_string(current->getData().getEndTime()) + ";";
 		text += current->getData().getClassRoom() + ";";
-		writeFile("Schedule.txt", text);
+		writeFile("Schedules.txt", text);
 		current = current->getNext();
 	}
 }
 
 void ScheduleList::loadScheduleList(ScheduleList& list) {
-    std::string text = readFile("Schedule.txt");
+    std::string text = readFile("Schedules.txt");
     int cont = 0;
     int cont2 = 0;
     int index = 0;

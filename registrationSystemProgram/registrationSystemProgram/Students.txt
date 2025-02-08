@@ -1,2 +1,2 @@
-Fili;4716547;Odontologia;74;
-Luis;604710465;Ing;12;
+Pablo;34567;Ing;300;
+Juan;123456;Ing;20;

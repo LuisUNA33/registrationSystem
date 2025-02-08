@@ -87,4 +87,17 @@ void registerStudent(StudentList& studentList){
 	std::cout << "Estudiante agregado a la lista" << std::endl;
 }
 
-
+void registerSchedule(ScheduleList& scheduleList) {
+	std::cout << "Ingrese los datos del Horario" << std::endl;
+	std::cout << "Ingrese codigo de horario: " << std::endl;
+	int code = enterNum();
+	std::cout << "Dia:" << std::endl;
+	std::string day = enterDay();
+	int startTime;
+	int endTime;
+	enterStartEndTime(startTime, endTime);
+	std::cout << "Salon de clase:" << std::endl;
+	std::string classRoom = enterText();
+	scheduleList.insertAtBeginning(Schedule(code, day, startTime, endTime, classRoom));
+	std::cout << "Horario agregado a la lista. " << std::endl;
+}
