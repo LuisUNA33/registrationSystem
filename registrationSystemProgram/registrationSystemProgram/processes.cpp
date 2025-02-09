@@ -110,10 +110,8 @@ void registerCourse(CourseList& courseList){
 	std::string name = enterText();
 	std::cout << "Cantidad de creditos:" << std::endl;
 	int credits = enterNum();
-	std::cout << "Codigo del profesor:" << std::endl;
-	std::string codTeacher = enterText();
-	std::cout << "Codigo del horario:" << std::endl;
-	std::string codSchedule = enterText();
-	courseList.insertAtBeginning(Course(name, code, credits, codTeacher, codSchedule));
+	std::cout << "Carrera:" << std::endl;
+	std::string carrer = enterText();
+	courseList.insertAtBeginning(Course(code,name, credits, carrer));
 	std::cout << "Curso agregado a la lista. " << std::endl;
 }

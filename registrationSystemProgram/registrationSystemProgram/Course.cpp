@@ -2,12 +2,11 @@
 Course::Course() {}
 Course::~Course() {}
 
-Course::Course(std::string name, std::string code, int credits, std::string teacher, std::string codSchedule) {
+Course::Course(std::string code, std::string name, int credits, std::string carrer){
 	this->name = name;
 	this->code = code;
 	this->credits = credits;
-	this->codTeacher = teacher;
-	this->codSchedule = codSchedule;
+	this->carrer = carrer;
 
 }
 
@@ -20,11 +19,8 @@ std::string Course::getCode() {
 int Course::getCredits() {
 	return this->credits;
 }
-std::string Course::getTeacher() {
-	return this->codTeacher;
-}
-std::string Course::getSchedule() {
-	return this->codSchedule;
+std::string Course::getCarrer() {
+	return this->carrer;
 }
 
 //int Course::getStartTime() {
@@ -43,11 +39,8 @@ void Course::setCode(std::string code) {
 void Course::setCredits(int credits) {
 	this->credits = credits;
 }
-void Course::setTeacher(std::string codTeacher) {
-	this->name = codTeacher;
-}
-void Course::setSchedule(std::string codSchedule) {
-	this->codSchedule = codSchedule;
+void Course::setCarrer(std::string carrer) {
+	this->carrer = carrer;
 }
 
 void Course::showCourse() {
@@ -58,8 +51,6 @@ void Course::showCourse() {
 	std::cout << this->code << std::endl;
 	std::cout << "Creditos: ";
 	std::cout << this->credits << std::endl;
-	std::cout << "Preofesor: ";
-	std::cout << this->codTeacher << std::endl;
-	std::cout << "Codigo Horario: ";
-	std::cout << this->codSchedule << std::endl;
+	std::cout << "Carrera: ";
+	std::cout << this->carrer << std::endl;
 }

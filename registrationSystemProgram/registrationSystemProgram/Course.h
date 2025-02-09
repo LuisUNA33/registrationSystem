@@ -10,27 +10,24 @@ private:
 	std::string name;
 	std::string code;
 	int credits =0;
-	std::string codTeacher;
-	std::string codSchedule;
+	std::string carrer;
 
 public:
 	Course();
-	Course(std::string name, std::string code,int credits, std::string codTeacher, std::string codSchedule);
+	Course(std::string code, std::string name,int credits, std::string carrer);
 	~Course();
 	
 
 	std::string getName();
 	std::string getCode();
 	int getCredits();
-	std::string getTeacher();
-	std::string getSchedule();
+	std::string getCarrer();
 	int getStartTime();
 	int getEndTime();
 	void setName(std::string name);
 	void setCode(std::string code);
 	void setCredits(int credits);
-	void setTeacher(std::string teacher);
-	void setSchedule(std::string codSchedule);
+	void setCarrer(std::string teacher);
 	void showCourse();
 
 };

@@ -63,11 +63,10 @@ void CourseList::writeCourseList() {
 	NodeCourse* current = head;
 	while (current != nullptr) {
 		string text = "";
+        text += current->getData().getCode() + ";";
         text += current->getData().getName() + ";";
-		text += current->getData().getCode() + ";";
 		text += to_string(current->getData().getCredits()) + ";";
-		text += current->getData().getTeacher() + ";";
-		text += current->getData().getSchedule() + ";";
+		text += current->getData().getCarrer() + ";";
 		writeFile("Courses.txt", text);
 		current = current->getNext();
 	}
@@ -78,7 +77,7 @@ void CourseList::loadCourseList(CourseList& list) {
     int cont = 0;
     int cont2 = 0;
     int index = 0;
-    std::string textList[5];
+    std::string textList[4];
     for (int x = 0; x < text.size(); x++) {
         cont2++;
         if (text[x] == ';') {
@@ -87,8 +86,8 @@ void CourseList::loadCourseList(CourseList& list) {
             index++;
             cont2 = 0;
         }
-        if (index == 5) {
-            Course course = Course(textList[0], textList[1], std::stoi(textList[2]), textList[3], textList[4]);
+        if (index == 4) {
+            Course course = Course(textList[0], textList[1], std::stoi(textList[2]), textList[3]);
             list.insertAtBeginning(course);
             index = 0;
         }
