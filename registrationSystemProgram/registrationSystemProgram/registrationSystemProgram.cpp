@@ -16,6 +16,7 @@ int main() {
     //Agrega Estudiante
     StudentList students;
 	ScheduleList schedules;
+    CourseList courses;
     /*Student studiante1 = Student("Juan","687875", "12", "100");
     Student studiante2 = Student("Fili", "687875", "12", "100");
     studiantes.insertAtBeginning(studiante1);
@@ -39,16 +40,21 @@ int main() {
     students.printList();
     schedules.loadScheduleList(schedules);
     schedules.printList();
+    courses.loadCourseList(courses);
+    courses.printList();
 
-	registerStudent(students);
-	registerSchedule(schedules);
+	//registerStudent(students);
+	//registerSchedule(schedules);
+    //registerCourse(courses);
 
     //list->txt
     clearFile("Students.txt");
     clearFile("Schedules.txt");
+    clearFile("Courses.txt");
     //clearFile("Courses.txt");
     students.writeStudentList();
     schedules.writeScheduleList();
+    courses.writeCourseList();
 
 
     //Limpiar .txt

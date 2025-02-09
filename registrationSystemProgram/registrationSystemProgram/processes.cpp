@@ -101,3 +101,19 @@ void registerSchedule(ScheduleList& scheduleList) {
 	scheduleList.insertAtBeginning(Schedule(code, day, startTime, endTime, classRoom));
 	std::cout << "Horario agregado a la lista. " << std::endl;
 }
+
+void registerCourse(CourseList& courseList){
+	std::cout << "Ingrese los datos del Curso" << std::endl;
+	std::cout << "Ingrese codigo de curso: " << std::endl;
+	std::string code = enterText();
+	std::cout << "Nombre del curso:" << std::endl;
+	std::string name = enterText();
+	std::cout << "Cantidad de creditos:" << std::endl;
+	int credits = enterNum();
+	std::cout << "Codigo del profesor:" << std::endl;
+	std::string codTeacher = enterText();
+	std::cout << "Codigo del horario:" << std::endl;
+	std::string codSchedule = enterText();
+	courseList.insertAtBeginning(Course(name, code, credits, codTeacher, codSchedule));
+	std::cout << "Curso agregado a la lista. " << std::endl;
+}
