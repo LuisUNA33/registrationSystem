@@ -7,6 +7,9 @@ using namespace std;
 #include "NodeSchedule.h"
 #include "Course.h"
 #include "NodeCourse.h"
+
+#include "Group.h"
+
 #include "Files.h"
 #include "Processes.h"
 
@@ -17,24 +20,7 @@ int main() {
     StudentList students;
 	ScheduleList schedules;
     CourseList courses;
-    /*Student studiante1 = Student("Juan","687875", "12", "100");
-    Student studiante2 = Student("Fili", "687875", "12", "100");
-    studiantes.insertAtBeginning(studiante1);
-    studiantes.insertAtBeginning(studiante2);
-    studiantes.printList();*/
     
-    //Agregar horario
-    /*Schedule horario1 = Schedule(1, "Martes", 1, 4, "Aula 2");
-    ScheduleList horarios;
-    horarios.insertAtBeginning(horario1);
-    horarios.printList();*/
-
-    //Agregar Curso
-   /* Course curso1 = Course("Fundamentos", "F01", 2, "Michell", "horario1");
-    CourseList cursos;
-    cursos.insertAtBeginning(curso1);
-    cursos.printList();*/
-
     //txt->lista
     students.loadStudentList(students);
     students.printList();
@@ -51,7 +37,6 @@ int main() {
     clearFile("Students.txt");
     clearFile("Schedules.txt");
     clearFile("Courses.txt");
-    //clearFile("Courses.txt");
     students.writeStudentList();
     schedules.writeScheduleList();
     courses.writeCourseList();
