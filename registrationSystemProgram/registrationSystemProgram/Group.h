@@ -11,7 +11,7 @@ private:
 
 public:
     Group();
-    Group(std::string ncr, std::string codCourse, std::string professor);
+    Group(std::string NCR, std::string codCourse, std::string professor);
     std::string getNCR();
     std::string getCodeCourses();
     std::string getProfessor();

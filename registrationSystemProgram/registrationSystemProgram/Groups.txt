@@ -1,0 +1,2 @@
+NCR;codCurso;COdProfesor;
+1487;F01;Manolito;

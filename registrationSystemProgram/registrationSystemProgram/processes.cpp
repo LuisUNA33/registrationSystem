@@ -1,5 +1,6 @@
 #include "processes.h"
 
+
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
 		"Author: Luis Sanchez, Mathew Ramirez, John Perez \n" <<
@@ -114,4 +115,16 @@ void registerCourse(CourseList& courseList){
 	std::string carrer = enterText();
 	courseList.insertAtBeginning(Course(code,name, credits, carrer));
 	std::cout << "Curso agregado a la lista. " << std::endl;
+}
+
+void registerGroup(GroupList& groupList) {
+	std::cout << "Ingrese los datos del Grupo" << std::endl;
+	std::cout << "NCR:" << std::endl;
+	std::string NCR = enterText();
+	std::cout << "Codigo del curso:" << std::endl;
+	std::string codCourse = enterText();
+	std::cout << "Nombre del profesor:" << std::endl;
+	std::string codProfessor = enterText();
+	groupList.insertAtBeginning(Group(NCR, codCourse, codProfessor));
+	std::cout << "Grupo agregado a la lista. " << std::endl;
 }

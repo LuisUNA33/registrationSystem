@@ -4,7 +4,7 @@ Group::Group()
 {
 }
 
-Group::Group(std::string ncr, std::string codCourse, std::string professor){
+Group::Group(std::string NCR, std::string codCourse, std::string professor){
 	this->NCR = NCR;
 	this->codCourse=codCourse;
 	this->professor = professor;
