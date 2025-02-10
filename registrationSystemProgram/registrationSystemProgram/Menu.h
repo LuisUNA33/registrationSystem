@@ -17,6 +17,8 @@
 #include "Files.h"
 #include "Registration.h"
 #include "NodeRegistration.h"
+#include "registrationDetails.h"
+#include "NodeRegistrationDetails.h"
 
 #include "Processes.h"
 

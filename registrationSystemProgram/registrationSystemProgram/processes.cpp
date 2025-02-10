@@ -235,13 +235,13 @@ void registerRegistration(RegistrationList& registration, StudentList students,
 		std::cout << "ID del estdudiante:" << std::endl;
 		std::string codStudent = enterText();
 		students.searchingStudent(codStudent);
-		if (searchingStudent) {
+		if (students.searchingStudent(codStudent) == true) {
 			
 			std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 		}
 		std::cout << "Codigo del curso:" << std::endl;
 		std::string codCourse = enterText();
-		if (!searchingStudent) {
+		if (!students.searchingStudent(codStudent)) {
 			break;
 	    }
 		else {

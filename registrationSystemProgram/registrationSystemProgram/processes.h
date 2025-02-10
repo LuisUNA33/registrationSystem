@@ -19,7 +19,6 @@ void about();
 std::string enterText();
 char enterChar();
 int enterNum();
-bool searchingStudent(std::string idStudent, StudentList students);
 void registerStudent(StudentList& studentList);
 void enterStartEndTime(int& startTime, int& endTime);
 std::string enterDay();
@@ -31,7 +30,6 @@ void registerCourse(CourseList& coursesList,GroupList& groupList);
 void registerGroup(GroupList& groups);
 void registerRequeriment(RequirementList& requirementList);
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
-void calculatedCredits(RegistrationList& registration);
 void registerRegistration(RegistrationList& registration, StudentList students, 
 	                      ScheduleList schedules,CourseList courses, 
 	                      GroupList groups,RequirementList requirements,
