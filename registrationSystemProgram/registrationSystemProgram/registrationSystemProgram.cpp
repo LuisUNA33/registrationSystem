@@ -7,12 +7,16 @@ using namespace std;
 #include "NodeSchedule.h"
 #include "Course.h"
 #include "NodeCourse.h"
-
 #include "Group.h"
 #include "NodeGroup.h"
 
+#include "Requirement.h"
+#include "NodeRequirement.h"
+
 #include "Files.h"
 #include "Processes.h"
+
+
 
 int main() {
     //clearFile("Students.txt");
@@ -22,7 +26,7 @@ int main() {
 	ScheduleList schedules;
     CourseList courses;
     GroupList groups;
-    
+    RequirementList requirements;
     //txt->lista
     students.loadStudentList(students);
     //students.printList();
@@ -32,7 +36,8 @@ int main() {
     //courses.printList();
     groups.loadGroupList(groups);
     //groups.printList();
-
+    requirements.loadRequirementList(requirements); 
+    requirements.printList();
 	//registerStudent(students);
 	//registerSchedule(schedules);
     //registerCourse(courses);
