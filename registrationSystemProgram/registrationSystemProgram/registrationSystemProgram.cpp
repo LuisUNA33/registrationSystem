@@ -13,6 +13,9 @@ using namespace std;
 #include "Requirement.h"
 #include "NodeRequirement.h"
 
+#include "ApprovedCourse.h"
+#include "NodeApprovedCourse.h"
+
 #include "Files.h"
 #include "Processes.h"
 
@@ -27,6 +30,8 @@ int main() {
     CourseList courses;
     GroupList groups;
     RequirementList requirements;
+    ApprovedCourseList approvedCourses;
+
     //txt->lista
     students.loadStudentList(students);
     //students.printList();
@@ -37,21 +42,30 @@ int main() {
     groups.loadGroupList(groups);
     //groups.printList();
     requirements.loadRequirementList(requirements); 
-    requirements.printList();
+    //requirements.printList();
+    approvedCourses.loadApprovedCourseList(approvedCourses);
+    //approvedCourses.printList();
+
 	//registerStudent(students);
 	//registerSchedule(schedules);
     //registerCourse(courses);
     //registerGroup(groups);
+    //registerRequeriment(requirements);
+    //registerApprovedCourse(approvedCourses);
 
     //list->txt
     clearFile("Students.txt");
     clearFile("Schedules.txt");
     clearFile("Courses.txt");
     clearFile("Groups.txt");
+    clearFile("Requirements.txt");
+    clearFile("ApprovedCourses.txt");
     students.writeStudentList();
     schedules.writeScheduleList();
     courses.writeCourseList();
     groups.writeGroupList();
+    requirements.writeRequirementList();
+    approvedCourses.writeApprovedCourseList();
 
 
     //Limpiar .txt

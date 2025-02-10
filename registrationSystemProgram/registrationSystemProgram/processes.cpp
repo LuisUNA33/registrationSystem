@@ -140,3 +140,13 @@ void registerRequeriment(RequirementList& requirementList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
+
+void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
+	std::cout << "Ingrese el estudiante y su curso:" << std::endl;
+	std::cout << "ID del estdudiante:" << std::endl;
+	std::string codStudent = enterText();
+	std::cout << "Codigo del curso:" << std::endl;
+	std::string codCourse = enterText();
+	approvedCourseList.insertAtBeginning(ApprovedCourse(codStudent, codCourse));
+	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
+}

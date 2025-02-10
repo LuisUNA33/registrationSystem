@@ -30,6 +30,10 @@ void ApprovedCourse::setCodeCourse(std::string codCourse)
 	this->codCourse = codCourse;
 }
 
-void ApprovedCourse::showApprovedCourse()
-{
+void ApprovedCourse::showApprovedCourse() {
+	std::cout << "\nCursos Aprobados: " << std::endl;
+	std::cout << "ID del estudiante: ";
+	std::cout << this->codStudent << std::endl;
+	std::cout << "Codigo del curso aprobado: ";
+	std::cout << this->codCourse << std::endl;
 }
