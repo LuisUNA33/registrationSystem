@@ -140,6 +140,23 @@ void registerRequeriment(RequirementList& requirementList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
+bool enterCondition() {
+	while(true) {
+		cout << "Opciones" << endl;
+		cout << "1. Aprobado\n2. Desaprobado" << endl;
+
+		int option = enterNum();
+		if (option == 1) {
+			return true;
+		}
+		if (option==2){
+			return false;
+		}
+		
+	}
+
+}
+
 
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Ingrese el estudiante y su curso:" << std::endl;
@@ -147,6 +164,7 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::string codStudent = enterText();
 	std::cout << "Codigo del curso:" << std::endl;
 	std::string codCourse = enterText();
-	approvedCourseList.insertAtBeginning(ApprovedCourse(codStudent, codCourse));
+	std::cout << "Condicion del estudiante en el curso:" << std::endl;
+	approvedCourseList.insertAtBeginning(ApprovedCourse(codStudent, codCourse,enterCondition()));
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 }

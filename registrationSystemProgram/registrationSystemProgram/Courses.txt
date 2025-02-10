@@ -1,2 +1,2 @@
-F01;Fundamnetos;2;Ing Sistemas;
 P01;Programacion;4;Ing;
+F01;Fundamnetos;2;Ing Sistemas;

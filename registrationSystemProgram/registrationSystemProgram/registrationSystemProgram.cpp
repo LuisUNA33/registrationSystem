@@ -51,7 +51,7 @@ int main() {
     //registerCourse(courses);
     //registerGroup(groups);
     //registerRequeriment(requirements);
-    //registerApprovedCourse(approvedCourses);
+    registerApprovedCourse(approvedCourses);
 
     //list->txt
     clearFile("Students.txt");

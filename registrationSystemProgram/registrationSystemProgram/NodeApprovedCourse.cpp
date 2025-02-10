@@ -65,6 +65,8 @@ void ApprovedCourseList::writeApprovedCourseList() {
         string text = "";
         text += current->getData().getCodeStudent() + ";";
         text += current->getData().getCodeCourse() + ";";
+        string condition = current->getData().getCondition() ? "Aprobado" : "Desaprobado";
+        text +=condition+ ";"; 
         writeFile("ApprovedCourses.txt", text);
         current = current->getNext();
     }
@@ -75,7 +77,8 @@ void ApprovedCourseList::loadApprovedCourseList(ApprovedCourseList& list) {
     int cont = 0;
     int cont2 = 0;
     int index = 0;
-    std::string textList[2];
+    bool condition=true;
+    std::string textList[3];
     for (int x = 0; x < text.size(); x++) {
         cont2++;
         if (text[x] == ';') {
@@ -84,10 +87,18 @@ void ApprovedCourseList::loadApprovedCourseList(ApprovedCourseList& list) {
             index++;
             cont2 = 0;
         }
-        if (index == 2) {
-            ApprovedCourse approvedCourse = ApprovedCourse(textList[0], textList[1]);
+        if (index == 3) {
+            if (textList[2] != "Aprobado") {
+                 condition = false;
+            }
+ 
+
+            ApprovedCourse approvedCourse = ApprovedCourse(textList[0], textList[1],condition);
             list.insertAtBeginning(approvedCourse);
             index = 0;
         }
     }
+        
+        
+    
 }
