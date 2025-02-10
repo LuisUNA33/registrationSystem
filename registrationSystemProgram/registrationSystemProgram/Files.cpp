@@ -49,4 +49,6 @@ void clearAllFiles(){
 	clearFile("Groups.txt");
 	clearFile("Requirements.txt");
 	clearFile("ApprovedCourses.txt");
+	clearFile("Registrations.txt");
+	clearFile("RegistrationDetails.txt");
 }
