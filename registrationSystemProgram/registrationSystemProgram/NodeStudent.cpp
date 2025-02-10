@@ -98,3 +98,15 @@ void StudentList::loadStudentList(StudentList& list) {
     
 
 }
+
+bool StudentList::searchingStudent(std::string idStudent)
+{
+    NodeStudent* current = head;
+    while (current != nullptr) {
+        if (idStudent == current->getData().getId()) {
+            return true;
+        }
+        current = current->getNext();
+    }
+    return false;
+}

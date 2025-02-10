@@ -1,2 +1,4 @@
 NCR;codCurso;COdProfesor;
 1487;F01;Manolito;
+1;4422;roberto;
+2343;4422;luis;

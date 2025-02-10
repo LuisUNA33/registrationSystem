@@ -15,7 +15,11 @@
 #include "ApprovedCourse.h"
 #include "NodeApprovedCourse.h"
 #include "Files.h"
+#include "Registration.h"
+#include "NodeRegistration.h"
+
 #include "Processes.h"
+
 
 using namespace std;
 

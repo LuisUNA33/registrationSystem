@@ -1,3 +1,3 @@
-70484500;mat01;Aprobado;
+70484500;mat01;Desaprobado;
 604840500;MAT200;Desaprobado;
 604840500;FO01;Desaprobado;

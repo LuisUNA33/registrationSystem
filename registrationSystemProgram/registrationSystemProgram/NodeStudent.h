@@ -26,5 +26,6 @@ public:
     void printList();
     void writeStudentList();
     void loadStudentList(StudentList &list);
+    bool searchingStudent(std::string idStudent);
 };
 

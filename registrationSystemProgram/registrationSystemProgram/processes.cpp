@@ -41,6 +41,7 @@ int enterNum() {
 	}
 }
 
+
 void enterStartEndTime(int& startTime, int& endTime) {
 	while (true) {
 		std::cout << "Hora de inicio:" << std::endl;
@@ -87,6 +88,45 @@ std::string enterCarrer() {
 	}
 
 }
+bool enterCondition() {
+	while (true) {
+		cout << "Opciones" << endl;
+		cout << "1. Aprobado\n2. Desaprobado" << endl;
+
+		int option = enterNum();
+		if (option == 1) {
+			return true;
+		}
+		if (option == 2) {
+			return false;
+		}
+
+	}
+
+}
+//validar registros
+//	bool checkConflict(Course * list, int index, Course course) {
+//		if (index == 0) {
+//			return true;
+//		}
+//		for (int x = 0; x < index; x++) {
+//			if (list[x].getSchedule().getCode() == course.getSchedule().getCode()) { return false; }
+//			if (list[x].getSchedule().getDay() == course.getSchedule().getDay()) {
+//				if (course.getEndTime() >= list[x].getStartTime()) {
+//					return false;
+//				}
+//				if (course.getStartTime() <= list[x].getEndTime()) {
+//					return false;
+//				}
+//			}
+//		}
+//		return true;
+//	}
+
+
+
+
+
 //Registrar---------------------------
 void registerStudent(StudentList& studentList){
 	std::cout << "Ingrese los datos solicitados" << std::endl;
@@ -170,23 +210,6 @@ void registerRequeriment(RequirementList& requirementList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
-bool enterCondition() {
-	while(true) {
-		cout << "Opciones" << endl;
-		cout << "1. Aprobado\n2. Desaprobado" << endl;
-
-		int option = enterNum();
-		if (option == 1) {
-			return true;
-		}
-		if (option==2){
-			return false;
-		}
-		
-	}
-
-}
-
 
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Ingrese el estudiante y su curso:" << std::endl;
@@ -199,11 +222,35 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 }
 
-void calculatedCredits(RegistrationList& registration)
+
+
+//registro de matricula
+void registerRegistration(RegistrationList& registration, StudentList students,
+							ScheduleList schedules, CourseList courses, 
+							GroupList groups, RequirementList requirements, 
+							ApprovedCourseList approvedCourses, RegistrationList registrations)
 {
+	while (true) {
+		std::cout << "Ingrese datos de Matricula:" << std::endl;
+		std::cout << "ID del estdudiante:" << std::endl;
+		std::string codStudent = enterText();
+		students.searchingStudent(codStudent);
+		if (searchingStudent) {
+			
+			std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
+		}
+		std::cout << "Codigo del curso:" << std::endl;
+		std::string codCourse = enterText();
+		if (!searchingStudent) {
+			break;
+	    }
+		else {
+			std::cout << "Estudiante no encontrado " << std::endl;
+			break;
+		}
+	}
 
 }
-
 
 //Show
 void ShowCoursesGroup(CourseList courses,GroupList groups){

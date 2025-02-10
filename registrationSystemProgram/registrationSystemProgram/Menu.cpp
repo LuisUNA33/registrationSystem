@@ -6,6 +6,7 @@ CourseList courses;
 GroupList groups;
 RequirementList requirements;
 ApprovedCourseList approvedCourses;
+RegistrationList registrations;
 
 void loadAllList() {
     students.loadStudentList(students);
@@ -14,6 +15,7 @@ void loadAllList() {
     groups.loadGroupList(groups);
     requirements.loadRequirementList(requirements);
     approvedCourses.loadApprovedCourseList(approvedCourses);
+    registrations.loadRegistrationList(registrations);
 }
 void saveAllChanges(){
     clearAllFiles();
@@ -23,6 +25,7 @@ void saveAllChanges(){
     groups.writeGroupList();
     requirements.writeRequirementList();
     approvedCourses.writeApprovedCourseList();
+    registrations.writeRegistrationList();
 }
 
 bool subMenuA() {
