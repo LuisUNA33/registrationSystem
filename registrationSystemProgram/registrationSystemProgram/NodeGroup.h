@@ -19,6 +19,7 @@ private:
     NodeGroup* head;
 public:
     GroupList();
+    NodeGroup* getHead();
     void deleteNode(NodeGroup nodoPrev);
     void insertAtBeginning(Group data);
     void insertAtEnd(NodeGroup* newNode);

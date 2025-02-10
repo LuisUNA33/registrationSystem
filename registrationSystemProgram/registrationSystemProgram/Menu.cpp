@@ -77,8 +77,9 @@ void subMenuB() {
             break;
         case 'b':
             system("CLS");
-            registerCourse(courses);
+            registerCourse(courses, groups);
             system("pause");
+            groups.printList();
             //courses.writeCourseList();
             break;
         case 'c':
@@ -144,7 +145,8 @@ void subMenuD() {
         case 'b':
             system("CLS");
             //courses.loadCourseList(courses);
-            courses.printList();
+            //courses.printList();
+            ShowCoursesGroup(courses,groups);
             system("pause");
             break;
         case 'c':

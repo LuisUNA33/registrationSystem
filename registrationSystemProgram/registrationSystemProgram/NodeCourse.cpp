@@ -27,6 +27,11 @@ CourseList::CourseList() {
     this->head = nullptr;
 }
 
+NodeCourse* CourseList::getHead()
+{
+    return this->head;
+}
+
 void CourseList::deleteNode(NodeCourse nodoPrev) {
     NodeCourse* newNext = nodoPrev.getNext()->getNext();
     nodoPrev.setNext(newNext);
@@ -58,6 +63,7 @@ void CourseList::printList() {
         current = current->getNext();
     }
 }
+
 
 void CourseList::writeCourseList() {
 	NodeCourse* current = head;

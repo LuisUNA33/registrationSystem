@@ -23,11 +23,16 @@ void registerStudent(StudentList& studentList);
 void enterStartEndTime(int& startTime, int& endTime);
 std::string enterDay();
 void registerSchedule(ScheduleList& scheduleList);
-void registerCourse(CourseList& coursesList);
+
+void registerGroup(GroupList& groupList, string codCourse);
+void registerCourse(CourseList& coursesList,GroupList& groupList);
+
 void registerGroup(GroupList& groups);
 void registerRequeriment(RequirementList& requirementList);
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
 void calculatedCredits(RegistrationList& registration);
+
+void ShowCoursesGroup(CourseList courses, GroupList groups);
 //Schedule searchSchedule(const ScheduleNode* scheduleList);
 //void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
 //Student searchStudent(const StudentNode* studentList);

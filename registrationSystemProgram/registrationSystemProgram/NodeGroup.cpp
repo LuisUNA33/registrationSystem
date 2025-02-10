@@ -27,6 +27,11 @@ GroupList::GroupList() {
     this->head = nullptr;
 }
 
+NodeGroup* GroupList::getHead()
+{
+    return this->head;
+}
+
 void GroupList::deleteNode(NodeGroup nodoPrev) {
     NodeGroup* newNext = nodoPrev.getNext()->getNext();
     nodoPrev.setNext(newNext);

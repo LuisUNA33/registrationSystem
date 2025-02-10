@@ -19,6 +19,7 @@ private:
     NodeCourse* head;
 public:
     CourseList();
+    NodeCourse* getHead();
     void deleteNode(NodeCourse nodoPrev);
     void insertAtBeginning(Course data);
     void insertAtEnd(NodeCourse* newNode);

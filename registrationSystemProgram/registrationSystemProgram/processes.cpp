@@ -117,7 +117,17 @@ void registerSchedule(ScheduleList& scheduleList) {
 	std::cout << "Horario agregado a la lista. " << std::endl;
 }
 
-void registerCourse(CourseList& courseList){
+void registerGroup(GroupList& groupList, string codCourse) {
+	std::cout << "Ingrese los datos del Grupo" << std::endl;
+	std::cout << "NCR:" << std::endl;
+	std::string NCR = enterText();
+	std::cout << "Nombre del profesor:" << std::endl;
+	std::string codProfessor = enterText();
+	groupList.insertAtBeginning(Group(NCR, codCourse, codProfessor));
+	std::cout << "Grupo agregado a la lista. " << std::endl;
+}
+
+void registerCourse(CourseList& courseList,GroupList& groupList){
 	std::cout << "Ingrese los datos del Curso" << std::endl;
 	std::cout << "Ingrese codigo de curso: " << std::endl;
 	std::string code = enterText();
@@ -127,6 +137,10 @@ void registerCourse(CourseList& courseList){
 	int credits = enterNum();
 	std::cout << "Carrera:" << std::endl;
 	std::string carrer = enterCarrer();
+	//Grupos para curso
+	registerGroup(groupList,code);
+	registerGroup(groupList, code);
+	//
 	courseList.insertAtBeginning(Course(code,name, credits, carrer));
 	std::cout << "Curso agregado a la lista. " << std::endl;
 }
@@ -187,5 +201,25 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 
 void calculatedCredits(RegistrationList& registration)
 {
+
+}
+
+
+//Show
+void ShowCoursesGroup(CourseList courses,GroupList groups){
+	NodeCourse* current =courses.getHead();
+	while (current != nullptr) {
+		current->getData().showCourse();
+
+		NodeGroup* currentG = groups.getHead();
+		while (currentG != nullptr) {
+			if(currentG->getData().getCodeCourses()==current->getData().getCode()){
+				currentG->getData().showGroup();
+			}
+			currentG = currentG->getNext();
+		}
+		current = current->getNext();
+	}
+
 
 }
