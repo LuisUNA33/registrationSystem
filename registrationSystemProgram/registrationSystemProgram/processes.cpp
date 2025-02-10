@@ -128,3 +128,15 @@ void registerGroup(GroupList& groupList) {
 	groupList.insertAtBeginning(Group(NCR, codCourse, codProfessor));
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
+void registerRequeriment(RequirementList& requirementList) {
+	std::cout << "Ingrese los requerimientos del curso,\nSi el requerimiento es '0' se asume que no tiene requerimiento:" << std::endl;
+	std::cout << "Codigo de curso:" << std::endl;
+	std::string codCourse = enterText();
+	std::cout << "Requerimiento_A:" << std::endl;
+	std::string requirement_A = enterText();
+	std::cout << "Requerimiento_B:" << std::endl;
+	std::string requirement_B = enterText();
+	requirementList.insertAtBeginning(Requirement(codCourse, requirement_A, requirement_B));
+	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
+
+}

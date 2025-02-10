@@ -8,6 +8,7 @@
 #include "NodeSchedule.h"
 #include "NodeCourse.h"
 #include "NodeGroup.h"
+#include "NodeRequirement.h"
 
 void about();
 //void showEnrolledStudents(RegistrationNode*& registrationList);
@@ -23,6 +24,7 @@ std::string enterDay();
 void registerSchedule(ScheduleList& scheduleList);
 void registerCourse(CourseList& coursesList);
 void registerGroup(GroupList& groups);
+void registerRequeriment(RequirementList& requirementList);
 //Schedule searchSchedule(const ScheduleNode* scheduleList);
 //void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
 //Student searchStudent(const StudentNode* studentList);
