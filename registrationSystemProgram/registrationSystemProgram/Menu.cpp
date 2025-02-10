@@ -7,6 +7,24 @@ GroupList groups;
 RequirementList requirements;
 ApprovedCourseList approvedCourses;
 
+void loadAllList() {
+    students.loadStudentList(students);
+    schedules.loadScheduleList(schedules);
+    courses.loadCourseList(courses);
+    groups.loadGroupList(groups);
+    requirements.loadRequirementList(requirements);
+    approvedCourses.loadApprovedCourseList(approvedCourses);
+}
+void saveAllChanges(){
+    clearAllFiles();
+    students.writeStudentList();
+    schedules.writeScheduleList();
+    courses.writeCourseList();
+    groups.writeGroupList();
+    requirements.writeRequirementList();
+    approvedCourses.writeApprovedCourseList();
+}
+
 bool subMenuA() {
     char option;
     while (true) {
@@ -25,6 +43,7 @@ bool subMenuA() {
             about();
             return false;
         case 'b':
+            saveAllChanges();
             std::cout << "Saliendo....." << std::endl;
             return true;
         case 'c':
@@ -54,19 +73,19 @@ void subMenuB() {
             system("CLS");
             registerStudent(students);
             system("pause");
-            students.writeStudentList();
+            //students.writeStudentList();
             break;
         case 'b':
             system("CLS");
             registerCourse(courses);
             system("pause");
-            courses.writeCourseList();
+            //courses.writeCourseList();
             break;
         case 'c':
             system("CLS");
             registerSchedule(schedules);
             system("pause");
-            schedules.writeScheduleList();
+            //schedules.writeScheduleList();
             break;
         case 'd':
             return;
@@ -118,19 +137,19 @@ void subMenuD() {
         switch (option) {
         case 'a':
             system("CLS");
-            students.loadStudentList(students);
+            //students.loadStudentList(students);
             students.printList();
             system("pause");
             break;
         case 'b':
             system("CLS");
-            courses.loadCourseList(courses);
+            //courses.loadCourseList(courses);
             courses.printList();
             system("pause");
             break;
         case 'c':
             system("CLS");
-            schedules.loadScheduleList(schedules);
+            //schedules.loadScheduleList(schedules);
             schedules.printList();
             system("pause");
             break;
@@ -147,7 +166,7 @@ void subMenuD() {
 
 
 void menu() {
-
+    loadAllList();
     bool exit = false;
     while (exit == false) {
         system("CLS");
@@ -155,7 +174,8 @@ void menu() {
         std::cout << "  (a)Archivo\n" <<
             "  (b)Mantenimiento \n" <<
             "  (c)Matricula\n" <<
-            "  (d)Consulta\n" << std::endl;
+            "  (d)Consulta\n" <<
+            "  (e)Guardar cambios\n" << std::endl;
         std::cout << "Ingrese la opcion que desea realizar: " << std::endl;
         char option = enterChar();
         //char option =' ';
@@ -173,6 +193,9 @@ void menu() {
             break;
         case 'd':
             subMenuD();
+            break;
+        case 'e':
+            saveAllChanges();
             break;
         default:
             break;
