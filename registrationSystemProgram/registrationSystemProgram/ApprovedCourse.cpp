@@ -30,6 +30,6 @@ void ApprovedCourse::setCodeCourse(std::string codCourse)
 	this->codCourse = codCourse;
 }
 
-void ApprovedCourse::showApprovedCourses()
+void ApprovedCourse::showApprovedCourse()
 {
 }

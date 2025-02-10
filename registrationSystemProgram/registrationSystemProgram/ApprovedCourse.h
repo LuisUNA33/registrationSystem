@@ -14,7 +14,7 @@ public:
 	std::string getCodeCourse();
 	void setCodeStudent(std::string codStudent);
 	void setCodeCourse(std::string codCourse);
-	void showApprovedCourses();
+	void showApprovedCourse();
 
 };
 
