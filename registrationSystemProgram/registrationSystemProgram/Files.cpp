@@ -41,3 +41,12 @@ void clearFile(const std::string& fileName) {
 	file.close();
 	std::cout << "Archivo de texto "<<fileName<<" limpiado." << std::endl;
 }
+
+void clearAllFiles(){
+	clearFile("Students.txt");
+	clearFile("Schedules.txt");
+	clearFile("Courses.txt");
+	clearFile("Groups.txt");
+	clearFile("Requirements.txt");
+	clearFile("ApprovedCourses.txt");
+}
