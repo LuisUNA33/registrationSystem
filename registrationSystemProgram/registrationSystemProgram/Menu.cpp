@@ -1,5 +1,12 @@
 #include "Menu.h"
 
+StudentList students;
+ScheduleList schedules;
+CourseList courses;
+GroupList groups;
+RequirementList requirements;
+ApprovedCourseList approvedCourses;
+
 bool subMenuA() {
     char option;
     while (true) {
@@ -34,10 +41,10 @@ void subMenuB() {
     while (true) {
         system("CLS");
         std::cout << "=== Mantenimiento ===" << std::endl;
-        std::cout << "a) Estudiantes" << std::endl;
-        std::cout << "b) Cursos" << std::endl;
-        std::cout << "c) Horarios" << std::endl;
-        std::cout << "d) regresar " << std::endl;
+        std::cout << "a) Agregar estudiantes" << std::endl;
+        std::cout << "b) Agregar cursos" << std::endl;
+        std::cout << "c) Agregar horarios" << std::endl;
+        std::cout << "d) Regresar " << std::endl;
         std::cout << "Ingrese alguna opcion disponible: " << std::endl;
 
         option = enterChar(); // Solo se usa esta lectura
@@ -45,15 +52,21 @@ void subMenuB() {
         switch (option) {
         case 'a':
             system("CLS");
-            //registerStudent(studentList, numStudents);
+            registerStudent(students);
+            system("pause");
+            students.writeStudentList();
             break;
         case 'b':
             system("CLS");
-            //registerCourse(courseList, numCourse, scheduleList, numSchedules);
+            registerCourse(courses);
+            system("pause");
+            courses.writeCourseList();
             break;
         case 'c':
             system("CLS");
-            //registerSchedule(scheduleList, numSchedules);
+            registerSchedule(schedules);
+            system("pause");
+            schedules.writeScheduleList();
             break;
         case 'd':
             return;
@@ -94,31 +107,41 @@ void subMenuD() {
     system("CLS");
     char option;
     while (true) {
+        system("CLS");
         std::cout << "  (a)Estudiantes(Lista de estudiantes)" << std::endl;
         std::cout << "  (b)Cursos(Lista de los cursos)"<< std::endl;
         std::cout << "  (c)Horarios(Lista de Horarios)" << std::endl;
         std::cout << "  (d)Estudiantes Matriculados(Todos los matriculados)" << std::endl;
         std::cout << "  (e)regresar" << std::endl;
-	std::cout << "Selecione una opcion:" << std::endl;
-	option = enterChar();
-	switch (option) {
-	case 'a':
-		//showStudentsList(studentList, numStudents);
-		break;
-	case 'b':
-		//showCourseList(courseList, numCourse);
-		break;
-	case 'c':
-		//showScheduleList(scheduleList, numSchedules);
-		break;
-	case 'd':
-		//showEnrolledStudents(registrationList, numRegistration);
-		break;
-    case 'e':
-        return;
-	default:
-		break;
-	}
+	    std::cout << "Selecione una opcion:" << std::endl;
+	    option = enterChar();
+	    switch (option) {
+	    case 'a':
+            system("CLS");
+            students.loadStudentList(students);
+            students.printList();
+			system("pause");
+		    break;
+	    case 'b':
+            system("CLS");
+            courses.loadCourseList(courses);
+            courses.printList();
+			system("pause");
+		    break;
+	    case 'c':
+            system("CLS");
+            schedules.loadScheduleList(schedules);
+            schedules.printList();
+			system("pause");
+		    break;
+	    case 'd':
+		    //showEnrolledStudents(registrationList, numRegistration);
+		    break;
+        case 'e':
+            return;
+	    default:
+		    break;
+	    }
     }
 }
 
