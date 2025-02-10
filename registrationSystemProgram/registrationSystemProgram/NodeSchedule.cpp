@@ -63,7 +63,7 @@ void ScheduleList::writeScheduleList() {
 	NodeSchedule* current = head;
 	while (current != nullptr) {
         string text = "";
-		text += to_string(current->getData().getCode()) + ";";
+		text += current->getData().getCode() + ";";
 		text += current->getData().getDay() + ";";
 		text += to_string(current->getData().getStartTime()) + ";";
 		text += to_string(current->getData().getEndTime()) + ";";
@@ -88,7 +88,7 @@ void ScheduleList::loadScheduleList(ScheduleList& list) {
             cont2 = 0;
         }
         if (index == 5) {
-            Schedule schedule = Schedule(std::stoi(textList[0]), textList[1], std::stoi(textList[2]), std::stoi(textList[3]), textList[4]);
+            Schedule schedule = Schedule(std::string(textList[0]), textList[1], std::stoi(textList[2]), std::stoi(textList[3]), textList[4]);
             list.insertAtBeginning(schedule);
             index = 0;
         }

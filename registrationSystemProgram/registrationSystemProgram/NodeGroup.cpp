@@ -68,7 +68,7 @@ void GroupList::writeGroupList() {
     NodeGroup* current = head;
     while (current != nullptr) {
         string text = "";
-        text += current->getData().getNCR() + ";";
+        text += current->getData().getNRC() + ";";
         text += current->getData().getCodeCourses() + ";";
         text += current->getData().getProfessor() + ";";
         writeFile("Groups.txt", text);

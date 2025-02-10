@@ -4,15 +4,15 @@ Schedule::Schedule() {}
 
 Schedule::~Schedule() {}
 
-Schedule::Schedule(int code, std::string day, int startTime, int endTime, std::string classRoom) {
-	this->code = code;
+Schedule::Schedule(std::string codGroup, std::string day, int startTime, int endTime, std::string classRoom) {
+	this->codGroup = codGroup;
 	this->day = day;
 	this->startTime = startTime;
 	this->endTime = endTime;
 	this->classRoom = classRoom;
 }
-int Schedule::getCode() {
-	return this->code;
+std::string Schedule::getCode() {
+	return this->codGroup;
 }
 std::string Schedule::getDay() {
 	return this->day;
@@ -27,8 +27,8 @@ std::string Schedule::getClassRoom() {
 	return this->classRoom;
 }
 
-void Schedule::setCode(int Code) {
-	this->code = code;
+void Schedule::setCode(std::string codGroup) {
+	this->codGroup = codGroup;
 }
 void Schedule::setDay(std::string day) {
 	this->day = day;
@@ -46,7 +46,7 @@ void Schedule::setClassRoom(std::string classRoom) {
 void Schedule::showSchedule() {
 	std::cout << "\nHorario: " << std::endl;
 	std::cout << "Codigo del horario: ";
-	std::cout << this->code << std::endl;
+	std::cout << this->codGroup << std::endl;
 	std::cout << "Dia: ";
 	std::cout << this->day << std::endl;
 	std::cout << "Hora de inicio: ";

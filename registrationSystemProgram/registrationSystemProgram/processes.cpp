@@ -105,7 +105,7 @@ void registerStudent(StudentList& studentList){
 void registerSchedule(ScheduleList& scheduleList) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
 	std::cout << "Ingrese codigo de horario: " << std::endl;
-	int code = enterNum();
+	std::string code = enterText();
 	std::cout << "Dia:" << std::endl;
 	std::string day = enterDay();
 	int startTime;
@@ -119,11 +119,11 @@ void registerSchedule(ScheduleList& scheduleList) {
 
 void registerGroup(GroupList& groupList, string codCourse) {
 	std::cout << "Ingrese los datos del Grupo" << std::endl;
-	std::cout << "NCR:" << std::endl;
-	std::string NCR = enterText();
+	std::cout << "NRC:" << std::endl;
+	std::string NRC = enterText();
 	std::cout << "Nombre del profesor:" << std::endl;
 	std::string codProfessor = enterText();
-	groupList.insertAtBeginning(Group(NCR, codCourse, codProfessor));
+	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor));
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 
@@ -147,13 +147,13 @@ void registerCourse(CourseList& courseList,GroupList& groupList){
 
 void registerGroup(GroupList& groupList) {
 	std::cout << "Ingrese los datos del Grupo" << std::endl;
-	std::cout << "NCR:" << std::endl;
-	std::string NCR = enterText();
+	std::cout << "NRC:" << std::endl;
+	std::string NRC = enterText();
 	std::cout << "Codigo del curso:" << std::endl;
 	std::string codCourse = enterText();
 	std::cout << "Nombre del profesor:" << std::endl;
 	std::string codProfessor = enterText();
-	groupList.insertAtBeginning(Group(NCR, codCourse, codProfessor));
+	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor));
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 

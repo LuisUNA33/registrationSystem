@@ -4,15 +4,15 @@ Group::Group()
 {
 }
 
-Group::Group(std::string NCR, std::string codCourse, std::string professor){
-	this->NCR = NCR;
+Group::Group(std::string NRC, std::string codCourse, std::string professor){
+	this->NRC = NRC;
 	this->codCourse=codCourse;
 	this->professor = professor;
 }
 
-std::string Group::getNCR()
+std::string Group::getNRC()
 {
-	return this->NCR;
+	return this->NRC;
 }
 
 std::string Group::getCodeCourses()
@@ -25,9 +25,9 @@ std::string Group::getProfessor()
 	return this->professor;
 }
 
-void Group::setNCR(std::string NCR)
+void Group::setNRC(std::string NRC)
 {
-	this->NCR = NCR;
+	this->NRC = NRC;
 }
 
 void Group::setCodeCourse(std::string codeCourse)
@@ -41,8 +41,8 @@ void Group::setProfessor(std::string Professor)
 }
 void Group::showGroup() {
 	std::cout << "\nGrupo:" << std::endl;
-	std::cout << "NCR: ";
-	std::cout << this->NCR << std::endl;
+	std::cout << "NRC: ";
+	std::cout << this->NRC << std::endl;
 	std::cout << "Codigo de curso: ";
 	std::cout << this->codCourse << std::endl;
 	std::cout << "Profesor: ";

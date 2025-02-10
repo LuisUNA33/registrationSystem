@@ -5,17 +5,17 @@
 class Group
 {
 private:
-    std::string NCR = "";
+    std::string NRC = "";
     std::string codCourse = "";
     std::string professor = "";
 
 public:
     Group();
-    Group(std::string NCR, std::string codCourse, std::string professor);
-    std::string getNCR();
+    Group(std::string NRC, std::string codCourse, std::string professor);
+    std::string getNRC();
     std::string getCodeCourses();
     std::string getProfessor();
-    void setNCR(std::string NCR);
+    void setNRC(std::string NRC);
     void setCodeCourse(std::string codeCourse);
     void setProfessor(std::string Professor);
     void showGroup();

@@ -5,7 +5,7 @@
 
 class Schedule {
 private:
-	int code=0;
+	std::string codGroup;
 	std::string day;
 	int startTime=0;
 	int endTime=0;
@@ -15,14 +15,14 @@ public:
 	Schedule();
 	~Schedule();
 
-	Schedule(int code,std::string day, int startTime, int endTime, std::string classRoom);
-	int getCode();
+	Schedule(std::string codGroup, std::string day, int startTime, int endTime, std::string classRoom);
+	std::string getCode();
 	std::string getDay();
 	int getStartTime();
 	int getEndTime();
 	std::string getClassRoom();
 	
-	void setCode(int code);
+	void setCode(std::string codGroup);
 	void setDay(std::string day);
 	void setStartTime(int startTime);
 	void setEndTime(int endTime);
