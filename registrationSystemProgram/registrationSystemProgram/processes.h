@@ -10,7 +10,7 @@
 #include "NodeGroup.h"
 #include "NodeRequirement.h"
 #include "NodeApprovedCourse.h"
-
+#include "NodeRegistration.h"
 void about();
 //void showEnrolledStudents(RegistrationNode*& registrationList);
 //void showStudentsList(const StudentNode* studentList);
@@ -27,6 +27,7 @@ void registerCourse(CourseList& coursesList);
 void registerGroup(GroupList& groups);
 void registerRequeriment(RequirementList& requirementList);
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
+void calculatedCredits(RegistrationList& registration);
 //Schedule searchSchedule(const ScheduleNode* scheduleList);
 //void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
 //Student searchStudent(const StudentNode* studentList);

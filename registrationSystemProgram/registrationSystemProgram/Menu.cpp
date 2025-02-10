@@ -103,81 +103,81 @@ void subMenuC() {
 
 
 void subMenuD() {
-	std::cout << "Consulta:" << std::endl;
+    std::cout << "Consulta:" << std::endl;
     system("CLS");
     char option;
     while (true) {
         system("CLS");
         std::cout << "  (a)Estudiantes(Lista de estudiantes)" << std::endl;
-        std::cout << "  (b)Cursos(Lista de los cursos)"<< std::endl;
+        std::cout << "  (b)Cursos(Lista de los cursos)" << std::endl;
         std::cout << "  (c)Horarios(Lista de Horarios)" << std::endl;
         std::cout << "  (d)Estudiantes Matriculados(Todos los matriculados)" << std::endl;
         std::cout << "  (e)regresar" << std::endl;
-	    std::cout << "Selecione una opcion:" << std::endl;
-	    option = enterChar();
-	    switch (option) {
-	    case 'a':
+        std::cout << "Selecione una opcion:" << std::endl;
+        option = enterChar();
+        switch (option) {
+        case 'a':
             system("CLS");
             students.loadStudentList(students);
             students.printList();
-			system("pause");
-		    break;
-	    case 'b':
+            system("pause");
+            break;
+        case 'b':
             system("CLS");
             courses.loadCourseList(courses);
             courses.printList();
-			system("pause");
-		    break;
-	    case 'c':
+            system("pause");
+            break;
+        case 'c':
             system("CLS");
             schedules.loadScheduleList(schedules);
             schedules.printList();
-			system("pause");
-		    break;
-	    case 'd':
-		    //showEnrolledStudents(registrationList, numRegistration);
-		    break;
+            system("pause");
+            break;
+        case 'd':
+            //showEnrolledStudents(registrationList, numRegistration);
+            break;
         case 'e':
             return;
-	    default:
-		    break;
-	    }
+        default:
+            break;
+        }
     }
 }
 
 
 void menu() {
-  
-	bool exit = false;
-	while (exit == false) {
+
+    bool exit = false;
+    while (exit == false) {
         system("CLS");
-		std::cout << "\nBienvenido al sistema de registro o matricula" << std::endl;
-		std::cout << "  (a)Archivo\n" <<
-			"  (b)Mantenimiento \n" <<
-			"  (c)Matricula\n" <<
-			"  (d)Consulta\n" << std::endl;
-		std::cout << "Ingrese la opcion que desea realizar: " << std::endl;
-		char option = enterChar();
-		//char option =' ';
-		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		//std::cin >> option;
-		switch (option) {
-		case 'a':
-			exit = subMenuA();
-			break;
-		case 'b':
-			subMenuB();
-			break;
-		case 'c':
-			subMenuC();
-			break;
-		case 'd':
-			subMenuD();
-			break;
-		default:
-			break;
-		}
-	}
+        std::cout << "\nBienvenido al sistema de registro o matricula" << std::endl;
+        std::cout << "  (a)Archivo\n" <<
+            "  (b)Mantenimiento \n" <<
+            "  (c)Matricula\n" <<
+            "  (d)Consulta\n" << std::endl;
+        std::cout << "Ingrese la opcion que desea realizar: " << std::endl;
+        char option = enterChar();
+        //char option =' ';
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //std::cin >> option;
+        switch (option) {
+        case 'a':
+            exit = subMenuA();
+            break;
+        case 'b':
+            subMenuB();
+            break;
+        case 'c':
+            subMenuC();
+            break;
+        case 'd':
+            subMenuD();
+            break;
+        default:
+            break;
+        }
+    }
 
 }
 

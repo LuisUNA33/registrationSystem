@@ -9,6 +9,7 @@ class Student {
 		std::string id;
 		std::string degree;
 		std::string level;
+	
 
 	public:
 		Student();

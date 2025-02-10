@@ -65,8 +65,8 @@ void RegistrationList::writeRegistrationList() {
         string text = "";
         text += current->getData().getCode() + ";";
         text += current->getData().getCodeStudent() + ";";
-        text += current->getData().getAnio() + ";";
-		text += current->getData().getCiclo() + ";";
+        text += current->getData().getYear() + ";";
+		text += current->getData().getSemester() + ";";
         writeFile("Registrations.txt", text);
         current = current->getNext();
     }

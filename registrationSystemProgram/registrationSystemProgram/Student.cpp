@@ -8,6 +8,7 @@ Student::Student(std::string name, std::string id, std::string degree, std::stri
 	this->id = id;
 	this->degree = degree;
 	this->level = level;
+
 }
 
 std::string Student::getName() {
@@ -22,6 +23,7 @@ std::string Student::getDegree() {
 std::string Student::getLevel() {
 	return this->level;
 }
+
 
 void Student::setName(std::string name) {
 	this->name = name;
@@ -46,4 +48,5 @@ void Student::showStudent() {
 	std::cout << this->degree << std::endl;
 	std::cout << "Nivel: ";
 	std::cout << this->level << std::endl;
+
 }

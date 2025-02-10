@@ -72,8 +72,22 @@ std::string enterDay() {
 	}
 
 }
+std::string enterCarrer() {
+	std::string carrer[7] = { "Ing en sistemas", "Ing topografia", "Enseñanza de ingles", "Administracion", "Planificacion", "Ing civil", "Ing Quimica" };
+	for (int x = 0; x < 7; x++) {
+		std::cout << "(" << x + 1 << ") " << carrer[x] << std::endl;
+	}
+	while (true) {
+		std::cout << "Ingrese el numero correpondiente a la carrera: " << std::endl;
+		int num = enterNum();
+		if (num > 0 and num < 8) {
+			return carrer[num - 1];
+		}
 
-//Registar---------------------------
+	}
+
+}
+//Registrar---------------------------
 void registerStudent(StudentList& studentList){
 	std::cout << "Ingrese los datos solicitados" << std::endl;
 	std::cout << "Ingrese el nombre:" << std::endl;
@@ -81,7 +95,7 @@ void registerStudent(StudentList& studentList){
 	std::cout << "Ingrese el numero de cedula:" << std::endl;
 	std::string id = enterText();
 	std::cout << "Ingrese la carrera:" << std::endl;
-	std::string degree = enterText();
+	std::string degree = enterCarrer();
 	std::cout << "Ingrese el nivel:" << std::endl;
 	std::string level = enterText();
 	studentList.insertAtBeginning(Student(name, id, degree, level));
@@ -112,7 +126,7 @@ void registerCourse(CourseList& courseList){
 	std::cout << "Cantidad de creditos:" << std::endl;
 	int credits = enterNum();
 	std::cout << "Carrera:" << std::endl;
-	std::string carrer = enterText();
+	std::string carrer = enterCarrer();
 	courseList.insertAtBeginning(Course(code,name, credits, carrer));
 	std::cout << "Curso agregado a la lista. " << std::endl;
 }
@@ -129,14 +143,15 @@ void registerGroup(GroupList& groupList) {
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 void registerRequeriment(RequirementList& requirementList) {
-	std::cout << "Ingrese los requerimientos del curso,\nSi el requerimiento es '0' se asume que no tiene requerimiento:" << std::endl;
+	std::cout << "Ingrese los requerimientos del curso,\nSi el requerimiento es '0' se asume que no tiene requerimiento:" << std::endl; 
+	std::string carrerDefine = enterCarrer();
 	std::cout << "Codigo de curso:" << std::endl;
 	std::string codCourse = enterText();
 	std::cout << "Requerimiento_A:" << std::endl;
 	std::string requirement_A = enterText();
 	std::cout << "Requerimiento_B:" << std::endl;
 	std::string requirement_B = enterText();
-	requirementList.insertAtBeginning(Requirement(codCourse, requirement_A, requirement_B));
+	requirementList.insertAtBeginning(Requirement(carrerDefine,codCourse, requirement_A, requirement_B));
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
@@ -167,4 +182,9 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Condicion del estudiante en el curso:" << std::endl;
 	approvedCourseList.insertAtBeginning(ApprovedCourse(codStudent, codCourse,enterCondition()));
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
+}
+
+void calculatedCredits(RegistrationList& registration)
+{
+
 }

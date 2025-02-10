@@ -8,24 +8,24 @@ class Registration {
 private:
 	string code;
 	string codStudent;
-	string anio;
-	string ciclo;
+	string year;
+	string semester;
 
 public:
 	Registration();
 	~Registration();
 
-	Registration(string code,string codStudent,string anio,string ciclo);
+	Registration(string code,string codStudent,string year,string semester);
 
 	string getCode();
 	string getCodeStudent();
-	string getAnio();
-	string getCiclo();
+	string getYear();
+	string getSemester();
 
 	void setCode(string code);
 	void setCodeStudent(string codStudent);
-	void setAnio(string anio);
-	void setCiclo(string ciclo);
+	void setYear(string year);
+	void setSemester(string semester);
 
 	void showRegistration();
 };
