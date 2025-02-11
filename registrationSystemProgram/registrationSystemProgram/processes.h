@@ -27,13 +27,13 @@ std::string enterDay();
 void registerSchedule(ScheduleList& scheduleList);
 
 void registerGroup(GroupList& groupList, string codCourse);
-void registerCourse(CourseList& coursesList,GroupList& groupList);
+void registerCourse(CourseList& coursesList,GroupList& groupList, RequirementList& requirementList);
 
 void registerGroup(GroupList& groups);
 void registration(RegistrationList& registrations, StudentList students);
 void registerRequeriment(RequirementList& requirementList);
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
-void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registration,
+void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registrations,
 	StudentList students, ScheduleList schedules,
 	CourseList courses, GroupList groups,
 	RequirementList requirements, ApprovedCourseList approvedCourses);

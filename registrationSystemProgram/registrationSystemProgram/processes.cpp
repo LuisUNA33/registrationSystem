@@ -34,7 +34,7 @@ int enterNum() {
 			return num;
 		}
 		else {
-			std::cout << "Deve ingresar un numero:" << std::endl;
+			std::cout << "Debe ingresar un numero:" << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
@@ -173,7 +173,8 @@ void registerGroup(GroupList& groupList, string codCourse) {
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 
-void registerCourse(CourseList& courseList,GroupList& groupList){
+void registerCourse(CourseList& courseList,GroupList& groupList,RequirementList& requirementList) {
+	char option;
 	std::cout << "Ingrese los datos del Curso" << std::endl;
 	std::cout << "Ingrese codigo de curso: " << std::endl;
 	std::string code = enterText();
@@ -183,6 +184,13 @@ void registerCourse(CourseList& courseList,GroupList& groupList){
 	int credits = enterNum();
 	std::cout << "Carrera:" << std::endl;
 	std::string carrer = enterCarrer();
+	std::cout << "el curso tiene requerimientos?:" << std::endl;
+	std::cout << "S o N:" << std::endl;
+	std::cin >> option;
+	if (option == 'S') {
+		registerRequeriment(requirementList);
+	}
+
 	//Grupos para curso
 	registerGroup(groupList,code);
 	registerGroup(groupList, code);
@@ -209,14 +217,12 @@ void registerGroup(GroupList& groupList) {
 
 void registerRequeriment(RequirementList& requirementList) {
 	std::cout << "Ingrese los requerimientos del curso,\nSi el requerimiento es '0' se asume que no tiene requerimiento:" << std::endl; 
-	std::string carrerDefine = enterCarrer();
 	std::cout << "Codigo de curso:" << std::endl;
 	std::string codCourse = enterText();
-	std::cout << "Requerimiento_A:" << std::endl;
-	std::string requirement_A = enterText();
-	std::cout << "Requerimiento_B:" << std::endl;
-	std::string requirement_B = enterText();
-	requirementList.insertAtBeginning(Requirement(carrerDefine,codCourse, requirement_A, requirement_B));
+	std::cout << "Requerimiento:" << std::endl;
+	std::string requirements = enterText();
+
+	requirementList.insertAtBeginning(Requirement(codCourse, requirements));
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
@@ -268,13 +274,20 @@ string  enterStudent(StudentList students){
 		std::cout << "El estudiante no esta registrado." << std::endl;
 	}
 }
-string  enterCourse(CourseList courses,string carrer) {
+string  enterCourse(CourseList courses,string carrer,NodeRequirement requirement) {
 	while (true) {
 		std::cout << "Codigo del curso:" << std::endl;
 		std::string codCourse = enterText();
 		if (courses.searchingCourse(codCourse)) {
 			if(courses.getCourse(codCourse).getCarrer()==carrer){
-				return codCourse;
+				if (courses.getCourse(codCourse).getCode() == requirement.getData().getCodCourse()) {
+					std::cout << "falta de requisitos " << std::endl;
+					requirement.getData().showRequirement();
+						break;
+				}
+				else {
+					return codCourse;
+				}
 			}
 			std::cout << "El curso no pertenece a la carrera del estudiante." << std::endl;
 		}
@@ -350,7 +363,7 @@ string  enterGroup(GroupList groups, RegistrationDetailsList registrationDetails
 void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registrations,
 	StudentList students, ScheduleList schedules,
 	CourseList courses, GroupList groups,
-	RequirementList requirements, ApprovedCourseList approvedCourses){
+	RequirementList requirements, ApprovedCourseList approvedCourses) {
 
 	//Matricula
 	std::cout << "Ingrese datos de Matricula:" << std::endl;
@@ -366,7 +379,7 @@ void registerRegistration(RegistrationDetailsList& registrationDetails, Registra
 	Student student = students.getStudent(codStudent);
 	courses.printList();
 	std::cout << "Ingrese el codigo del curso:" << std::endl;
-	string codCourse = enterCourse(courses,student.getDegree());
+	string codCourse = enterCourse(courses, student.getDegree(),requirements.getRequeriments(codCourse));
 	showCourseGroups(codCourse,groups);
 	string NCR = enterGroup(groups, registrationDetails, schedules, codRegistration);
 		

@@ -62,9 +62,8 @@ void RequirementList::writeRequirementList() {
     NodeRequirement* current = head;
     while (current != nullptr) {
         string text = "";
-        text += current->getData().getCodCourse() + ";";
-        text += current->getData().getRequirement_A() + ";";
-        text += current->getData().getRequirement_B() + ";";
+        text += current->getData().getCodCourse() + "{";
+        text += current->getData().getRequirements() + "}";
         writeFile("Requirements.txt", text);
         current = current->getNext();
     }
@@ -75,19 +74,43 @@ void RequirementList::loadRequirementList(RequirementList& list) {
     int cont = 0;
     int cont2 = 0;
     int index = 0;
-    std::string textList[4];
+    std::string textList[2];
     for (int x = 0; x < text.size(); x++) {
         cont2++;
-        if (text[x] == ';') {
+        if (text[x] == ';' || text[x] == '{') {
             textList[index] = text.substr(cont, cont2 - 1);
             cont = x + 1;
             index++;
             cont2 = 0;
         }
-        if (index == 4) {
-            Requirement requirement = Requirement(textList[0], textList[1], textList[2], textList[3]);
-            list.insertAtBeginning(requirement);
-            index = 0;
+
+    }
+    if (index == 2) {
+        Requirement requirement = Requirement(textList[0], textList[1]);
+        list.insertAtBeginning(requirement);
+        index = 0;
+    }
+}
+
+bool RequirementList::searchingsRequeriments(std::string codeCourse)
+{
+    NodeRequirement* current = head;
+    while (current != nullptr) {
+        if (codeCourse == current->getData().getCodCourse()) {
+            return true;
         }
+        current = current->getNext();
+    }
+    return false;
+}
+
+Requirement RequirementList::getRequeriments(string codeCourse)
+{
+    NodeRequirement* current = head;
+    while (current != nullptr) {
+        if (codeCourse == current->getData().getCodCourse()) {
+            return current->getData();
+        }
+        current = current->getNext();
     }
 }

@@ -9,6 +9,7 @@ ApprovedCourseList approvedCourses;
 RegistrationList registrations;
 RegistrationDetailsList registrationDestails;
 
+
 void loadAllList() {
     students.loadStudentList(students);
     schedules.loadScheduleList(schedules);
@@ -83,7 +84,7 @@ void subMenuB() {
             break;
         case 'b':
             system("CLS");
-            registerCourse(courses, groups);
+            registerCourse(courses, groups,requirements);
             system("pause");
             groups.printList();
             //courses.writeCourseList();

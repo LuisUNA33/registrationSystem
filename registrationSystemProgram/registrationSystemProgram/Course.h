@@ -22,8 +22,8 @@ public:
 	std::string getCode();
 	int getCredits();
 	std::string getCarrer();
-	int getStartTime();
-	int getEndTime();
+	//int getStartTime();
+	//int getEndTime();
 	void setName(std::string name);
 	void setCode(std::string code);
 	void setCredits(int credits);

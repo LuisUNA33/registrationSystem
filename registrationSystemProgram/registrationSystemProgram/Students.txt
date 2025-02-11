@@ -1,6 +1,6 @@
-Marcos;609450900;Administracion;1;
-Juan;123456;Ing topografia;2;
-Pablo;34567;Ing topografia;3;
-Mathew;604840500;Ing topografia;1;
-Juan;10540323;Ing en sistemas;1;
 Jhon;607890157;Ing en sistemas;2;
+Juan;10540323;Ing en sistemas;1;
+Mathew;604840500;Ing topografia;1;
+Pablo;34567;Ing topografia;3;
+Juan;123456;Ing topografia;2;
+Marcos;609450900;Administracion;1;

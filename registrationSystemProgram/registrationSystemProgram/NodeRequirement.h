@@ -26,7 +26,8 @@ class NodeRequirement
         void printList();
         void writeRequirementList();
         void loadRequirementList(RequirementList& list);
-
+        bool searchingsRequeriments(std::string codeCourse);
+        Requirement getRequeriments(string codeCourse);
     };
 
 
