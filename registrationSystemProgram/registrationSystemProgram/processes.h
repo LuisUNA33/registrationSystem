@@ -20,6 +20,7 @@ void about();
 std::string enterText();
 char enterChar();
 int enterNum();
+string  enterStudent(StudentList students);
 void registerStudent(StudentList& studentList);
 void enterStartEndTime(int& startTime, int& endTime);
 std::string enterDay();
@@ -29,6 +30,7 @@ void registerGroup(GroupList& groupList, string codCourse);
 void registerCourse(CourseList& coursesList,GroupList& groupList);
 
 void registerGroup(GroupList& groups);
+void registration(RegistrationList& registrations, StudentList students);
 void registerRequeriment(RequirementList& requirementList);
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
 void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registration,

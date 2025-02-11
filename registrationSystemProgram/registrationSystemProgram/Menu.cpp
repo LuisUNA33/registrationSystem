@@ -121,7 +121,9 @@ void subMenuC() {
             system("pause");
             break;
         case 'b':
-            return;
+            registration(registrations,students);
+            system("pause");
+            break;
 
         default:
             break;

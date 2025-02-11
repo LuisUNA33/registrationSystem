@@ -232,6 +232,20 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 }
 
+void registration(RegistrationList& registrations,StudentList students) {
+	//Matricula
+	std::cout << "Ingrese datos de Matricula:" << std::endl;
+	string codStudent = enterStudent(students);
+	std::cout << "Ingrese el codigo de matricula:" << std::endl;
+	string codRegistration = enterText();
+	std::cout << "Ingrese el año cursado:" << std::endl;
+	string codYear = enterText();
+	std::cout << "Ingrese el semestre:" << std::endl;
+	string codSemester = enterText();
+	Registration newRegistration = Registration(codRegistration, codStudent, codYear, codSemester);
+	registrations.insertAtBeginning(newRegistration);
+	std::cout << "Matricula Agregada. " << std::endl;
+}
 //registro de matricula
 
 void showCourseGroups(std::string codCourse, GroupList groups){
@@ -309,6 +323,7 @@ bool validationGroup(RegistrationDetailsList registrationDetails,GroupList group
 			}
 			else {
 				cout << "Grupo ya matriculado" << endl;
+				return false;
 			}
 		}
 		current = current->getNext();
