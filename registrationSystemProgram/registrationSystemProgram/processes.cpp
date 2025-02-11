@@ -332,44 +332,39 @@ string  enterGroup(GroupList groups, RegistrationDetailsList registrationDetails
 	}
 }
 
-void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registration,
+void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registrations,
 	StudentList students, ScheduleList schedules,
 	CourseList courses, GroupList groups,
-	RequirementList requirements, ApprovedCourseList approvedCourses,
-	RegistrationList registrations){
+	RequirementList requirements, ApprovedCourseList approvedCourses){
 
-	while (true) {
-		//Matricula
-		std::cout << "Ingrese datos de Matricula:" << std::endl;
-		string codStudent = enterStudent(students);
-		std::cout << "Ingrese el codigo de matricula:" << std::endl;
-		string codRegistration = enterText();
-		std::cout << "Ingrese el año cursado:" << std::endl;
-		string codYear = enterText();
-		std::cout << "Ingrese el semestre:" << std::endl;
-		string codSemester = enterText();
+	//Matricula
+	std::cout << "Ingrese datos de Matricula:" << std::endl;
+	string codStudent = enterStudent(students);
+	std::cout << "Ingrese el codigo de matricula:" << std::endl;
+	string codRegistration = enterText();
+	std::cout << "Ingrese el año cursado:" << std::endl;
+	string codYear = enterText();
+	std::cout << "Ingrese el semestre:" << std::endl;
+	string codSemester = enterText();
 
-		//Detalle de matricula
-		Student student = students.getStudent(codStudent);
-		courses.printList();
-		std::cout << "Ingrese el codigo del curso:" << std::endl;
-		string codCourse = enterCourse(courses,student.getDegree());
-		showCourseGroups(codCourse,groups);
-		string NCR = enterGroup(groups, registrationDetails, schedules, codRegistration);
+	//Detalle de matricula
+	Student student = students.getStudent(codStudent);
+	courses.printList();
+	std::cout << "Ingrese el codigo del curso:" << std::endl;
+	string codCourse = enterCourse(courses,student.getDegree());
+	showCourseGroups(codCourse,groups);
+	string NCR = enterGroup(groups, registrationDetails, schedules, codRegistration);
 		
-		//
-		Registration newRegistration =Registration(codRegistration,codStudent,codYear,codSemester) ;
-		registrations.insertAtBeginning(newRegistration);
-		RegistrationDetails newRegistrationDetail = RegistrationDetails(codRegistration,NCR,0,0);
-		registrationDetails.insertAtBeginning(newRegistrationDetail);
-		int credits = 0;
-		float cost = 0.0;
-		registrationDetails.getCreditsTotal(credits,cost,codRegistration,groups,courses);
-		cout << "creditos totales del Estudiante Matriculado: " << credits << endl;
-		cout << "costo total de la matricula del Estudiante Matriculado: " << credits << endl;
-
-	}
-
+	//
+	Registration newRegistration =Registration(codRegistration,codStudent,codYear,codSemester) ;
+	registrations.insertAtBeginning(newRegistration);
+	RegistrationDetails newRegistrationDetail = RegistrationDetails(codRegistration,NCR,12500.15,0);
+	registrationDetails.insertAtBeginning(newRegistrationDetail);
+	int credits = 0;
+	float cost = 0.0;
+	registrationDetails.getCreditsTotal(credits,cost,codRegistration,groups,courses);
+	cout << "creditos totales del Estudiante Matriculado: " << credits << endl;
+	cout << "costo total de la matricula del Estudiante Matriculado: " << cost << endl;
 }
 
 //Show

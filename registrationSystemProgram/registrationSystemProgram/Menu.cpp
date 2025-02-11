@@ -117,7 +117,9 @@ void subMenuC() {
         case 'a':
             registerRegistration(registrationDestails,registrations,
                 students,schedules,courses,groups,requirements,
-                approvedCourses,registrations);
+                approvedCourses);
+            system("pause");
+            break;
         case 'b':
             return;
 

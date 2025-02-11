@@ -34,8 +34,7 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList);
 void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registration,
 	StudentList students, ScheduleList schedules,
 	CourseList courses, GroupList groups,
-	RequirementList requirements, ApprovedCourseList approvedCourses,
-	RegistrationList registrations);
+	RequirementList requirements, ApprovedCourseList approvedCourses);
 void ShowCoursesGroup(CourseList courses, GroupList groups);
 //Schedule searchSchedule(const ScheduleNode* scheduleList);
 //void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);

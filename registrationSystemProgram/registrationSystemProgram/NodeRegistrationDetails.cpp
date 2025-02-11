@@ -110,8 +110,9 @@ void RegistrationDetailsList::getCreditsTotal(int& credits, float& cost, std::st
                     NodeCourse* currentC = courses.getHead();
                     while (currentC != nullptr) {
                         if (currentC->getData().getCode() == currentG->getData().getCodeCourses()) {
-                            cost += currentC->getData().getCredits() * current->getData().getCost();
                             credits += currentC->getData().getCredits();
+                            cost = credits * current->getData().getCost();
+                            
                         }
                         currentC = currentC->getNext();
                     }

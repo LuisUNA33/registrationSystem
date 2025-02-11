@@ -127,17 +127,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ApprovedCourse.cpp" />
+    <ClCompile Include="Course.cpp" />
+    <ClCompile Include="Files.cpp" />
+    <ClCompile Include="Group.cpp" />
+    <ClCompile Include="loadPreRecords.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="NodeApprovedCourse.cpp" />
+    <ClCompile Include="NodeCourse.cpp" />
+    <ClCompile Include="NodeGroup.cpp" />
+    <ClCompile Include="NodeRegistration.cpp" />
+    <ClCompile Include="NodeRegistrationDetails.cpp" />
+    <ClCompile Include="NodeRequirement.cpp" />
+    <ClCompile Include="NodeSchedule.cpp" />
+    <ClCompile Include="NodeStudent.cpp" />
+    <ClCompile Include="processes.cpp" />
+    <ClCompile Include="Registration.cpp" />
+    <ClCompile Include="registrationDetails.cpp" />
     <ClCompile Include="registrationSystemProgram.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Requirement.cpp" />
+    <ClCompile Include="Schedule.cpp" />
+    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ApprovedCourse.h" />
     <ClInclude Include="Course.h" />
+    <ClInclude Include="Files.h" />
+    <ClInclude Include="Group.h" />
     <ClInclude Include="loadPreRecords.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MethodStatement.h" />
+    <ClInclude Include="NodeApprovedCourse.h" />
+    <ClInclude Include="NodeCourse.h" />
+    <ClInclude Include="NodeGroup.h" />
+    <ClInclude Include="NodeRegistration.h" />
+    <ClInclude Include="NodeRegistrationDetails.h" />
+    <ClInclude Include="NodeRequirement.h" />
+    <ClInclude Include="NodeSchedule.h" />
+    <ClInclude Include="NodeStudent.h" />
     <ClInclude Include="processes.h" />
     <ClInclude Include="Registration.h" />
+    <ClInclude Include="registrationDetails.h" />
+    <ClInclude Include="Requirement.h" />
     <ClInclude Include="Schedule.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
