@@ -3,7 +3,7 @@
 
 void about() {
 	std::cout << "***	Sistema de registro de matricula estudiantil	***\n" <<
-		"Author: Luis Sanchez, Mathew Ramirez, John Perez \n" <<
+		"Authors: Luis Sanchez, Mathew Ramirez, John Perez \n" <<
 		"Version del Programa: v2.0\n" <<
 		"Incio de desarrollo: 18/12/2024\n" <<
 		"Fecha de Ultima actualizacion: 18/01/2025\n" <<
