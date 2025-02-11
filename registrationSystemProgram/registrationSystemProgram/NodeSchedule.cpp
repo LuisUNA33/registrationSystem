@@ -27,6 +27,11 @@ ScheduleList::ScheduleList() {
     this->head = nullptr;
 }
 
+NodeSchedule* ScheduleList::getHead()
+{
+    return this->head;
+}
+
 void ScheduleList::deleteNode(NodeSchedule nodoPrev) {
     NodeSchedule* newNext = nodoPrev.getNext()->getNext();
     nodoPrev.setNext(newNext);
@@ -63,6 +68,7 @@ void ScheduleList::writeScheduleList() {
 	NodeSchedule* current = head;
 	while (current != nullptr) {
         string text = "";
+        text += current->getData().getCodSchedule() + ";";
 		text += current->getData().getCode() + ";";
 		text += current->getData().getDay() + ";";
 		text += to_string(current->getData().getStartTime()) + ";";
@@ -78,7 +84,7 @@ void ScheduleList::loadScheduleList(ScheduleList& list) {
     int cont = 0;
     int cont2 = 0;
     int index = 0;
-    std::string textList[5];
+    std::string textList[6];
     for (int x = 0; x < text.size(); x++) {
         cont2++;
         if (text[x] == ';') {
@@ -87,8 +93,8 @@ void ScheduleList::loadScheduleList(ScheduleList& list) {
             index++;
             cont2 = 0;
         }
-        if (index == 5) {
-            Schedule schedule = Schedule(std::string(textList[0]), textList[1], std::stoi(textList[2]), std::stoi(textList[3]), textList[4]);
+        if (index == 6) {
+            Schedule schedule = Schedule(textList[0], std::string(textList[1]), textList[2], std::stoi(textList[3]), std::stoi(textList[4]), textList[5]);
             list.insertAtBeginning(schedule);
             index = 0;
         }

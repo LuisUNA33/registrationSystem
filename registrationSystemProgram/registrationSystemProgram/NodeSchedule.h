@@ -19,11 +19,13 @@ private:
     NodeSchedule* head;
 public:
     ScheduleList();
+    NodeSchedule* getHead();
     void deleteNode(NodeSchedule nodoPrev);
     void insertAtBeginning(Schedule data);
     void insertAtEnd(NodeSchedule* newNode);
     void printList();
 	void writeScheduleList();
 	void loadScheduleList(ScheduleList& list);
+    //Schedule searchingSchedule(string NRC){}
 };
 

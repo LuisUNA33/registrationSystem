@@ -27,5 +27,8 @@ public:
     void writeGroupList();
     void loadGroupList(GroupList& list);
 
+    bool searchingGroup(std::string codCourse);
+    Group getGroup(std::string codGroup);
+
 };
 

@@ -1,1 +1,1 @@
-2025;Martes;8;12;A113;
+Horario1;F01;Lunes;1;2;Aula2;

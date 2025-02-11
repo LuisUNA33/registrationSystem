@@ -99,3 +99,24 @@ void CourseList::loadCourseList(CourseList& list) {
         }
     }
 }
+
+bool CourseList::searchingCourse(std::string codCourse){
+    NodeCourse* current = head;
+    while (current != nullptr) {
+        if (codCourse == current->getData().getCode()) {
+            return true;
+        }
+        current = current->getNext();
+    }
+    return false;
+}
+
+Course CourseList::getCourse(std::string codCourse) {
+    NodeCourse* current = head;
+    while (current != nullptr) {
+        if (codCourse == current->getData().getCode()) {
+            return current->getData();
+        }
+        current = current->getNext();
+    }
+}

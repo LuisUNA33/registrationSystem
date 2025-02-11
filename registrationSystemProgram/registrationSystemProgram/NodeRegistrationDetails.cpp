@@ -27,6 +27,11 @@ RegistrationDetailsList::RegistrationDetailsList() {
     this->head = nullptr;
 }
 
+NodeRegistrationDetails* RegistrationDetailsList::getHead()
+{
+    return this->head;
+}
+
 void RegistrationDetailsList::deleteNode(NodeRegistrationDetails nodoPrev) {
     NodeRegistrationDetails* newNext = nodoPrev.getNext()->getNext();
     nodoPrev.setNext(newNext);

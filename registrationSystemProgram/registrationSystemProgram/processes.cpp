@@ -144,8 +144,10 @@ void registerStudent(StudentList& studentList){
 
 void registerSchedule(ScheduleList& scheduleList) {
 	std::cout << "Ingrese los datos del Horario" << std::endl;
-	std::cout << "Ingrese codigo de horario: " << std::endl;
-	std::string code = enterText();
+	std::cout << "Ingrese codigo de Horario: " << std::endl;
+	string codSchedule = enterText();
+	std::cout << "Ingrese codigo de Curso: " << std::endl;
+	std::string codCourse = enterText();
 	std::cout << "Dia:" << std::endl;
 	std::string day = enterDay();
 	int startTime;
@@ -153,7 +155,7 @@ void registerSchedule(ScheduleList& scheduleList) {
 	enterStartEndTime(startTime, endTime);
 	std::cout << "Salon de clase:" << std::endl;
 	std::string classRoom = enterText();
-	scheduleList.insertAtBeginning(Schedule(code, day, startTime, endTime, classRoom));
+	scheduleList.insertAtBeginning(Schedule(codSchedule,codCourse, day, startTime, endTime, classRoom));
 	std::cout << "Horario agregado a la lista. " << std::endl;
 }
 
@@ -163,7 +165,11 @@ void registerGroup(GroupList& groupList, string codCourse) {
 	std::string NRC = enterText();
 	std::cout << "Nombre del profesor:" << std::endl;
 	std::string codProfessor = enterText();
-	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor));
+	std::cout << "Codigo de Horario_A:" << std::endl;
+	std::string codSchedule_A = enterText();
+	std::cout << "Codigo de Horario_B:" << std::endl;
+	std::string codSchedule_B = enterText();
+	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor, codSchedule_A,codSchedule_B));
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 
@@ -193,7 +199,11 @@ void registerGroup(GroupList& groupList) {
 	std::string codCourse = enterText();
 	std::cout << "Nombre del profesor:" << std::endl;
 	std::string codProfessor = enterText();
-	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor));
+	std::cout << "Codigo de Horario_A:" << std::endl;
+	std::string codSchedule_A = enterText();
+	std::cout << "Codigo de Horario_B:" << std::endl;
+	std::string codSchedule_B = enterText();
+	groupList.insertAtBeginning(Group(NRC, codCourse, codProfessor, codSchedule_A, codSchedule_B));
 	std::cout << "Grupo agregado a la lista. " << std::endl;
 }
 
@@ -222,35 +232,118 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 }
 
-
-
 //registro de matricula
-void registerRegistration(RegistrationList& registration, StudentList students,
-							ScheduleList schedules, CourseList courses, 
-							GroupList groups, RequirementList requirements, 
-							ApprovedCourseList approvedCourses, RegistrationList registrations)
-{
-	while (true) {
-		std::cout << "Ingrese datos de Matricula:" << std::endl;
-		std::cout << "ID del estdudiante:" << std::endl;
-		std::string codStudent = enterText();
-		students.searchingStudent(codStudent);
-		if (students.searchingStudent(codStudent) == true) {
-			
-			std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
-		}
-		std::cout << "Codigo del curso:" << std::endl;
-		std::string codCourse = enterText();
-		if (!students.searchingStudent(codStudent)) {
-			break;
-	    }
-		else {
-			std::cout << "Estudiante no encontrado " << std::endl;
-			break;
-		}
-	}
-
-}
+//
+//void showCourseGroups(std::string codCourse, GroupList groups){
+//	NodeGroup* currentG = groups.getHead();
+//	while (currentG != nullptr) {
+//		if (currentG->getData().getCodeCourses() == codCourse) {
+//			currentG->getData().showGroup();
+//		}
+//		currentG = currentG->getNext();
+//	}
+//}
+//
+//string  enterStudent(StudentList students){
+//	while (true) {
+//		std::cout << "ID del estdudiante." << std::endl;
+//		std::string codStudent = enterText();
+//		if (students.searchingStudent(codStudent)) {
+//			return codStudent;
+//		}
+//		std::cout << "El estudiante no esta registrado." << std::endl;
+//	}
+//}
+//string  enterCourse(CourseList courses,string carrer) {
+//	while (true) {
+//		std::cout << "Codigo del curso:" << std::endl;
+//		std::string codCourse = enterText();
+//		if (courses.searchingCourse(codCourse)) {
+//			if(courses.getCourse(codCourse).getCarrer()==carrer){
+//				return codCourse;
+//			}
+//			std::cout << "El curso no pertenece a la carrera del estudiante." << std::endl;
+//		}
+//		std::cout << "El curso no esta registrado." << std::endl;
+//	}
+//}
+//
+//bool conflictSchedule(Schedule schedule,Schedule newSchedule){
+//	return false;
+//}
+//
+//
+//bool validationGroup(RegistrationDetailsList registrationDetails,ScheduleList schedules,
+//	string codRegistraion,string NRC) {
+//	NodeRegistrationDetails* current = registrationDetails.getHead();
+//	while (current != nullptr) {
+//		if (current->getData().getRegistrationCode() == codRegistraion) {
+//			if (current->getData().getCodeGroup()!= NRC){
+//				NodeSchedule* currentS = schedules.getHead();
+//				while (currentS != nullptr) {
+//					if (currentS->getData().getCode() == current->getData().getCodeGroup()){
+//						Schedule newSchedule = schedules.searchingSchedule(NRC);
+//						if (conflictSchedule(currentS->getData(),newSchedule)==false){
+//							return true;
+//						}
+//						cout << "conflito de horarios" << endl;
+//					}
+//					currentS = currentS->getNext();
+//				}
+//			}
+//			else {
+//				cout << "Grupo ya matriculado" << endl;
+//			}
+//		}
+//		current = current->getNext();
+//	}
+//	current = current->getNext();
+//
+//
+//}
+//
+//string  enterGroup(GroupList groups, RegistrationDetailsList registrationDetails, ScheduleList schedules,
+//	string codRegistraion) {
+//	while (true) {
+//		std::cout << "Ingrese el NRC:" << std::endl;
+//		std::string NRC = enterText();
+//		if (groups.searchingGroup(NRC)) {
+//			if(validationGroup(registrationDetails,schedules,codRegistraion,NRC))
+//			return NRC;
+//		}
+//		std::cout << "El grupo no esta registrado." << std::endl;
+//	}
+//}
+//
+//void registerRegistration(RegistrationDetailsList& registrationDetails, RegistrationList& registration,
+//	StudentList students, ScheduleList schedules,
+//	CourseList courses, GroupList groups,
+//	RequirementList requirements, ApprovedCourseList approvedCourses,
+//	RegistrationList registrations){
+//
+//	while (true) {
+//		//Matricula
+//		std::cout << "Ingrese datos de Matricula:" << std::endl;
+//		string codStudent = enterStudent(students);
+//		std::cout << "Ingrese el codigo de matricula:" << std::endl;
+//		string codMatricula = enterText();
+//		std::cout << "Ingrese el año cursado:" << std::endl;
+//		string codYear = enterText();
+//		std::cout << "Ingrese el semestre:" << std::endl;
+//		string codSemester = enterText();
+//
+//		//Detalle de matricula
+//		Student student = students.getStudent(codStudent);
+//		courses.printList();
+//		std::cout << "Ingrese el codigo del curso:" << std::endl;
+//		string codCourse = enterCourse(courses,student.getDegree());
+//		showCourseGroups(codCourse,groups);
+//		string NCR = enterGroup(groups);
+//
+//		
+//	}
+//
+//}
 
 //Show
 void ShowCoursesGroup(CourseList courses,GroupList groups){

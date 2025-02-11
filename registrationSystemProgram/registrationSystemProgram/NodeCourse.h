@@ -26,5 +26,7 @@ public:
     void printList();
 	void writeCourseList();
 	void loadCourseList(CourseList& list);
+    bool searchingCourse(std::string codCourse);
+    Course getCourse(std::string codCourse);
 };
 
