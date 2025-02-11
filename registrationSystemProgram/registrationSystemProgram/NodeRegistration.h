@@ -19,6 +19,7 @@ private:
     NodeRegistration* head;
 public:
     RegistrationList();
+    NodeRegistration* getHead();
     void deleteNode(NodeRegistration nodoPrev);
     void insertAtBeginning(Registration data);
     void insertAtEnd(NodeRegistration* newNode);

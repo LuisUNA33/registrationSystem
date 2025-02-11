@@ -36,6 +36,7 @@ void registerRegistration(RegistrationDetailsList& registrationDetails, Registra
 	CourseList courses, GroupList groups,
 	RequirementList requirements, ApprovedCourseList approvedCourses);
 void ShowCoursesGroup(CourseList courses, GroupList groups);
+void showRegistration(RegistrationList registrations, RegistrationDetailsList registrationDestails);
 //Schedule searchSchedule(const ScheduleNode* scheduleList);
 //void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
 //Student searchStudent(const StudentNode* studentList);

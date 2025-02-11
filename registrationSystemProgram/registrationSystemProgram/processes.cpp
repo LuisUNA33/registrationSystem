@@ -385,3 +385,19 @@ void ShowCoursesGroup(CourseList courses,GroupList groups){
 
 
 }
+
+void showRegistration(RegistrationList registrations, RegistrationDetailsList registrationDestails) {
+	NodeRegistration* current = registrations.getHead();
+	while (current != nullptr) {
+		NodeRegistrationDetails* currentD = registrationDestails.getHead();
+		current->getData().showRegistration();
+		while (currentD != nullptr) {
+			if (current->getData().getCode() == currentD->getData().getRegistrationCode()) {
+				currentD->getData().showRegistrationDetails();
+			}
+			currentD = currentD->getNext();
+		}
+
+		current = current->getNext();
+	}
+}

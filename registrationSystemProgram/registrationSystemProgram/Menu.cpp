@@ -165,7 +165,8 @@ void subMenuD() {
             system("pause");
             break;
         case 'd':
-            //showEnrolledStudents(registrationList, numRegistration);
+            showRegistration(registrations,registrationDestails);
+            system("pause");
             break;
         case 'e':
             return;

@@ -27,6 +27,11 @@ RegistrationList::RegistrationList() {
     this->head = nullptr;
 }
 
+NodeRegistration* RegistrationList::getHead()
+{
+    return head;
+}
+
 void RegistrationList::deleteNode(NodeRegistration nodoPrev) {
     NodeRegistration* newNext = nodoPrev.getNext()->getNext();
     nodoPrev.setNext(newNext);
@@ -93,5 +98,3 @@ void RegistrationList::loadRegistrationList(RegistrationList& list) {
         }
     }
 }
-
-
