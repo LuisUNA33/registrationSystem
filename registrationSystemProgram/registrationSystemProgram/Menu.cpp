@@ -108,15 +108,16 @@ void subMenuC() {
     char option;
     do {
         std::cout << "Matricula:" << std::endl;
-        std::cout << "  (a)Registro de matricula" << std::endl;
-        std::cout << "  (b)Registro de matricula" << std::endl;
+        std::cout << "  (a)Registro de matricula Completa" << std::endl;
+        std::cout << "  (b)Registro de matricula(matricula sin cursos)" << std::endl;
         std::cout << "  (c) regresar " << std::endl;
         std::cout << "Selecione una opcion:" << std::endl;
         option = enterChar();
         switch (option) {
         case 'a':
-            //addRegistration(registrationList, numRegistration,
-            //    studentList, numStudents, courseList, numCourse, scheduleList, numSchedules);
+            registerRegistration(registrationDestails,registrations,
+                students,schedules,courses,groups,requirements,
+                approvedCourses,registrations);
         case 'b':
             return;
 

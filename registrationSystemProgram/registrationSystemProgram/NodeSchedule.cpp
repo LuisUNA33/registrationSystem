@@ -100,3 +100,13 @@ void ScheduleList::loadScheduleList(ScheduleList& list) {
         }
     }
 }
+
+Schedule ScheduleList::searchingSchedule(string codSchedule){
+    NodeSchedule* current = head;
+    while (current != nullptr) {
+        if (current->getData().getCodSchedule() == codSchedule) {
+            return current->getData();
+        }
+        current = current->getNext();
+    }
+}

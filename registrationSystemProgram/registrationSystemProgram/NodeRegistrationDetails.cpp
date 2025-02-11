@@ -1,17 +1,18 @@
 #include "NodeRegistrationDetails.h"
 
-NodeRegistrationDetails::NodeRegistrationDetails(registrationDetails data) {
+
+NodeRegistrationDetails::NodeRegistrationDetails(RegistrationDetails data) {
     this->data = data;
     this->next = nullptr;
 }
 
 NodeRegistrationDetails::~NodeRegistrationDetails() {}
 
-registrationDetails NodeRegistrationDetails::getData() {
+RegistrationDetails NodeRegistrationDetails::getData() {
     return this->data;
 }
 
-void NodeRegistrationDetails::setData(registrationDetails data) {
+void NodeRegistrationDetails::setData(RegistrationDetails data) {
     this->data = data;
 }
 
@@ -37,7 +38,7 @@ void RegistrationDetailsList::deleteNode(NodeRegistrationDetails nodoPrev) {
     nodoPrev.setNext(newNext);
 }
 
-void RegistrationDetailsList::insertAtBeginning(registrationDetails data) {
+void RegistrationDetailsList::insertAtBeginning(RegistrationDetails data) {
     NodeRegistrationDetails* newNode = new NodeRegistrationDetails(data);
     newNode->setNext(head);
     head = newNode;
@@ -92,9 +93,32 @@ void RegistrationDetailsList::loadRegistrationDetailsList(RegistrationDetailsLis
             cont2 = 0;
         }
         if (index == 4) {
-            registrationDetails regDetails = registrationDetails(textList[0], textList[1], std::stof(textList[2]), std::stof(textList[3]));
+            RegistrationDetails regDetails = RegistrationDetails(textList[0], textList[1], std::stof(textList[2]), std::stof(textList[3]));
             list.insertAtBeginning(regDetails);
             index = 0;
         }
+    }
+}
+
+void RegistrationDetailsList::getCreditsTotal(int& credits, float& cost, std::string codRegister, GroupList groups, CourseList courses) {
+    NodeRegistrationDetails* current = head;
+    while (current != nullptr) {
+        if (current->getData().getRegistrationCode() == codRegister) {
+            NodeGroup* currentG = groups.getHead();
+            while (currentG != nullptr) {
+                if (currentG->getData().getNRC() == current->getData().getCodeGroup()){
+                    NodeCourse* currentC = courses.getHead();
+                    while (currentC != nullptr) {
+                        if (currentC->getData().getCode() == currentG->getData().getCodeCourses()) {
+                            cost += currentC->getData().getCredits() * current->getData().getCost();
+                            credits += currentC->getData().getCredits();
+                        }
+                        currentC = currentC->getNext();
+                    }
+                }
+                currentG = currentG->getNext();
+            }
+        }
+        current = current->getNext();
     }
 }

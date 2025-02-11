@@ -3,6 +3,8 @@
 #include <string>
 
 #include "registrationDetails.h"
+#include "NodeGroup.h"
+#include "NodeCourse.h"
 #include "Files.h"
 
 using namespace std;
@@ -10,14 +12,14 @@ using namespace std;
 class NodeRegistrationDetails
 {
 private:
-	registrationDetails data;
+	RegistrationDetails data;
 	NodeRegistrationDetails* next;
 
 public:
-	NodeRegistrationDetails(registrationDetails data);
+	NodeRegistrationDetails(RegistrationDetails data);
 	~NodeRegistrationDetails();
-	registrationDetails getData();
-	void setData(registrationDetails data);
+	RegistrationDetails getData();
+	void setData(RegistrationDetails data);
 	NodeRegistrationDetails* getNext();
 	void setNext(NodeRegistrationDetails* next);
 };
@@ -30,9 +32,12 @@ public:
 	RegistrationDetailsList();
 	NodeRegistrationDetails* getHead();
 	void deleteNode(NodeRegistrationDetails nodoPrev);
-	void insertAtBeginning(registrationDetails data);
+	void insertAtBeginning(RegistrationDetails data);
 	void insertAtEnd(NodeRegistrationDetails* newNode);
 	void printList();
 	void writeRegistrationDetailsList();
 	void loadRegistrationDetailsList(RegistrationDetailsList& list);
+
+	void getCreditsTotal(int& credits, float& cost, std::string codRegister, GroupList groups, CourseList courses);
+	
 };

@@ -26,6 +26,6 @@ public:
     void printList();
 	void writeScheduleList();
 	void loadScheduleList(ScheduleList& list);
-    //Schedule searchingSchedule(string NRC){}
+    Schedule searchingSchedule(string NRC);
 };
 

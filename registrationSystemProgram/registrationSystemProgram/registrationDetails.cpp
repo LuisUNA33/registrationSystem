@@ -1,47 +1,47 @@
 #include "registrationDetails.h"
 
-registrationDetails::registrationDetails() {}
+RegistrationDetails::RegistrationDetails(){}
 
-registrationDetails::registrationDetails(string registrationCode, string codeGroup, float cost, float score) {
+RegistrationDetails::RegistrationDetails(string registrationCode, string codeGroup, float cost, float score) {
 	this->registrationCode = registrationCode;
 	this->codeGroup = codeGroup;
 	this->cost = cost;
 	this->score = score;
 }
 
-string registrationDetails::getRegistrationCode() {
+string RegistrationDetails::getRegistrationCode() {
 	return this->registrationCode;
 }
 
-string registrationDetails::getCodeGroup() {
+string RegistrationDetails::getCodeGroup() {
 	return this->codeGroup;
 }
 
-float registrationDetails::getCost() {
+float RegistrationDetails::getCost() {
 	return this->cost;
 }
 
-float registrationDetails::getScore() {
+float RegistrationDetails::getScore() {
 	return this->score;
 }
 
-void registrationDetails::setRegistrationCode(string registrationCode) {
+void RegistrationDetails::setRegistrationCode(string registrationCode) {
 	this->registrationCode = registrationCode;
 }
 
-void registrationDetails::setCodeGroup(string codeGroup) {
+void RegistrationDetails::setCodeGroup(string codeGroup) {
 	this->codeGroup = codeGroup;
 }
 
-void registrationDetails::setCost(float cost) {
+void RegistrationDetails::setCost(float cost) {
 	this->cost = cost;
 }
 
-void registrationDetails::setScore(float score) {
+void RegistrationDetails::setScore(float score) {
 	this->score = score;
 }
 
-void registrationDetails::showRegistrationDetails() {
+void RegistrationDetails::showRegistrationDetails() {
 	std::cout << "\nDetalles de la matricula: " << std::endl;
 	std::cout << "Codigo de matricula: ";
 	std::cout << this->registrationCode << std::endl;

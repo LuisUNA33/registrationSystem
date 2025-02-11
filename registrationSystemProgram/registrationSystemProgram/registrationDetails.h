@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class registrationDetails
+class RegistrationDetails
 {
 private:
 	string registrationCode;
@@ -13,8 +13,8 @@ private:
 	float score;
 
 public:
-	registrationDetails();
-	registrationDetails(string registrationCode, string codeGroup, float cost, float score);
+	RegistrationDetails();
+	RegistrationDetails(string registrationCode, string codeGroup, float cost, float score);
 	string getRegistrationCode();
 	string getCodeGroup();
 	float getCost();

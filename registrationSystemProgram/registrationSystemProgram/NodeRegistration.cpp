@@ -93,3 +93,5 @@ void RegistrationList::loadRegistrationList(RegistrationList& list) {
         }
     }
 }
+
+
