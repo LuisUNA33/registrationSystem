@@ -1,3 +1,4 @@
-P01;Programacion;4;Ing;
+T01;Terrenos;4;Ing topografia;
 F01;Fundamnetos;2;Ing Sistemas;
-4422;biologia;4;Ing topografia;
+P01;Programacion;4;Ing;
+MAT01;Matematica;4;Ing topografia;
