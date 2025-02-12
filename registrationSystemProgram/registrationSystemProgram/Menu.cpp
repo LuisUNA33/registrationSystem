@@ -14,7 +14,7 @@ void loadAllList() {
     students.loadStudentList(students);
     schedules.loadScheduleList(schedules);
     courses.loadCourseList(courses);
-    groups.loadGroupList(groups);
+    groups.loadGroupList(groups,schedules);
     requirements.loadRequirementList(requirements);
     approvedCourses.loadApprovedCourseList(approvedCourses);
     registrations.loadRegistrationList(registrations);
@@ -113,9 +113,9 @@ void subMenuC() {
         option = enterChar();
         switch (option) {
         case 'a':
-            registerRegistration(registrationDestails,registrations,
+            /*registerRegistration(registrationDestails,registrations,
                 students,schedules,courses,groups,requirements,
-                approvedCourses);
+                approvedCourses);*/
             system("pause");
             break;
         case 'b':
@@ -140,8 +140,9 @@ void subMenuD() {
         std::cout << "  (a)Estudiantes (Lista de estudiantes)" << std::endl;
         std::cout << "  (b)Cursos (Lista de los cursos)" << std::endl;
         std::cout << "  (c)Horarios (Lista de Horarios)" << std::endl;
-        std::cout << "  (d)Estudiantes Matriculados (Todos los matriculados)" << std::endl;
-        std::cout << "  (e)Regresar" << std::endl;
+        std::cout << "  (d)Grupos" << std::endl;
+        std::cout << "  (e)Estudiantes Matriculados (Todos los matriculados)" << std::endl;
+        std::cout << "  (f)Regresar" << std::endl;
         std::cout << "Selecione una opcion:" << std::endl;
         option = enterChar();
         switch (option) {
@@ -161,10 +162,14 @@ void subMenuD() {
             system("pause");
             break;
         case 'd':
-            showRegistration(registrations,registrationDestails);
+            groups.printList();
             system("pause");
             break;
         case 'e':
+            showRegistration(registrations, registrationDestails);
+            system("pause");
+            break;
+        case 'f':
             return;
         default:
             break;

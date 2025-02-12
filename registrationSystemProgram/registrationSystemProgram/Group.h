@@ -9,22 +9,18 @@ private:
     std::string NRC = "";
     std::string codCourse = "";
     std::string professor = "";
-    std::string schedule_A = "";
-    std::string schedule_B ="";
+    ScheduleList listS;
 
 public:
     Group();
-    Group(std::string NRC, std::string codCourse, std::string professor,string schedule_A,string schedule_B);
+    Group(std::string NRC, std::string codCourse, std::string professor, ScheduleList listS);
     std::string getNRC();
     std::string getCodeCourses();
     std::string getProfessor();
-    string  getSchedule_A();
-    string  getSchedule_B();
+    ScheduleList getSchedule();
     void setNRC(std::string NRC);
     void setCodeCourse(std::string codeCourse);
     void setProfessor(std::string Professor);
-    void setSchedule_A(string schedule_A);
-    void setSchedule_B(string schedule_B);
     void showGroup();
 
 };

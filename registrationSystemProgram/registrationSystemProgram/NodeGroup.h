@@ -25,7 +25,8 @@ public:
     void insertAtEnd(NodeGroup* newNode);
     void printList();
     void writeGroupList();
-    void loadGroupList(GroupList& list);
+    //void loadGroupList(GroupList& list);
+    void loadGroupList(GroupList& groupList, ScheduleList schedulelist);
 
     bool searchingGroup(std::string codCourse);
     Group getGroup(std::string codGroup);

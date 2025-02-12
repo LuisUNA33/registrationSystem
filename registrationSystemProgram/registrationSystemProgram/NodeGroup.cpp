@@ -71,33 +71,69 @@ void GroupList::writeGroupList() {
         text += current->getData().getNRC() + ";";
         text += current->getData().getCodeCourses() + ";";
         text += current->getData().getProfessor() + ";";
-        text += current->getData().getSchedule_A() + ";";
-        text += current->getData().getSchedule_B() + ";";
+        NodeSchedule* currentS = current->getData().getSchedule().getHead();
+        text += "[";
+        while (currentS != nullptr) {
+            text += currentS->getData().getCodSchedule()+";";
+            currentS = currentS->getNext();
+        }
+        text += "]";
         writeFile("Groups.txt", text);
         current = current->getNext();
     }
 }
 
-void GroupList::loadGroupList(GroupList& list) {
-    std::string text = readFile("Groups.txt");
-    int cont = 0;
-    int cont2 = 0;
-    int index = 0;
-    std::string textList[5];
-    for (int x = 0; x < text.size(); x++) {
-        cont2++;
-        if (text[x] == ';') {
-            textList[index] = text.substr(cont, cont2 - 1);
-            cont = x + 1;
-            index++;
+void GroupList::loadGroupList(GroupList& groupList, ScheduleList schedulelist) {
+    std::ifstream file("Groups.txt");
+    std::string line;
+
+    if (!file) {
+        std::cerr << "Error al abrir el archivo: " << "Groups.txt" << std::endl;
+        return;
+    }
+
+    while (getline(file, line)) {
+        if (line.size() > 8) {
+            std::string textList[3];
+            ScheduleList temlist;
+            int cont = 0, cont2 = 0, index = 0;
+            std::string codSchedule;
+
+            int startBracket = line.find('[');
+            int endBracket = line.find(']');
+
+            for (int x = 0; x < startBracket; x++) {
+                cont2++;
+                if (line[x] == ';' && index < 3) {
+                    if (cont2 > 1) {
+                        textList[index] = line.substr(cont, cont2 - 1);
+                    }
+                    cont = x + 1;
+                    index++;
+                    cont2 = 0;
+                }
+            }
+
+            cont = startBracket + 1;
             cont2 = 0;
-        }
-        if (index == 5) {
-            Group group = Group(textList[0], textList[1],textList[2], textList[3], textList[4]);
-            list.insertAtBeginning(group);
-            index = 0;
+
+            for (int x = cont; x < endBracket; x++) {
+                cont2++;
+                if (line[x] == ';') {
+                    if (cont2 > 1) {
+                        codSchedule = line.substr(cont, cont2 - 1);
+                        temlist.insertAtBeginning(schedulelist.searchingSchedule(codSchedule));
+                    }
+                    cont = x + 1;
+                    cont2 = 0;
+                }
+            }
+
+            groupList.insertAtBeginning(Group(textList[0], textList[1], textList[2], temlist));
         }
     }
+
+    file.close();
 }
 
 bool GroupList::searchingGroup(std::string codCourse) {
