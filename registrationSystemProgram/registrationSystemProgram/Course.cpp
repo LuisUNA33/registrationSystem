@@ -2,11 +2,12 @@
 Course::Course() {}
 Course::~Course() {}
 
-Course::Course(std::string code, std::string name, int credits, std::string carrer){
+Course::Course(std::string code, std::string name, int credits, std::string carrer, GroupList listG) {
 	this->name = name;
 	this->code = code;
 	this->credits = credits;
 	this->carrer = carrer;
+	this->listG = listG;
 
 }
 
@@ -21,6 +22,11 @@ int Course::getCredits() {
 }
 std::string Course::getCarrer() {
 	return this->carrer;
+}
+
+GroupList Course::getGroupList()
+{
+	return this->listG;
 }
 
 //int Course::getStartTime() {
@@ -41,6 +47,10 @@ void Course::setCredits(int credits) {
 }
 void Course::setCarrer(std::string carrer) {
 	this->carrer = carrer;
+}
+
+void Course::setGroupList(GroupList listG){
+	this->listG = listG;
 }
 
 void Course::showCourse() {

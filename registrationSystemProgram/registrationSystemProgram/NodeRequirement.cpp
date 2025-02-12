@@ -62,8 +62,8 @@ void RequirementList::writeRequirementList() {
     NodeRequirement* current = head;
     while (current != nullptr) {
         string text = "";
-        text += current->getData().getCodCourse() + "{";
-        text += current->getData().getRequirements() + "}";
+        text += current->getData().getCodCourse()+";[";
+        text += current->getData().getRequirements() + ";]";
         writeFile("Requirements.txt", text);
         current = current->getNext();
     }

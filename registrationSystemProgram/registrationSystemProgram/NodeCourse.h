@@ -1,6 +1,7 @@
 #pragma once
 #include "Course.h"
 #include "Files.h"
+#include "NodeGroup.h"
 class NodeCourse {
 private:
     Course data;
@@ -25,8 +26,9 @@ public:
     void insertAtEnd(NodeCourse* newNode);
     void printList();
 	void writeCourseList();
-	void loadCourseList(CourseList& list);
-    bool searchingCourse(std::string codCourse);
     Course getCourse(std::string codCourse);
+    void loadCourseList(CourseList& courseList, GroupList groupList);
+    bool searchingCourse(std::string codCourse);
+    
 };
 

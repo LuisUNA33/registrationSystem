@@ -13,8 +13,8 @@ RegistrationDetailsList registrationDestails;
 void loadAllList() {
     students.loadStudentList(students);
     schedules.loadScheduleList(schedules);
-    courses.loadCourseList(courses);
-    groups.loadGroupList(groups,schedules);
+    groups.loadGroupList(groups, schedules);
+    courses.loadCourseList(courses,groups);
     requirements.loadRequirementList(requirements);
     approvedCourses.loadApprovedCourseList(approvedCourses);
     registrations.loadRegistrationList(registrations);

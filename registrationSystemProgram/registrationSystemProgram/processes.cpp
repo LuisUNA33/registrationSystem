@@ -181,7 +181,7 @@ void registerCourse(CourseList& courseList,GroupList& groupList,RequirementList&
 	registerGroup(groupList,code);
 	registerGroup(groupList, code);
 	//
-	courseList.insertAtBeginning(Course(code,name, credits, carrer));
+	//courseList.insertAtBeginning(Course(code,name, credits, carrer));
 	std::cout << "Curso agregado a la lista. " << std::endl;
 }
 

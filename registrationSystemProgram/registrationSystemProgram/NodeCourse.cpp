@@ -1,4 +1,5 @@
 #include "NodeCourse.h"
+//#include "NodeGroup.h"
 
 NodeCourse::NodeCourse(Course data) {
     this->data = data;
@@ -73,31 +74,68 @@ void CourseList::writeCourseList() {
         text += current->getData().getName() + ";";
 		text += to_string(current->getData().getCredits()) + ";";
 		text += current->getData().getCarrer() + ";";
+        NodeGroup* currentG = current->getData().getGroupList().getHead();
+        text += "[";
+        while (currentG != nullptr) {
+            text += currentG->getData().getNRC() + ";";
+            currentG = currentG->getNext();
+        }
+        text += "]";
 		writeFile("Courses.txt", text);
 		current = current->getNext();
 	}
 }
 
-void CourseList::loadCourseList(CourseList& list) {
-    std::string text = readFile("Courses.txt");
-    int cont = 0;
-    int cont2 = 0;
-    int index = 0;
-    std::string textList[4];
-    for (int x = 0; x < text.size(); x++) {
-        cont2++;
-        if (text[x] == ';') {
-            textList[index] = text.substr(cont, cont2 - 1);
-            cont = x + 1;
-            index++;
+void CourseList::loadCourseList(CourseList& courseList, GroupList groupList) {
+    std::ifstream file("Courses.txt");
+    std::string line;
+    if (!file) {
+        std::cerr << "Error al abrir el archivo: " << "Courses.txt" << std::endl;
+        return;
+    }
+
+    while (getline(file, line)) {
+        if (line.size() > 8) {
+            std::string textList[4];
+            GroupList temlist;
+            int cont = 0, cont2 = 0, index = 0;
+            std::string codCourse;
+
+            int startBracket = line.find('[');
+            int endBracket = line.find(']');
+
+            for (int x = 0; x < startBracket; x++) {
+                cont2++;
+                if (line[x] == ';' && index < 4) {
+                    if (cont2 > 1) {
+                        textList[index] = line.substr(cont, cont2 - 1);
+                    }
+                    cont = x + 1;
+                    index++;
+                    cont2 = 0;
+                }
+            }
+
+            cont = startBracket + 1;
             cont2 = 0;
-        }
-        if (index == 4) {
-            Course course = Course(textList[0], textList[1], std::stoi(textList[2]), textList[3]);
-            list.insertAtBeginning(course);
-            index = 0;
+
+            for (int x = cont; x < endBracket; x++) {
+                cont2++;
+                if (line[x] == ';') {
+                    if (cont2 > 1) {
+                        codCourse = line.substr(cont, cont2 - 1);
+                        temlist.insertAtBeginning(groupList.getGroup(codCourse));
+                    }
+                    cont = x + 1;
+                    cont2 = 0;
+                }
+            }
+
+            courseList.insertAtBeginning(Course(textList[0], textList[1],stoi(textList[2]),textList[3], temlist));
         }
     }
+
+    file.close();
 }
 
 bool CourseList::searchingCourse(std::string codCourse){
