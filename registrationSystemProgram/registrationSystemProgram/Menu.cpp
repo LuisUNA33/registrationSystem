@@ -80,25 +80,22 @@ void subMenuB() {
             system("CLS");
             registerStudent(students);
             system("pause");
-            //students.writeStudentList();
             break;
         case 'b':
             system("CLS");
             registerCourse(courses, groups,requirements);
             system("pause");
             groups.printList();
-            //courses.writeCourseList();
             break;
         case 'c':
             system("CLS");
             registerSchedule(schedules);
             system("pause");
-            //schedules.writeScheduleList();
             break;
         case 'd':
             return;
         default:
-            std::cout << "Opcion no valida, intente nuevamente." << std::endl;
+            std::cout << "Opcion invalida, intente nuevamente." << std::endl;
             break;
         }
     }
@@ -109,9 +106,9 @@ void subMenuC() {
     char option;
     do {
         std::cout << "Matricula:" << std::endl;
-        std::cout << "  (a)Registro de matricula Completa" << std::endl;
-        std::cout << "  (b)Registro de matricula(matricula sin cursos)" << std::endl;
-        std::cout << "  (c) regresar " << std::endl;
+        std::cout << "  (a)Registro de matricula completa" << std::endl;
+        std::cout << "  (b)Registro de matricula (matricula sin cursos)" << std::endl;
+        std::cout << "  (c)Regresar " << std::endl;
         std::cout << "Selecione una opcion:" << std::endl;
         option = enterChar();
         switch (option) {
@@ -140,30 +137,26 @@ void subMenuD() {
     char option;
     while (true) {
         system("CLS");
-        std::cout << "  (a)Estudiantes(Lista de estudiantes)" << std::endl;
-        std::cout << "  (b)Cursos(Lista de los cursos)" << std::endl;
-        std::cout << "  (c)Horarios(Lista de Horarios)" << std::endl;
-        std::cout << "  (d)Estudiantes Matriculados(Todos los matriculados)" << std::endl;
-        std::cout << "  (e)regresar" << std::endl;
+        std::cout << "  (a)Estudiantes (Lista de estudiantes)" << std::endl;
+        std::cout << "  (b)Cursos (Lista de los cursos)" << std::endl;
+        std::cout << "  (c)Horarios (Lista de Horarios)" << std::endl;
+        std::cout << "  (d)Estudiantes Matriculados (Todos los matriculados)" << std::endl;
+        std::cout << "  (e)Regresar" << std::endl;
         std::cout << "Selecione una opcion:" << std::endl;
         option = enterChar();
         switch (option) {
         case 'a':
             system("CLS");
-            //students.loadStudentList(students);
             students.printList();
             system("pause");
             break;
         case 'b':
             system("CLS");
-            //courses.loadCourseList(courses);
-            //courses.printList();
             ShowCoursesGroup(courses,groups);
             system("pause");
             break;
         case 'c':
             system("CLS");
-            //schedules.loadScheduleList(schedules);
             schedules.printList();
             system("pause");
             break;
@@ -193,9 +186,6 @@ void menu() {
             "  (e)Guardar cambios\n" << std::endl;
         std::cout << "Ingrese la opcion que desea realizar: " << std::endl;
         char option = enterChar();
-        //char option =' ';
-        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        //std::cin >> option;
         switch (option) {
         case 'a':
             exit = subMenuA();

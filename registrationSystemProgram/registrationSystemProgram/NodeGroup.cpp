@@ -100,7 +100,6 @@ void GroupList::loadGroupList(GroupList& list) {
     }
 }
 
-//searchingGroup(NRC)
 bool GroupList::searchingGroup(std::string codCourse) {
     NodeGroup* current = head;
     while (current != nullptr) {

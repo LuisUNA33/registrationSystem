@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <random>
 
 #include "NodeStudent.h"
 #include "NodeSchedule.h"
@@ -13,10 +14,6 @@
 #include "NodeRegistration.h"
 #include "NodeRegistrationDetails.h"
 void about();
-//void showEnrolledStudents(RegistrationNode*& registrationList);
-//void showStudentsList(const StudentNode* studentList);
-//void showCourseList(const CourseNode* courseList);
-//void showScheduleList(const ScheduleNode* scheduleList);
 std::string enterText();
 char enterChar();
 int enterNum();
@@ -39,13 +36,6 @@ void registerRegistration(RegistrationDetailsList& registrationDetails, Registra
 	RequirementList requirements, ApprovedCourseList approvedCourses);
 void ShowCoursesGroup(CourseList courses, GroupList groups);
 void showRegistration(RegistrationList registrations, RegistrationDetailsList registrationDestails);
-//Schedule searchSchedule(const ScheduleNode* scheduleList);
-//void registerCourse(CourseNode*& courseList, ScheduleNode*& scheduleList);
-//Student searchStudent(const StudentNode* studentList);
-//Course searchCourse(const CourseNode* courseList);
-//bool checkConflict(const CourseNode* list, int index, Course course);
-//Course* addCoursesList(const CourseNode* courseList, int numCourse, int& index, int& totalCredits);
-//bool isRegistered(const RegistrationNode* registrationList, int& numRegistration, std::string id);
-//void addRegistration(RegistrationNode*& registrationList, StudentNode*& studentList, CourseNode*& courseList, ScheduleNode*& scheduleList);
+int getRandomNumber();
 
 #endif

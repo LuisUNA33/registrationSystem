@@ -11,6 +11,13 @@ void about() {
 	system("Pause");
 }
 
+int getRandomNumber() {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::uniform_int_distribution<> dis(0, 100);
+    return dis(gen);
+}
+
 std::string enterText() {
 	std::string text;
 	std::cin >> text;
@@ -54,7 +61,7 @@ void enterStartEndTime(int& startTime, int& endTime) {
 				return;
 			}
 		}
-		std::cout << "No ingreso horas coherentes\nrecuerde solo formato de 24 horas\n solo horas en punto." << std::endl;
+		std::cout << "No ingreso horas coherentes\nRecuerde solo formato de 24 horas\n Solo se admiten horas en punto." << std::endl;
 	}
 }
 
@@ -91,7 +98,7 @@ std::string enterCarrer() {
 bool enterCondition() {
 	while (true) {
 		cout << "Opciones" << endl;
-		cout << "1. Aprobado\n2. Desaprobado" << endl;
+		cout << "1. Aprobado\n2. Reprobado" << endl;
 
 		int option = enterNum();
 		if (option == 1) {
@@ -104,27 +111,6 @@ bool enterCondition() {
 	}
 
 }
-//validar registros
-//	bool checkConflict(Course * list, int index, Course course) {
-//		if (index == 0) {
-//			return true;
-//		}
-//		for (int x = 0; x < index; x++) {
-//			if (list[x].getSchedule().getCode() == course.getSchedule().getCode()) { return false; }
-//			if (list[x].getSchedule().getDay() == course.getSchedule().getDay()) {
-//				if (course.getEndTime() >= list[x].getStartTime()) {
-//					return false;
-//				}
-//				if (course.getStartTime() <= list[x].getEndTime()) {
-//					return false;
-//				}
-//			}
-//		}
-//		return true;
-//	}
-
-
-
 
 
 //Registrar---------------------------
@@ -160,7 +146,7 @@ void registerSchedule(ScheduleList& scheduleList) {
 }
 
 void registerGroup(GroupList& groupList, string codCourse) {
-	std::cout << "Ingrese los datos del Grupo" << std::endl;
+	std::cout << "Ingrese los datos del grupo" << std::endl;
 	std::cout << "NRC:" << std::endl;
 	std::string NRC = enterText();
 	std::cout << "Nombre del profesor:" << std::endl;
@@ -216,7 +202,7 @@ void registerGroup(GroupList& groupList) {
 }
 
 void registerRequeriment(RequirementList& requirementList) {
-	std::cout << "Ingrese los requerimientos del curso,\nSi el requerimiento es '0' se asume que no tiene requerimiento:" << std::endl; 
+	std::cout << "Ingrese los requisitos del curso,\nSi el requisito es '0', se asume que no tiene requisitos:" << std::endl; 
 	std::cout << "Codigo de curso:" << std::endl;
 	std::string codCourse = enterText();
 	std::cout << "Requerimiento:" << std::endl;
@@ -229,7 +215,7 @@ void registerRequeriment(RequirementList& requirementList) {
 
 void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 	std::cout << "Ingrese el estudiante y su curso:" << std::endl;
-	std::cout << "ID del estdudiante:" << std::endl;
+	std::cout << "ID del estudiante:" << std::endl;
 	std::string codStudent = enterText();
 	std::cout << "Codigo del curso:" << std::endl;
 	std::string codCourse = enterText();
@@ -240,7 +226,7 @@ void registerApprovedCourse(ApprovedCourseList& approvedCourseList) {
 
 void registration(RegistrationList& registrations,StudentList students) {
 	//Matricula
-	std::cout << "Ingrese datos de Matricula:" << std::endl;
+	std::cout << "Ingrese datos de matricula:" << std::endl;
 	string codStudent = enterStudent(students);
 	std::cout << "Ingrese el codigo de matricula:" << std::endl;
 	string codRegistration = enterText();
@@ -266,7 +252,7 @@ void showCourseGroups(std::string codCourse, GroupList groups){
 
 string  enterStudent(StudentList students){
 	while (true) {
-		std::cout << "ID del estdudiante." << std::endl;
+		std::cout << "ID del estudiante: " << std::endl;
 		std::string codStudent = enterText();
 		if (students.searchingStudent(codStudent)) {
 			return codStudent;
@@ -281,7 +267,7 @@ string  enterCourse(CourseList courses,string carrer,NodeRequirement requirement
 		if (courses.searchingCourse(codCourse)) {
 			if(courses.getCourse(codCourse).getCarrer()==carrer){
 				if (courses.getCourse(codCourse).getCode() == requirement.getData().getCodCourse()) {
-					std::cout << "falta de requisitos " << std::endl;
+					std::cout << "Falta de requisitos: " << std::endl;
 					requirement.getData().showRequirement();
 						break;
 				}
@@ -324,7 +310,7 @@ bool validationGroup(RegistrationDetailsList registrationDetails,GroupList group
 							conflictSchedule(schedules, currentG->getData().getSchedule_B(), newGroup.getSchedule_A())and
 							conflictSchedule(schedules, currentG->getData().getSchedule_A(), newGroup.getSchedule_B())and
 							conflictSchedule(schedules, currentG->getData().getSchedule_B(), newGroup.getSchedule_B())==false) {
-							cout << "conflicto de horarios" << endl;
+							cout << "Conflicto de horarios" << endl;
 							return false;
 
 						}
@@ -386,13 +372,13 @@ void registerRegistration(RegistrationDetailsList& registrationDetails, Registra
 	//
 	Registration newRegistration =Registration(codRegistration,codStudent,codYear,codSemester) ;
 	registrations.insertAtBeginning(newRegistration);
-	RegistrationDetails newRegistrationDetail = RegistrationDetails(codRegistration,NCR,12500.15,0);
+	RegistrationDetails newRegistrationDetail = RegistrationDetails(codRegistration,NCR,12500.15, getRandomNumber());
 	registrationDetails.insertAtBeginning(newRegistrationDetail);
 	int credits = 0;
 	float cost = 0.0;
 	registrationDetails.getCreditsTotal(credits,cost,codRegistration,groups,courses);
-	cout << "creditos totales del Estudiante Matriculado: " << credits << endl;
-	cout << "costo total de la matricula del Estudiante Matriculado: " << cost << endl;
+	cout << "Creditos totales del estudiante matriculado: " << credits << endl;
+	cout << "Costo total de la matricula del estudiante matriculado: " << cost << endl;
 }
 
 //Show
@@ -429,3 +415,4 @@ void showRegistration(RegistrationList registrations, RegistrationDetailsList re
 		current = current->getNext();
 	}
 }
+
