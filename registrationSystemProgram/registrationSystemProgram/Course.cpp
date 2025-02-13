@@ -64,3 +64,20 @@ void Course::showCourse() {
 	std::cout << "Carrera: ";
 	std::cout << this->carrer << std::endl;
 }
+
+void Course::showCourseExtend() {
+	std::cout << "\nCurso " << std::endl;
+	std::cout << "Nombre del curso: ";
+	std::cout << this->name << std::endl;
+	std::cout << "Codigo: ";
+	std::cout << this->code << std::endl;
+	std::cout << "Creditos: ";
+	std::cout << this->credits << std::endl;
+	std::cout << "Carrera: ";
+	std::cout << this->carrer << std::endl;
+	NodeGroup* current = this->getGroupList().getHead();
+	while (current != nullptr) {
+		current->getData().showGroup();
+		current = current->getNext();
+	}
+}

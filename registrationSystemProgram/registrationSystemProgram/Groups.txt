@@ -1,3 +1,4 @@
+4444;N01;Minos;[B2;A1;]
 7788;T01;Toth;[A2;A1;]
 7789;T01;Konrra;[B1;B2;]
 7790;T01;Konrra;[B1;B2;C2;]

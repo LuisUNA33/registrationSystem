@@ -25,6 +25,7 @@ public:
     void insertAtBeginning(Course data);
     void insertAtEnd(NodeCourse* newNode);
     void printList();
+    void printListExtend();
 	void writeCourseList();
     Course getCourse(std::string codCourse);
     void loadCourseList(CourseList& courseList, GroupList groupList);

@@ -1,4 +1,5 @@
-MAT01;Matematica;4;Ing topografia;[]
+MAT01;Matematica;4;Ing topografia;[7788;]
 P01;Programacion;4;Ing en sistemas;[]
 F01;Fundamnetos;2;Ing en sistemas;[]
 T01;Terrenos;4;Ing topografia;[]
+7888;Numeros;7;Ing en sistemas;[7789;]

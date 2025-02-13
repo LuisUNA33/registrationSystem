@@ -122,7 +122,7 @@ void GroupList::loadGroupList(GroupList& groupList, ScheduleList schedulelist) {
                 if (line[x] == ';') {
                     if (cont2 > 1) {
                         codSchedule = line.substr(cont, cont2 - 1);
-                        temlist.insertAtBeginning(schedulelist.searchingSchedule(codSchedule));
+                        temlist.insertAtBeginning(schedulelist.getSchedule(codSchedule));
                     }
                     cont = x + 1;
                     cont2 = 0;

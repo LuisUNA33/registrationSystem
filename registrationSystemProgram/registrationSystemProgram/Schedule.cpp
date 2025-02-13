@@ -56,7 +56,9 @@ void Schedule::setClassRoom(std::string classRoom) {
 void Schedule::showSchedule() {
 	std::cout << "\nHorario: " << std::endl;
 	std::cout << "Codigo del horario: ";
-	std::cout << this->codGroup << std::endl;
+	std::cout << this->codSchedule << std::endl;
+	/*std::cout << "Codigo del Grupo: ";
+	std::cout << this->getCode() << std::endl;*/
 	std::cout << "Dia: ";
 	std::cout << this->day << std::endl;
 	std::cout << "Hora de inicio: ";

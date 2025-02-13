@@ -33,6 +33,7 @@ public:
 	void setCarrer(std::string teacher);
 	void setGroupList(GroupList listG);
 	void showCourse();
+	void showCourseExtend();
 
 };
 

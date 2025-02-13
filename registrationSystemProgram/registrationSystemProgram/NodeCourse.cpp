@@ -65,6 +65,14 @@ void CourseList::printList() {
     }
 }
 
+void CourseList::printListExtend() {
+    NodeCourse* current = head;
+    while (current != nullptr) {
+        current->getData().showCourseExtend();
+        current = current->getNext();
+    }
+}
+
 
 void CourseList::writeCourseList() {
 	NodeCourse* current = head;

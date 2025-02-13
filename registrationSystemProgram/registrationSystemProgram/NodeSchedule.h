@@ -26,6 +26,7 @@ public:
     void printList();
 	void writeScheduleList();
 	void loadScheduleList(ScheduleList& list);
-    Schedule searchingSchedule(std::string NRC);
+    bool searchingSchedule(std::string NRC);
+    Schedule getSchedule(std::string NRC);
 };
 

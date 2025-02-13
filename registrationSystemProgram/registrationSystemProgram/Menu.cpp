@@ -70,7 +70,8 @@ void subMenuB() {
         std::cout << "a) Agregar estudiantes" << std::endl;
         std::cout << "b) Agregar cursos" << std::endl;
         std::cout << "c) Agregar horarios" << std::endl;
-        std::cout << "d) Regresar " << std::endl;
+        std::cout << "d) Agregar Grupos" << std::endl;
+        std::cout << "e) Regresar " << std::endl;
         std::cout << "Ingrese alguna opcion disponible: " << std::endl;
 
         option = enterChar(); // Solo se usa esta lectura
@@ -93,6 +94,11 @@ void subMenuB() {
             system("pause");
             break;
         case 'd':
+            system("CLS");
+            registerGroup(groups,schedules);
+            system("pause");
+            break;
+        case 'e':
             return;
         default:
             std::cout << "Opcion invalida, intente nuevamente." << std::endl;
@@ -113,9 +119,9 @@ void subMenuC() {
         option = enterChar();
         switch (option) {
         case 'a':
-            /*registerRegistration(registrationDestails,registrations,
+            registerRegistration(registrationDestails,registrations,
                 students,schedules,courses,groups,requirements,
-                approvedCourses);*/
+                approvedCourses);
             system("pause");
             break;
         case 'b':
@@ -153,7 +159,7 @@ void subMenuD() {
             break;
         case 'b':
             system("CLS");
-            ShowCoursesGroup(courses,groups);
+            courses.printList();
             system("pause");
             break;
         case 'c':
