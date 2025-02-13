@@ -220,8 +220,7 @@ void registerRequeriment(RequirementList& requirementList) {
 	std::string codCourse = enterText();
 	std::cout << "Requerimiento:" << std::endl;
 	std::string requirements = enterText();
-
-	requirementList.insertAtBeginning(Requirement(codCourse, requirements));
+	//requirementList.insertAtBeginning(Requirement(codCourse, requirements));
 	std::cout << "Requerimientos de curso agregados a la lista. " << std::endl;
 
 }
@@ -284,24 +283,29 @@ string  enterStudent(StudentList students){
 //		std::cout << "El curso no esta registrado." << std::endl;
 //	}
 //}
-string  enterCourse(CourseList courses,string carrer,NodeRequirement requirement) {
+string  enterCourse(CourseList courses,string carrer,RequirementList requirements) {
 	while (true) {
 		std::cout << "Codigo del curso:" << std::endl;
 		std::string codCourse = enterText();
-		if (courses.searchingCourse(codCourse)) {
-			if(courses.getCourse(codCourse).getCarrer()==carrer){
-				if (courses.getCourse(codCourse).getCode() == requirement.getData().getCodCourse()) {
-					std::cout << "Falta de requisitos: " << std::endl;
-					requirement.getData().showRequirement();
+		if (requirements.searchingsRequeriments(codCourse)){
+			NodeRequirement requirement = requirements.getRequeriments(codCourse);
+			if (courses.searchingCourse(codCourse)) {
+				if (courses.getCourse(codCourse).getCarrer() == carrer) {
+					if (courses.getCourse(codCourse).getCode() == requirement.getData().getCodCourse()) {
+						std::cout << "Falta de requisitos: " << std::endl;
+						requirement.getData().showRequirement();
 						break;
+					}
+					else {
+						return codCourse;
+					}
 				}
-				else {
-					return codCourse;
-				}
+				std::cout << "El curso no pertenece a la carrera del estudiante." << std::endl;
 			}
-			std::cout << "El curso no pertenece a la carrera del estudiante." << std::endl;
+			std::cout << "El curso no esta registrado." << std::endl;
 		}
-		std::cout << "El curso no esta registrado." << std::endl;
+		cout << "No tiene requisitos" << endl;
+		return "";
 	}
 }
 //
@@ -400,9 +404,8 @@ void registerRegistration(RegistrationDetailsList& registrationDetails, Registra
 	Student student = students.getStudent(codStudent);
 	courses.printList();
 	std::cout << "Ingrese el codigo del curso:" << std::endl;
-	//string codCourse = enterCourse(courses, student.getDegree(),requirements.getRequeriments(codCourse));
-	//string codCourse=enterText();
-	//requirements.getRequeriments(codCourse);
+	string codCourse = " ";
+	codCourse = enterCourse(courses, student.getDegree(),requirements);
 
 	//showCourseGroups(codCourse,groups);
 	string NCR = enterGroup(groups, registrationDetails, schedules, codRegistration);

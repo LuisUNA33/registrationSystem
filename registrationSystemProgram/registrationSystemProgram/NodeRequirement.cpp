@@ -1,4 +1,5 @@
 #include "NodeRequirement.h"
+#include "NodeCourse.h"
 NodeRequirement::NodeRequirement(Requirement data) {
     this->data = data;
     this->next = nullptr;
@@ -63,33 +64,68 @@ void RequirementList::writeRequirementList() {
     while (current != nullptr) {
         string text = "";
         text += current->getData().getCodCourse()+";[";
-        text += current->getData().getRequirements() + ";]";
+        NodeCourse* currentC = current->getData().getCourseList().getHead();
+        while (currentC != nullptr) {
+            text += currentC->getData().getCode() + ";";
+            currentC = currentC->getNext();
+        }
+        text += "]";
         writeFile("Requirements.txt", text);
         current = current->getNext();
     }
 }
 
-void RequirementList::loadRequirementList(RequirementList& list) {
-    std::string text = readFile("Requirements.txt");
-    int cont = 0;
-    int cont2 = 0;
-    int index = 0;
-    std::string textList[2];
-    for (int x = 0; x < text.size(); x++) {
-        cont2++;
-        if (text[x] == ';' || text[x] == '{') {
-            textList[index] = text.substr(cont, cont2 - 1);
-            cont = x + 1;
-            index++;
-            cont2 = 0;
-        }
+void RequirementList::loadRequirementList(RequirementList& requerimentsList, CourseList courselist) {
+    std::ifstream file("Requirements.txt");
+    std::string line;
 
+    if (!file) {
+        std::cerr << "Error al abrir el archivo: " << "Requirements.txt" << std::endl;
+        return;
     }
-    if (index == 2) {
-        Requirement requirement = Requirement(textList[0], textList[1]);
-        list.insertAtBeginning(requirement);
-        index = 0;
+
+    while (getline(file, line)) {
+        if (line.size() > 8) {
+            std::string textList[1];
+            CourseList temlist;
+            int cont = 0, cont2 = 0, index = 0;
+            std::string codCourse;
+
+            int startBracket = line.find('[');
+            int endBracket = line.find(']');
+
+            for (int x = 0; x < startBracket; x++) {
+                cont2++;
+                if (line[x] == ';' && index < 1) {
+                    if (cont2 > 1) {
+                        textList[index] = line.substr(cont, cont2 - 1);
+                    }
+                    cont = x + 1;
+                    index++;
+                    cont2 = 0;
+                }
+            }
+
+            cont = startBracket + 1;
+            cont2 = 0;
+
+            for (int x = cont; x < endBracket; x++) {
+                cont2++;
+                if (line[x] == ';') {
+                    if (cont2 > 1) {
+                        codCourse = line.substr(cont, cont2 - 1);
+                        temlist.insertAtBeginning(courselist.getCourse(codCourse));
+                    }
+                    cont = x + 1;
+                    cont2 = 0;
+                }
+            }
+
+            requerimentsList.insertAtBeginning(Requirement(textList[0],temlist));
+        }
     }
+
+    file.close();
 }
 
 bool RequirementList::searchingsRequeriments(std::string codeCourse)
@@ -111,6 +147,7 @@ Requirement RequirementList::getRequeriments(string codeCourse)
         if (codeCourse == current->getData().getCodCourse()) {
             return current->getData();
         }
+        cout << "x" << endl;
         current = current->getNext();
     }
 }

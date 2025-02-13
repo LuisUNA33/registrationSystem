@@ -4,42 +4,42 @@ Requirement::Requirement()
 {
 }
 
-Requirement::Requirement(std::string codeCourse, std::string requirements)
+Requirement::Requirement(std::string codeCourse, CourseList  courseList)
 {
-
 	this->codeCourse = codeCourse;
-	this->requirement = requirements;
+	this->courseList = courseList;
 }
-
-std::string Requirement::getRequirements()
-{
-	return this->requirement;
-}
-
 
 std::string Requirement::getCodCourse()
 {
 	return this->codeCourse;
 }
 
-void Requirement::setRequirements(std::string requirements)
+CourseList Requirement::getCourseList()
 {
-	this->requirement = requirements;
+	return this->courseList;
 }
 
-
-void Requirement::setCodCourse(std::string codeCourse)
-{
-	this->codeCourse = codeCourse;
+void Requirement::setCodCourse(std::string codCourse){
+	this->codeCourse=codCourse;
 }
+
+void Requirement::setCourseList(CourseList courseList){
+	this->courseList = courseList;
+}
+
 
 void Requirement::showRequirement()
 {
 	std::cout << "\nRequerimientos " << std::endl;
 	std::cout << "codigo de curso: ";
 	std::cout << this->codeCourse<< std::endl;
-	std::cout << "requerimiento: ";
-	std::cout << this->requirement<< std::endl;
+	std::cout << "Requisitos del curso: ";
+	NodeCourse* current = this->courseList.getHead();
+	while (current != nullptr) {
+		cout << current->getData().getCode() << endl;
+		current = current->getNext();
+	}
 
 
 }

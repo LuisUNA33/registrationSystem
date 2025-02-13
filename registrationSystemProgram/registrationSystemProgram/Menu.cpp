@@ -15,7 +15,7 @@ void loadAllList() {
     schedules.loadScheduleList(schedules);
     groups.loadGroupList(groups, schedules);
     courses.loadCourseList(courses,groups);
-    requirements.loadRequirementList(requirements);
+    requirements.loadRequirementList(requirements,courses);
     approvedCourses.loadApprovedCourseList(approvedCourses);
     registrations.loadRegistrationList(registrations);
     registrationDestails.loadRegistrationDetailsList(registrationDestails);

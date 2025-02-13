@@ -2,19 +2,20 @@
 #define Requirement_H
 #include <iostream>
 #include <string>
+#include "NodeCourse.h"
 class Requirement
 {
 private:
 	std::string codeCourse = "";
-	std::string  requirement= "";
+	CourseList  courseList;
 	
 public:
 	Requirement();
-	Requirement(std::string CodeCourse, std::string Requirements);
-	std::string getRequirements();
+	Requirement(std::string CodeCourse, CourseList  courseList);
 	std::string getCodCourse();
-	void setRequirements(std::string requirements);
-	void setCodCourse(std::string codeCourse);
+	CourseList getCourseList();
+	void setCodCourse(std::string requirements);
+	void setCourseList(CourseList  courseList);
 	void showRequirement();
 
 };
